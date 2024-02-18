@@ -1,0 +1,56 @@
+/* 1 - Grid Template Area */
+/* 2 - grid-auto-rows:minmax() */
+.container {
+    height: 500px;
+    width: 800px;
+    background-color: yellow;
+    display: grid;
+    gap: 10px;
+    /* grid-template-rows: 30px 150px 200px 30px;
+    grid-template-columns: 400px;
+    grid-template-areas:
+        "b4"
+        "b2"
+        "b3"
+        "b1"; */
+    /* grid-template-rows: 60px 100px 200px;
+    grid-template-columns: 200px 200px 100px;
+    grid-template-areas:
+        "b1 b1 b2"
+        "b3 b3 b2"
+        "b3 b3 b2"; */
+
+    /* grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: repeat(3, 1fr); */
+}
+#box1 {
+    height: 400px;
+    /* grid-area: b1; */
+    background-color: #4f6dbe;
+}
+#box2 {
+    /* grid-area: b2; */
+    background-color: #6dbe4f;
+}
+#box3 {
+    /* grid-area: b3; */
+    background-color: #ec3437;
+}
+#box4 {
+    /* grid-area: b4; */
+    background-color: #e77111;
+}
+
+#box5 {
+    background-color: #ec3437;
+}
+#box6 {
+    background-color: #6dbe4f;
+}
+#box7 {
+    background-color: #ec3437;
+}
+
+#box8 {
+    background-color: #fbb22f;
+}
