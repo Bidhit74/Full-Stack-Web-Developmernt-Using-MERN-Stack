@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button {
+    color: white;
+    background-color: red;
+    font-size: 24px;
+    box-shadow: 5px 4px 15px black;
+    padding: 10px 30px 10px 30px;
+    position: relative;
+    z-index: 1;
+}
+
+button::before {
+    content: "";
+    background-color: black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 1s;
+    z-index: -1;
+}
+
+button:hover::before {
+    transform: scaleX(1);
+}
