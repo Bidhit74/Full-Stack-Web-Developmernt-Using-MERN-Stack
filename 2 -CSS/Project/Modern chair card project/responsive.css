@@ -1,0 +1,71 @@
+@media (max-width: 1050px) {
+    .imgWrap {
+        width: 300px;
+    }
+    .chair-content {
+        width: 400px;
+        gap: 0.05rem;
+    }
+    .chair-description-detail {
+        font-size: 1rem;
+    }
+    .chair-color-piker {
+        margin-top: 4rem;
+        font-size: 1rem;
+    }
+    .chair-btn {
+        margin-top: 4rem;
+    }
+    .colorBtn:checked + label,
+    .colorBtn:not(:checked) + label {
+        height: 30px;
+        width: 30px;
+    }
+}
+@media (max-width: 720px) {
+    .imgWrap {
+        width: 150px;
+    }
+    .chair-content {
+        width: 200px;
+        gap: 0rem;
+    }
+    .chair-description-detail {
+        font-size: 0.7rem;
+    }
+    .chair-color-piker {
+        margin-top: 2.5rem;
+        font-size: 0.8rem;
+    }
+    .chair-btn {
+        margin-top: 2rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 0.3rem 0.6rem;
+    }
+    .colorBtn:checked + label,
+    .colorBtn:not(:checked) + label {
+        height: 18px;
+        width: 18px;
+        margin-right: 3px;
+    }
+    .project-name {
+        font-size: 0.7rem;
+    }
+    .chair-heding {
+        font-size: 1rem;
+    }
+    .chair-price {
+        font-size: 0.7rem;
+    }
+    .accor2 {
+        gap: 0.6rem;
+        font-size: 0.5rem;
+    }
+    .original-price {
+        padding: 0 0.4rem;
+    }
+    #desc2 + label {
+        padding: 0 1rem;
+    }
+}
