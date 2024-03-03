@@ -1,8 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 :root {
     --cColor1: #f4808b;
     --cColor2: #414141;
@@ -10,29 +5,45 @@
     --cColor4: #8893a3;
     --cColor5: #928980;
     --cColor6: #6d716f;
-    --bColor1: #8a5459;
-    --bColor2: #414141;
-    --bColor3: #536576;
-    --bColor4: #8893a3;
-    --bColor5: #928980;
-    --bColor6: #6d716f;
+    --bColor1: #b25962;
+    --bColor2: #2a2525;
+    --bColor3: #54728d;
+    --bColor4: #7692bc;
+    --bColor5: #bfac99;
+    --bColor6: #72887d;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 body {
+    position: relative;
     background-color: var(--cColor1);
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.7;
+    color: white;
+    overflow-x: none;
 }
 .chair-container {
-    width: 80vw;
+    position: relative;
+    width: 90vw;
+    height: 100vh;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    color: white;
+    overflow: hidden;
 }
-.project-name {
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 10px;
+.chair-content {
+    position: relative;
+    left: 50%;
+    margin-top: 6rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 45vw;
+    font-weight: bold;
+    flex-wrap: wrap;
 }
 
 [type="radio"]:checked,
@@ -43,6 +54,8 @@ body {
 
 .colorBtn:checked + label,
 .colorBtn:not(:checked) + label {
+    position: relative;
+    left: 50%;
     display: inline-block;
     height: 40px;
     transition: all 200ms linear;
@@ -50,14 +63,12 @@ body {
     width: 40px;
     cursor: pointer;
     margin-right: 10px;
-    box-shadow: 0 12px 35px 2px rgba(16, 39, 112, 0.25);
+    box-shadow: 0 12px 35px 2px rgba(16, 39, 112, 0.15);
     z-index: 10;
     background-position: center;
-    /* background-color: rgb(29, 17, 243); */
     background-size: cover;
     border: 3px solid transparent;
 }
-
 .colorBtn:checked + label {
     border-color: #434343;
     transform: scale(1.1);
@@ -81,20 +92,19 @@ label.color5 {
 label.color6 {
     background-image: url("./Images/color6.jpg");
 }
-
 .imgWrap {
-    height: 410px;
-    width: 500px;
-    background-image: url(./Images/chair1.png);
     position: absolute;
     top: 100px;
     left: 0;
+    display: inline-block;
+    height: 410px;
+    width: 500px;
+    background-image: url(./Images/chair1.png);
     transition: all 550ms linear;
     transition-delay: 100ms;
     background-position: center top;
     background-size: 100%;
-    /* background-repeat: no-repeat; */
-    display: inline-block;
+    background-repeat: no-repeat;
     z-index: 9;
     opacity: 0;
 }
@@ -159,32 +169,110 @@ label.color6 {
     }
 }
 
+.project-name {
+    text-transform: uppercase;
+}
 .chair-price {
-    padding: 15px;
+    font-size: 1.5rem;
 }
 .original-price {
-    padding: 10px;
     text-decoration: line-through;
-    color: #ffffff5e;
+    padding: 0 0.8rem;
 }
 .chair-description-detail {
-    padding: 15px;
-    font-size: 22px;
-    font-weight: 600;
+    position: relative;
+    font-size: 1.5rem;
 }
-.color-heading {
-    font-size: 22px;
-    font-weight: 600;
-    padding: 50px 0px 20px;
+.descBtn + label {
+    cursor: pointer;
 }
-.chair-color img {
-    width: 40px;
-    margin: 3px;
-    border-radius: 15%;
+#desc2 + label {
+    padding: 0 2.5rem;
+}
+
+.sectionFluid {
+    position: absolute;
+    opacity: 0;
+    font-weight: lighter;
+}
+.accor2 {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+#desc1:checked ~ .accor1 {
+    opacity: 1;
+}
+#desc2:checked ~ .accor2 {
+    opacity: 1;
+}
+.descBtn:not(:checked) + label {
+    opacity: 0.4;
+}
+.descBtn:not(:checked) + label:hover {
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+#desc2:checked ~ .accor2 {
+    opacity: 1;
+}
+.chair-color-piker {
+    margin-top: 6rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.7rem;
 }
 .chair-btn {
-    padding: 8px 40px 8px;
-    font-size: 25px;
+    position: absolute;
+    left: 50%;
+    margin-top: 5rem;
+    padding: 0.7rem 4rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 0.5rem 1rem;
+}
+
+.forColor1:checked ~ .chair-btn {
     background-color: var(--bColor1);
-    margin-top: 60px;
+}
+.forColor2:checked ~ .chair-btn {
+    background-color: var(--bColor2);
+}
+.forColor3:checked ~ .chair-btn {
+    background-color: var(--bColor3);
+}
+.forColor4:checked ~ .chair-btn {
+    background-color: var(--bColor4);
+}
+.forColor5:checked ~ .chair-btn {
+    background-color: var(--bColor5);
+}
+.forColor6:checked ~ .chair-btn {
+    background-color: var(--bColor6);
+}
+#btn:hover {
+    box-shadow: 0 12px 35px 0 rgba(16, 39, 112, 0.25);
+    background-color: #333;
+    transition: all 0.2s ease-in-out;
+}
+
+body:has(.forColor1:checked) {
+    background-color: var(--cColor1);
+}
+body:has(.forColor2:checked) {
+    background-color: var(--cColor2);
+}
+body:has(.forColor3:checked) {
+    background-color: var(--cColor3);
+}
+body:has(.forColor4:checked) {
+    background-color: var(--cColor4);
+}
+body:has(.forColor5:checked) {
+    background-color: var(--cColor5);
+}
+body:has(.forColor6:checked) {
+    background-color: var(--cColor6);
 }
