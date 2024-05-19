@@ -1,0 +1,483 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+#main {
+    height: 100%;
+    width: 100%;
+    background-color: #f8f8f8;
+    position: relative;
+    padding: 1px;
+}
+nav {
+    height: 8vw;
+    width: 100%;
+    margin-top: 2vw;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+nav h1 {
+    font-family: monument;
+    margin-left: 4vw;
+    font-size: 2.5vw;
+    letter-spacing: -1px;
+    position: relative;
+}
+nav h1::after {
+    font-family: "Times New Roman", Times, serif;
+    content: "©";
+    font-size: 1.5vw;
+    top: 2px;
+    right: -16px;
+    position: absolute;
+}
+nav h1::before {
+    content: "model management";
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1vw;
+    bottom: -2px;
+    right: 0px;
+    letter-spacing: 1px;
+    position: absolute;
+    font-weight: lighter;
+}
+nav h2 {
+    height: 100%;
+    width: 25vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid black;
+    font-weight: 800;
+    font-size: 2vw;
+}
+nav div {
+    height: 100%;
+    width: 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+nav > i {
+    display: none;
+}
+.hero_sec {
+    width: 90%;
+    height: 75vh;
+    margin: 0 auto;
+    margin-top: 4vh;
+    margin-bottom: 6vh;
+    position: relative;
+}
+.hero_content {
+    position: absolute;
+    width: 90%;
+    right: 4vw;
+    bottom: 10vh;
+    color: #f8f8f8;
+    mix-blend-mode: difference;
+}
+.hero_content hr {
+    margin: 4vh 0;
+}
+.hero_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: monument;
+    font-size: 1.8vw;
+    letter-spacing: 2px;
+}
+.hero_wheel {
+    width: 7vw;
+    height: 7vw;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 0.5px solid rgba(255, 255, 255, 0.428);
+    border-right: 3px solid white;
+    transform: rotate(30deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero_wheel span {
+    transform: rotate(-30deg);
+    font-size: 1vw;
+}
+.hero_bot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hero_arrow i {
+    font-size: 2vw;
+}
+.hero_sec video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.scroll_sec {
+    height: 20vw;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.scoll_content {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    padding: 1vw;
+    animation-name: anime;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    margin-right: 3.2vw;
+}
+.scroll_sec img {
+    width: 13vw;
+    height: 13vw;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    transition: all 0.3s;
+    margin-right: 1vw;
+}
+.scroll_sec img:hover {
+    transform: scale(1.05);
+}
+@keyframes anime {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - 3vw));
+    }
+}
+.alphabets_sec {
+    height: 8vw;
+    width: 100%;
+    margin-bottom: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vw;
+    border-bottom: 3px solid black;
+    border-top: 3px solid black;
+}
+.alphabets_sec h5 {
+    font-size: 2vw;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 400;
+    border-bottom: 1px solid black;
+    margin-right: 0.8vw;
+}
+.alphabets_sec h6 {
+    font-size: 1.8vw;
+    text-transform: uppercase;
+    font-style: italic;
+    padding: 0.7vw 0.9vw;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.alphabets_sec h6:hover {
+    border: 1px solid black;
+}
+.second_page {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3vw;
+    margin-bottom: 2vw;
+}
+.left_content {
+    width: 45vw;
+    height: 80%;
+}
+.left_content h1 {
+    font-family: monument;
+}
+.left_content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 30%;
+}
+.right_content {
+    width: 35vw;
+    height: 100%;
+}
+
+.right_content img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    object-position: 25%;
+}
+.page_text {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+.page_text h4 {
+    width: 40%;
+    height: 95%;
+    font-size: 1.5vw;
+}
+.page_text p {
+    width: 55%;
+    height: 95%;
+    font-size: 1.3vw;
+}
+.third_page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
+    margin-top: -5vw;
+}
+.third_left_part {
+    width: 40vw;
+    height: 70%;
+    margin-top: 5vh;
+}
+.img_div {
+    position: relative;
+    margin: 2vw;
+}
+.img_div img:nth-child(1) {
+    width: 100%;
+    border-radius: 50%;
+}
+.img_div img:nth-child(2) {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}
+.third_left_part p {
+    font-size: 2vw;
+    font-weight: 600;
+}
+.third_right_part {
+    width: 50vw;
+    height: 100%;
+}
+.third_right_part img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 30%;
+}
+.img_sec {
+    width: 100%;
+    height: 100vh;
+    padding: 3vw;
+}
+.img_sec img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+}
+.updateSec {
+    width: 100%;
+    padding: 4vw;
+}
+.updateSec > h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: monument;
+    font-size: 2.5vw;
+}
+.updateContent {
+    margin-top: 15vh;
+}
+.updateRow {
+    width: 100%;
+    height: 7vw;
+    border-top: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding-left: 6vw;
+    padding-right: 15vw;
+}
+.updateRow:nth-last-child(1) {
+    border-bottom: 2px solid black;
+}
+.updateRow h4 {
+    font-size: 1.5vw;
+    text-transform: uppercase;
+}
+.updateRow img {
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0;
+    transition: all 2s;
+}
+
+.updateRow:hover img {
+    opacity: 1;
+    animation-name: move;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move {
+    0% {
+        left: 20%;
+    }
+    50% {
+        left: 50%;
+    }
+    100% {
+        left: 20%;
+    }
+}
+
+.updateRow .rowhead1::before {
+    content: "25TH MARCH 2020";
+    position: absolute;
+    bottom: 1vw;
+    font-size: 1vw;
+}
+.updateRow .rowhead2::before {
+    content: "3RD FEBRUARY 2020";
+    position: absolute;
+    bottom: 1vw;
+    font-size: 1vw;
+}
+.updateRow .rowhead3::before {
+    content: "14TH JANUARY 2020";
+    position: absolute;
+    bottom: 1vw;
+    font-size: 1vw;
+}
+.updateRow .rowhead4::before {
+    content: "06TH JANUARY 2020";
+    position: absolute;
+    bottom: 1vw;
+    font-size: 1vw;
+}
+.movieSec {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1vh;
+    margin: 2vw 0;
+}
+.movieSec > img {
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.movieContents {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
+.movieContents h1 {
+    font-family: monument;
+    text-transform: uppercase;
+    font-size: 2.5vw;
+}
+.movieContents h3 {
+    font-size: 2vw;
+}
+.movieContents p {
+    font-size: 1.5vw;
+}
+.movieImg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.movieImg img:nth-child(1) {
+    height: 100%;
+    width: 55%;
+}
+.movieImg img:nth-child(2) {
+    width: 40%;
+    height: 100%;
+}
+#Imgid {
+    width: 100%;
+    height: 100%;
+}
+
+.marque {
+    width: 100%;
+    border-top: 2px solid black;
+    border-bottom: 3px solid black;
+    margin: 3vw 0;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+.marque h1 {
+    display: inline-block;
+    text-transform: uppercase;
+    font-family: monument;
+    -webkit-text-stroke: 2px black;
+    color: transparent;
+    font-size: 3vw;
+    padding: 1.5vw 0;
+    font-weight: bolder;
+    margin-right: 16px;
+    letter-spacing: 3px;
+    animation: moveText 5s linear infinite;
+}
+@keyframes moveText {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - 20px));
+    }
+}
+footer {
+    width: 100%;
+    height: 5vh;
+    position: relative;
+}
+footer h1 {
+    text-transform: uppercase;
+    font-family: monument;
+    -webkit-text-stroke: 2px rgb(30, 132, 190);
+    color: transparent;
+    font-size: 2vw;
+    font-weight: bolder;
+    letter-spacing: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    opacity: 0.5;
+}
