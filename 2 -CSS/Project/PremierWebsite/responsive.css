@@ -1,0 +1,75 @@
+@media (max-width: 750px) {
+    nav {
+        justify-content: space-between;
+        padding: 0 3vw;
+    }
+    nav h1 {
+        font-size: 5vw;
+    }
+    nav h2 {
+        display: none;
+    }
+    nav div {
+        display: none;
+    }
+    nav > i {
+        display: block;
+        font-size: 5vw;
+    }
+
+    .hero_sec {
+        height: 45vh;
+    }
+    .scoll_content {
+        margin-right: 8vw;
+    }
+    .scroll_sec img {
+        margin-right: 0.8vw;
+    }
+    .left_content {
+        height: 35%;
+    }
+    .left_content img {
+        object-position: 25%;
+    }
+    .right_content img {
+        height: 25%;
+        object-position: 25%;
+    }
+    .right_content img {
+        height: 40%;
+        object-position: 20%;
+    }
+    .img_div img:nth-child(2) {
+        position: absolute;
+        top: 39%;
+        left: 39%;
+        width: 36px;
+        height: 36px;
+    }
+    .third_page {
+        gap: 4vw;
+        margin-top: -45vh;
+        height: 50%;
+    }
+    .third_right_part img {
+        object-position: 35%;
+    }
+    .img_sec {
+        height: 50vw;
+    }
+    .updateContent {
+        margin-top: 5vh;
+    }
+    .updateRow {
+        padding-left: 5vw;
+        padding-right: 10vw;
+    }
+    .updateContent h1 {
+        font-size: 3vw;
+    }
+    .movieSec {
+        height: 42%;
+        margin: 2vw 0;
+    }
+}
