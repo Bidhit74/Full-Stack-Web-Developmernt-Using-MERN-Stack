@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar sticky-top navbar-expand-lg  bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <span class="navbar-brand">Navbar</span>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class=" collapse navbar-collapse px-4" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Contect Me</a>
+                    <a href="#" class="nav-link">About Us</a>
+                </div>
+                <form action="">
+                    <div class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search">
+                        <button class="btn btn-outline-light" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <h1>Container(layout)</h1>
+        <h2>Bootstrap</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus iste nobis recusandae, sequi ad minima!
+            Consequuntur aperiam rerum, laborum est obcaecati exercitationem itaque quos aut sint ex magnam inventore
+            illo quibusdam repudiandae cupiditate hic quod animi reiciendis nulla. Quo aut error, iusto ipsa maiores in,
+            neque aliquid iure asperiores vel eum nemo? Debitis fugiat tempora perspiciatis optio iusto placeat magni
+            sequi nobis excepturi est, modi dolor obcaecati rem nulla quisquam labore sed possimus minus voluptatum aut
+            recusandae eaque blanditiis magnam! Rerum, quod alias mollitia fugiat saepe accusantium blanditiis quidem.
+            Accusamus odit dolorum sunt! Iure aspernatur, dolore voluptatem mollitia ad veritatis!</p>
+
+        <h1>Button (Component)</h1>
+        <button type="button" class="btn btn-primary">Click Me</button>
+        <button type="button" class="btn btn-secondary">Click Me1</button>
+        <button type="button" class="btn btn-success">Click Me2</button>
+        <button type="button" class="btn btn-outline-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-info" disabled>Info</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark btn-lg">Dark</button>
+
+        <a href="#" class="btn btn-secondary btn-sm"> Google </a>
+
+        <h1>Badge (Component)</h1>
+        <h4>Notification<span class="badge bg-secondary">10+</span></h4>
+
+        <br>
+        <button type="button" class="btn btn-primary">
+            Notifications <span class="badge text-bg-secondary rounded-pill">4</span>
+        </button>
+        <br>
+        <br>
+        <button type="button" class="btn btn-primary position-relative">
+            Inbox
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                99+
+                <span class="visually-hidden">unread messages</span>
+            </span>
+        </button>
+        <br>
+        <br>
+        <h1>Alert (Component)</h1>
+        <div class="alert alert-danger">
+            Download Failed! Please try again
+        </div>
+        <div class="alert alert-success">
+            Congratulations! You have successfully downloaded
+        </div>
+        <br>
+        <br>
+        <div id="liveAlertPlaceholder"></div>
+        <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+        <br><br>
+        <h1>Button Group (Component)</h1>
+        <div class="btn-group">
+            <button class="btn btn-dark">One</button>
+            <button class="btn ">Two</button>
+            <button class="btn btn-primary">Three</button>
+
+        </div>
+        <button class="btn btn-dark">One</button>
+        <button class="btn  btn-primary">Two</button>
+        <button class="btn btn-dark">Three</button>
+
+        <br><br>
+        <h1>Card (Component)</h1>
+        <div class="card" style="width: 18rem;">
+            <img src="Camera-Photo.jpg" class="card-img-top" alt="photos">
+            <div class="card-body">
+                <h5 class="card-title">Camera</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, consectetur!</p>
+                <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="container">
+        <h1>Grid System (Layout)</h1>
+        <div class="row">
+            <div class="col bg-danger">Column1</div>
+            <div class="col bg-success">Column2</div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm bg-success">Column1</div>
+            <div class="col bg-danger">Column2</div>
+            <div class="col-sm bg-success">Column3</div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2 bg-success">Column1</div>
+            <div class="col-md-4 bg-danger">Column2</div>
+            <div class="col-md-6 bg-success">Column3</div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 bg-warning">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae
+                repudiandae,
+                labore unde qui facilis perferendis?</div>
+            <div class="col-sm-6 col-md-4 bg-danger">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae
+                repudiandae,
+                labore unde qui facilis perferendis?</div>
+            <div class="col-sm-6 col-md-4 bg-success">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae
+                repudiandae,
+                labore unde qui facilis perferendis?</div>
+        </div>
+
+        <br><br>
+        <h1>Vertical alignment </h1>
+        <div class="row align-items-lg-center">
+            <div class="col bg-warning">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae
+                repudiandae,
+                labore unde qui facilis perferendis? Lorem ipsum dolor sit amet.</div>
+            <div class="col bg-danger">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae
+                repudiandae,
+                labore unde qui facilis perferendis?</div>
+            <div class="col bg-success">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae
+                repudiandae,
+                labore unde qui facilis perferendis?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit perspiciatis nobis dolorem
+                repudiandae. Molestiae dolorem, sunt quis corporis error repudiandae beatae praesentium saepe
+                voluptatibus iste. Vero saepe dolore ipsum? Labore.</div>
+            <div class="col bg-secondary align-self-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Vitae
+                repudiandae,
+                labore unde qui facilis perferendis?</div>
+        </div>
+    </div>
+    <br><br>
+    <div class="container">
+        <h1>Form Demo</h1>
+        <form action="">
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email</label>
+                <input type="text" placeholder="Enter your email" class="form-control" id="Email">
+            </div>
+            <div class="mb-3">
+                <label for="pass" class="form-label">Email</label>
+                <input type="password" placeholder="Enter your password" class="form-control" id="pass">
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" placeholder="Enter your address" class="form-control" id="address">
+            </div>
+            <div class="mb-3">
+                <select class="form-select">
+                    <option selected> Open this select menu </option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <br><br>
+            <div class="normal mb-3">
+                <input type="checkbox" id="agree">
+                <label for="agree">NAgree</label>
+            </div>
+            <div class="normal mb-3 form-check">
+                <input type="checkbox" id="agree" class="form-check-input">
+                <label for="agree" class="form-check-label">BAgree</label>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="radio" id="agree" class="form-check-input">
+                <label for="agree" class="form-check-label">Yes/No</label>
+            </div>
+            <div class="mb-3 form-check form-switch">
+                <input type="checkbox" id="agree" class="form-check-input">
+                <label for="agree" class="form-check-label">Switch</label>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="Email" class="form-label">Email</label>
+                    <input type="text" placeholder="Enter your email" class="form-control" id="Email">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="pass" class="form-label">Email</label>
+                    <input type="password" placeholder="Enter your password" class="form-control" id="pass">
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script>
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+        const appendAlert = (message, type) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('')
+
+            alertPlaceholder.append(wrapper)
+        }
+
+        const alertTrigger = document.getElementById('liveAlertBtn')
+        if (alertTrigger) {
+            alertTrigger.addEventListener('click', () => {
+                appendAlert('Congratulations! You have successfully downloaded', 'success')
+            })
+        }
+    </script>
+</body>
+
+</html>
