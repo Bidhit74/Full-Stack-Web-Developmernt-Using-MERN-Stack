@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice6</title>
+</head>
+<style>
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    h4 {
+        opacity: 0;
+    }
+
+    .download {
+        width: 300px;
+        height: 10px;
+        background-color: #f2eded;
+        border-radius: 100px;
+    }
+
+    .progress-bar {
+        transition: all 0.5s;
+        width: 0%;
+        height: 100%;
+        border-radius: 100px;
+        background-color: rgb(65, 180, 65);
+    }
+</style>
+
+<body>
+    <div class="center">
+        <h4>Download Completed</h4>
+        <div class="download">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
+
+    <script src="practice6.js"></script>
+</body>
+
+</html>
