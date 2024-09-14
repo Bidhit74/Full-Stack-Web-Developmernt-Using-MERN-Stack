@@ -74,25 +74,25 @@ function savetoDb(data) {
     });
 }
 
-// savetoDb("MongoDB")
-//     .then(() => {
-//         console.log("Promise resolved");
-//         savetoDb("MongoDB").then(() => {
-//             console.log("Promise resolved2");
-//             savetoDb("MongoDB").then(() => {
-//                 console.log("Promise resolved3");
-//                 savetoDb("MongoDB").then(() => {
-//                     console.log("Promise resolved4");
-//                     savetoDb("MongoDB").then(() => {
-//                         console.log("Promise resolved5");
-//                     });
-//                 });
-//             });
-//         });
-//     })
-//     .catch(() => {
-//         console.log("Promise rejected");
-//     });
+savetoDb("MongoDB")
+    .then(() => {
+        console.log("Promise resolved");
+        savetoDb("MongoDB").then(() => {
+            console.log("Promise resolved2");
+            savetoDb("MongoDB").then(() => {
+                console.log("Promise resolved3");
+                savetoDb("MongoDB").then(() => {
+                    console.log("Promise resolved4");
+                    savetoDb("MongoDB").then(() => {
+                        console.log("Promise resolved5");
+                    });
+                });
+            });
+        });
+    })
+    .catch(() => {
+        console.log("Promise rejected");
+    });
 
 // savetoDb("MongoDB")
 //     .then(() => {
