@@ -1,0 +1,58 @@
+body {
+    background-color: rgba(14, 59, 127, 0.515);
+}
+.main-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h3 {
+    color: aqua;
+}
+
+.btn-div {
+    position: relative;
+    display: flex;
+    text-align: center;
+    background-color: #fff;
+    height: 50px;
+    width: 250px;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+button {
+    position: absolute;
+    border: none;
+    font-size: 2.8rem;
+    background-color: transparent;
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+.btn1 {
+    left: 0px;
+    top: -3rem;
+    font-size: 7rem;
+}
+.btn2 {
+    right: 0;
+    font-weight: 800;
+}
+#num {
+    font-size: 2rem;
+    opacity: 0.7;
+}
+footer {
+    user-select: none;
+    position: absolute;
+    bottom: 0;
+    font-size: 1.5rem;
+    left: 40%;
+    font-weight: 900;
+    opacity: 0.4;
+}
