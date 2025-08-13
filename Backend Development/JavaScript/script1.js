@@ -1,6 +1,7 @@
 // Callbacks, Promise and asunc/await
 
 // Callback function example
+/*
 function conectToServer(cbfn) {
     console.log("Connecting to server...");
     setTimeout(() => {
@@ -22,3 +23,35 @@ conectToServer(() => {
         console.log("Data fetched from server:", data);
     });
 });
+*/
+
+// Promise and async/await example
+function connectToServer() {
+    console.log("Connecting to server...");
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Server is connected");
+        }, 2000);
+    });
+}
+
+function getCourses() {
+    console.log("Fetching data from server...");
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(["Course 1", "Course 2", "Course 3"]);
+        }, 3000);
+    });
+}
+
+connectToServer()
+    .then((response) => {
+        // Handle the resolved promise
+        console.log(response);
+        return getCourses(); // Return the next promise
+    })
+    .then((courses) => {
+        // Handle the resolved promise from getCourses
+        console.log("Data fetched from server:", courses);
+    })
+    .catch(); // Handle the rejected promise
