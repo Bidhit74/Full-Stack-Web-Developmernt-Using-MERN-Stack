@@ -44,6 +44,7 @@ function getCourses() {
     });
 }
 
+/*
 connectToServer()
     .then((response) => {
         // Handle the resolved promise
@@ -55,3 +56,18 @@ connectToServer()
         console.log("Data fetched from server:", courses);
     })
     .catch(); // Handle the rejected promise
+
+*/
+
+// Async/await example
+async function fetchData() {
+    try {
+        const response = await connectToServer();
+        console.log(response);
+        const courses = await getCourses();
+        console.log("Data fetched from server:", courses);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+fetchData();
