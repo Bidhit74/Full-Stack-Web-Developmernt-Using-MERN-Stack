@@ -21,3 +21,15 @@ fs.readFile("example.txt", "utf8", function (err, data) {
     // buffer data -- use toString() to convert to string or use 'utf8' encoding
     // console.log("File content as string:", data.toString()); // String data
 });
+
+// Append content to the file
+fs.appendFile(
+    "example.txt",
+    "\nNew content added by Bidhit Chaudhry!",
+    function (err) {
+        if (err) {
+            return console.error("Error appending to file:", err);
+        }
+        console.log("Content appended successfully!");
+    }
+);
