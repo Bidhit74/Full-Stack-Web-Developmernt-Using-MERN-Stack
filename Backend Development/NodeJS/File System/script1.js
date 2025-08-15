@@ -21,8 +21,16 @@ fs.readdir("newFolder", { withFileTypes: true }, (err, files) => {
 */
 
 // Delete a folder
-
+/*
 fs.rmdir("newFolder/Hello", (err) => {
+    if (err) {
+        return console.error("Error deleting folder:", err);
+    }
+    console.log("Folder deleted successfully!");
+});
+*/
+// Delete a folder with all its contents use recursive option and rm method
+fs.rm("New", { recursive: true }, (err) => {
     if (err) {
         return console.error("Error deleting folder:", err);
     }
