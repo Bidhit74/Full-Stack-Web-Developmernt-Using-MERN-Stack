@@ -39,10 +39,19 @@ fs.appendFile(
 */
 
 // Rename the file
-
+/*
 fs.rename("example.txt", "renamed_example.txt", function (err) {
     if (err) {
         return console.error("Error renaming file:", err);
     }
     console.log("File renamed successfully!");
+});
+*/
+
+// Delete the file
+fs.unlink("example.txt", function (err) {
+    if (err) {
+        return console.error("Error deleting file:", err);
+    }
+    console.log("File deleted successfully!");
 });
