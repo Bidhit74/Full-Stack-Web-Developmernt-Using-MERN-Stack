@@ -11,9 +11,20 @@ fs.mkdir("newFolder", (err) => {
 */
 
 // Read the contents of a folder
+/*
 fs.readdir("newFolder", { withFileTypes: true }, (err, files) => {
     if (err) {
         return console.error("Error reading folder:", err);
     }
     console.log("Contents of the folder:", files);
+});
+*/
+
+// Delete a folder
+
+fs.rmdir("newFolder/Hello", (err) => {
+    if (err) {
+        return console.error("Error deleting folder:", err);
+    }
+    console.log("Folder deleted successfully!");
 });
