@@ -13,6 +13,7 @@ fs.writeFile("example.txt", "Bidhit Chaudhary Coding World!!!", function (err) {
 */
 
 // Read the content of the file
+/* 
 fs.readFile("example.txt", "utf8", function (err, data) {
     if (err) {
         return console.error("Error reading file:", err);
@@ -21,8 +22,10 @@ fs.readFile("example.txt", "utf8", function (err, data) {
     // buffer data -- use toString() to convert to string or use 'utf8' encoding
     // console.log("File content as string:", data.toString()); // String data
 });
+*/
 
 // Append content to the file
+/*
 fs.appendFile(
     "example.txt",
     "\nNew content added by Bidhit Chaudhry!",
@@ -33,3 +36,13 @@ fs.appendFile(
         console.log("Content appended successfully!");
     }
 );
+*/
+
+// Rename the file
+
+fs.rename("example.txt", "renamed_example.txt", function (err) {
+    if (err) {
+        return console.error("Error renaming file:", err);
+    }
+    console.log("File renamed successfully!");
+});
