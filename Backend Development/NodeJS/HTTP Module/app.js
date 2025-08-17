@@ -1,7 +1,14 @@
 const http = require("http");
 
 const server = http.createServer((req, res) => {
-    res.end("Hello World, Bidhit Chaudhary");
+    //  Create Basics Routing
+    if (req.url === "/") {
+        res.end("Hello World");
+    } else if (req.url === "/about") {
+        res.end("Created this page by Bidhit Chaudhary");
+    } else {
+        res.end("Page Not Found");
+    }
 });
 
 server.listen(3000, () => {
