@@ -1,0 +1,25 @@
+# Node modules folder (bahut bada hota hai)
+node_modules/
+
+# Environment files (secret keys, passwords)
+.env
+
+# Log files
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build/output folders
+dist/
+build/
+
+# Cache files
+.npm/
+.cache/
+
+# Debug files
+*.pid
+*.seed
+*.pid.lock
