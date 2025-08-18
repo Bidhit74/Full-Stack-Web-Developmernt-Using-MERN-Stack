@@ -1,0 +1,10 @@
+{
+    "name": "Bidhit",
+    "age": 23,
+    "isStudent": true,
+    "skills": ["Java", "React", "Node.js"],
+    "address": {
+        "city": "Darbhanga",
+        "state": "Bihar"
+    }
+}
