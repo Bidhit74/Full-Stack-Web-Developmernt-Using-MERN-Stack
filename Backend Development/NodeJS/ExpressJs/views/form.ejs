@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Handling</title>
+</head>
+
+<!-- 1. Form jab bhi submit karoge to pahli cheej yah dekhiye ki saari field ke pass 'name' property hai ya nahi -- 'name' property required hota hai 
+2. form ke pass action attribute hona chahiye jisme aapko server side route dena hai jaha form data send hoga
+3. form ke pass method attribute hona chahiye jisme aapko HTTP method dena hai jise aap use karna chahte ho, jaise ki 'GET'(get ka data req.query) ya 'POST' (post ka data req.body)
+4. form ke andar input fields hone chahiye jisme aapko user se data lena hai, jaise ki text, email, password, etc.
+5. form ke andar submit button hona chahiye jisse user form ko submit kar sake 
+6. backend side par aapko route create karna hoga jaha form data receive hoga aur process hoga
+7. backend par aapko form data ko process karne ke liye middleware use karna hoga, jaise ki body-parser ya express.json()
+8. check kare ki route ka type sahi hai ya nahi, agar aap 'GET' method use kar rahe ho to req.query se data milega aur agar 'POST' method use kar rahe ho to req.body se data milega
+-->
+
+<body>
+    <h1>Form Handling with EJS</h1>
+    <form action="/checkform">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
