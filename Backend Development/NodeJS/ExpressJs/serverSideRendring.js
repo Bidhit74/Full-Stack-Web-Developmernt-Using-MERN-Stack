@@ -2,8 +2,8 @@ import express from "express";
 const app = express();
 app.set("view engine", "ejs");
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // Middleware to parse JSON bodies
+app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies
 
 app.get("/", (req, res) => {
     // Render the index.ejs file
