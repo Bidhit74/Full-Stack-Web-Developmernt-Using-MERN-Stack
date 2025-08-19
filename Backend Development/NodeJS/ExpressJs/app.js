@@ -2,6 +2,8 @@ import express from "express";
 const app = express();
 import expressSession from "express-session";
 import flass from "connect-flash";
+import cors from "cors";
+app.use(cors()); // Enable CORS for all routes
 app.use((req, res, next) => {
     console.log("Middleware function executed");
     next();
@@ -17,6 +19,12 @@ app.use(
 
 app.get("/", (req, res) => {
     res.send("Hello World from Express!");
+});
+
+// Single route with CORS enabled
+app.get("/cors-enabled", cors(), (req, res) => {
+    // This route has CORS enabled
+    res.send("CORS is enabled for this route");
 });
 app.get("/about", (req, res) => {
     res.send("About Page");
