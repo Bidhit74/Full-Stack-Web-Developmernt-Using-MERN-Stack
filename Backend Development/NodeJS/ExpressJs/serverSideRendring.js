@@ -26,6 +26,17 @@ app.get("/checkform", (req, res) => {
             "</p>"
     );
 });
+app.post("/checkformPost", (req, res) => {
+    console.log(req.body); // Accessing body parameters
+    const { name, email } = req.body; // Destructuring body parameters
+    res.send(
+        "<h1>Form Submitted Successfully</h1><p>Name: " +
+            name +
+            "</p><p>Email: " +
+            email +
+            "</p>"
+    );
+});
 
 app.use((req, res) => {
     res.status(404).send("<h1>Page Not Found</h1>");
