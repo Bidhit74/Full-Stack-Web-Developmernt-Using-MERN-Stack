@@ -33,6 +33,22 @@ app.get("/getallusers", async (req, res) => {
     res.send(users);
 });
 
+// Update a user
+app.get("/update", async (req, res) => {
+    // let user = await userModel.updateOne(
+    //     { username: "Bidhit" },
+    //     { $set: { name: "Bidhit Chaudhary Updated" } }
+    // );
+    // or
+    let user = await userModel.findOneAndUpdate(
+        { username: "Bidhit" },
+        { name: "Bidhit Chaudhary Updated Again" },
+        { new: true }
+    );
+    debuglog("User Updated");
+    res.send(user);
+});
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
