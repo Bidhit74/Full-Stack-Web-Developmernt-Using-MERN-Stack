@@ -26,7 +26,8 @@ app.get("/getUsers", async (req, res) => {
     }
 });
 
-// Get All Users from DB with conditions : . Comparison Operators($eq, $ne, $gt, $gte, $lt, $lte, $in, $nin)
+// Get All Users from DB with conditions : . Comparison Operators($eq, $ne, $gt, $gte, $lt, $lte)
+// Array Operators : $in, $nin
 app.get("/allUsers", async (req, res) => {
     try {
         // const users = await userModel.find({ age: 28 });
@@ -51,6 +52,22 @@ app.get("/allUsers", async (req, res) => {
     }
 });
 
+// Element Operators: $exists, $type : Ye operators check karte hain ki field exist karti hai ya type sahi hai ya nahi.
+app.get("/elementOperators", async (req, res) => {
+    try {
+        // const users = await userModel.find({ address: { $exists: true } }); // address field exists
+        const users = await userModel.find({ age: { $type: "string" } }); // age field is of type number
+        res.status(200).json({
+            message: "Users fetched successfully",
+            data: users,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Error fetching users",
+            error: error.message,
+        });
+    }
+});
 app.listen(3000, () => {
     debuglog("Server is running on port 3000");
 });
