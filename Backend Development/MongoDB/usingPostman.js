@@ -40,6 +40,17 @@ app.get("/getUsers/:username", async (req, res) => {
     res.send(user);
 });
 
+// Update a user
+app.get("/updateUser/:username", async (req, res) => {
+    let { name, username, email } = req.body;
+    let user = await userModel.findOneAndUpdate(
+        { username: req.params.username },
+        { name, username, email }
+    );
+    debuglog("User Updated");
+    res.send(user);
+});
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
