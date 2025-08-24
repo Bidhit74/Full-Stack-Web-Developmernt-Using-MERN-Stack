@@ -7,12 +7,12 @@ app.get("/", (req, res) => {
     res.send("Hello MongoDB");
 });
 
-app.get("/addUser", async (req, res) => {
+app.get("/create", async (req, res) => {
     let user = await userModel.create({
-        username: "Bidhit7",
+        username: "Bidhit",
         name: "Bidhit Chaudhary",
-        email: "bidhit74@gmail.com",
-        password: "bidhit12345",
+        email: "bidhit7@gmail.com",
+        password: "bidhit123",
     });
     debuglog("User Created");
     res.send(user);
