@@ -9,6 +9,7 @@
     "author": "Bidhit Chaudhary",
     "license": "ISC",
     "dependencies": {
+        "debug": "^4.4.1",
         "express": "^5.1.0",
         "mongoose": "^8.17.2",
         "nodemon": "^3.1.10"
