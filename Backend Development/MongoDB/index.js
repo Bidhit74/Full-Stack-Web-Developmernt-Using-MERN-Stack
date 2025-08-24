@@ -49,6 +49,15 @@ app.get("/update", async (req, res) => {
     res.send(user);
 });
 
+// Delete a user
+app.get("/delete", async (req, res) => {
+    let user = await userModel.findOneAndDelete({ username: "Bidhit" });
+    // or
+    // let user = await userModel.deleteOne({ username: "Bidhit7" });
+    debuglog("User Deleted");
+    res.send(user);
+});
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
