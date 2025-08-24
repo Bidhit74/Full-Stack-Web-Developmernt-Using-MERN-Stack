@@ -28,6 +28,13 @@ app.post("/createUser", async (req, res) => {
     res.send(user);
 });
 
+// User Read
+app.get("/getUsers", async (req, res) => {
+    let users = await userModel.find();
+    debuglog("All users Readed");
+    res.send(users);
+});
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
