@@ -99,6 +99,33 @@ app.get("/logicalOperators", async (req, res) => {
         });
     }
 });
+
+// Evaluation / String Operators: Ye strings ke andar pattern match karne ke liye use hote hain. $regex, $options
+app.get("/stringOperators", async (req, res) => {
+    try {
+        // const users = await userModel.find({
+        //     name: { $regex: "^A" },
+        // }); // name starts with A // ^ means starts with
+
+        // const users = await userModel.find({
+        //     name: { $regex: "r$" },
+        // }); // name ends with r // $ means ends with
+
+        const users = await userModel.find({
+            name: { $regex: "m", $options: "i" },
+        }); // name contains 'm' case insensitive // i means case insensitive
+
+        res.status(200).json({
+            message: "Users fetched successfully",
+            data: users,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Error fetching users",
+            error: error.message,
+        });
+    }
+});
 app.listen(3000, () => {
     debuglog("Server is running on port 3000");
 });
