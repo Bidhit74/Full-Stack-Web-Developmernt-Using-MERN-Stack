@@ -7,6 +7,7 @@ app.get("/", (req, res) => {
     res.send("Hello MongoDB");
 });
 
+// Create a user
 app.get("/create", async (req, res) => {
     let user = await userModel.create({
         username: "Bidhit",
@@ -16,6 +17,20 @@ app.get("/create", async (req, res) => {
     });
     debuglog("User Created");
     res.send(user);
+});
+
+// Read/Find one user
+app.get("/getuser", async (req, res) => {
+    let user = await userModel.findOne({ username: "Bidhit" });
+    debuglog("user Readed");
+    res.send(user);
+});
+
+// Read/Find all users
+app.get("/getallusers", async (req, res) => {
+    let users = await userModel.find();
+    debuglog("All users Readed");
+    res.send(users);
 });
 
 app.listen(3000, () => {
