@@ -68,6 +68,37 @@ app.get("/elementOperators", async (req, res) => {
         });
     }
 });
+
+// Logical Operators: Logical operators conditions ko combine karne ke liye hote hain. $and, $or, $not, $nor
+app.get("/logicalOperators", async (req, res) => {
+    try {
+        // const users = await userModel.find({
+        //     $and: [{ age: { $gt: 25 } }, { age: { $lt: 35 } }],
+        // }); // age greater than 25 and less than 35
+
+        // const users = await userModel.find({
+        //     $or: [{ age: 25 }, { age: 30 }],
+        // }); // age is 25 or 30
+
+        // const users = await userModel.find({
+        //     age: { $not: { $gt: 30 } },
+        // }); // age not greater than 30
+
+        const users = await userModel.find({
+            $nor: [{ age: 25 }, { age: 30 }],
+        }); // age is neither 25 nor 30
+
+        res.status(200).json({
+            message: "Users fetched successfully",
+            data: users,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Error fetching users",
+            error: error.message,
+        });
+    }
+});
 app.listen(3000, () => {
     debuglog("Server is running on port 3000");
 });
