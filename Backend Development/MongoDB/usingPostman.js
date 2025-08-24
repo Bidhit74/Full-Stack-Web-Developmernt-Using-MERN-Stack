@@ -34,6 +34,11 @@ app.get("/getUsers", async (req, res) => {
     debuglog("All users Readed");
     res.send(users);
 });
+app.get("/getUsers/:username", async (req, res) => {
+    let user = await userModel.findOne({ username: req.params.username });
+    debuglog(" This Username Readed: ", req.params.username);
+    res.send(user);
+});
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
