@@ -1,0 +1,18 @@
+{
+    "name": "advance-mongodb",
+    "version": "1.0.0",
+    "description": "Learning advance mongodb",
+    "license": "ISC",
+    "author": "Bidhit Chaudhary",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "debug": "^4.4.1",
+        "express": "^5.1.0",
+        "mongoose": "^8.18.0",
+        "nodemon": "^3.1.10"
+    }
+}
