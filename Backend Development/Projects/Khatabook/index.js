@@ -9,7 +9,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-    res.send("Hello Khatabook");
+    res.render("index");
+});
+
+app.get("/transactions/add", (req, res) => {
+    res.render("transactions/add");
+    // res.send("Transaction Added Successfully");
 });
 
 app.listen(3000, () => {

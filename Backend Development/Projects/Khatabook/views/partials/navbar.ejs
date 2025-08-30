@@ -1,0 +1,41 @@
+<nav class="bg-blue-600 text-white px-6 py-4 flex justify-between items-center">
+    <div class="text-xl font-bold">Khatabook</div>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-6">
+        <li><a href="/" class="hover:text-gray-200">Home</a></li>
+        <li><a href="/customers" class="hover:text-gray-200">Customers</a></li>
+        <li><a href="/transactions/add" class="hover:text-gray-200">Transactions</a></li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden">
+        <button id="menu-btn">
+            <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-blue-500 text-white px-6 py-4">
+    <ul class="space-y-3">
+        <li><a href="/" class="block hover:text-gray-200">Home</a></li>
+        <li><a href="/customers" class="block hover:text-gray-200">Customers</a></li>
+        <li><a href="/transactions/add" class="block hover:text-gray-200">Transactions</a></li>
+    </ul>
+</div>
+
+<!-- JS Toggle -->
+<script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    if (btn) {
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden'); // Toggle show/hide
+        });
+    }
+</script>

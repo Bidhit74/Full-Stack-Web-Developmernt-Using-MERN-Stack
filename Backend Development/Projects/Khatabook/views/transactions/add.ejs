@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Transaction - Khatabook</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+    <%- include('../partials/navbar') %>
+
+        <!-- Form Section -->
+        <section class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow">
+            <h1 class="text-2xl font-bold text-center">Add Today's Hisab-Kitab</h1>
+
+            <form action="/transactions/add" method="POST" class="space-y-2">
+
+                <!-- Date -->
+                <div>
+                    <label class="block mb-1 font-semibold">Date</label>
+                    <input type="date" name="date"
+                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+
+                <!-- Description / Customer -->
+                <div>
+                    <label class="block mb-1 font-semibold">Description / Customer</label>
+                    <input type="text" name="description" placeholder="Enter description or customer"
+                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+
+                <!-- Transaction Type -->
+                <div>
+                    <label class="block mb-1 font-semibold">Transaction Type</label>
+                    <select name="type"
+                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                        <option value="">Select Type</option>
+                        <option value="lend">Lend</option>
+                        <option value="borrow">Borrow</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+
+                <!-- Amount -->
+                <div>
+                    <label class="block mb-1 font-semibold">Amount</label>
+                    <input type="number" name="amount" min="0" step="1" placeholder="Enter amount"
+                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+
+                <!-- Note -->
+                <div>
+                    <label class="block mb-1 font-semibold">Note (Optional)</label>
+                    <textarea name="note" rows="3" placeholder="Enter note if any"
+                        class="w-full px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit"
+                        class="bg-blue-600 cursor-pointer text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                        Add Entry
+                    </button>
+                </div>
+            </form>
+        </section>
+
+
+</body>
+
+</html>
