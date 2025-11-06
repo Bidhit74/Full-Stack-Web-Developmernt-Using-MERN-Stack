@@ -9,8 +9,19 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+function formatDate(date) {
+    const [year, month, day] = date.split("-");
+    return `${day}-${month}-${year}`;
+}
 app.get("/", (req, res) => {
-    res.render("index");
+    fs.readdir("./files", (err, files) => {
+        if (err) {
+            debuglog("Error reading directory:", err);
+            return res.status(500).send("Internal Server Error");
+        }
+        const filesName = files.map((file) => path.parse(file).name);
+        res.render("index", { filesName });
+    });
 });
 
 app.get("/transactions/add", (req, res) => {
@@ -18,9 +29,9 @@ app.get("/transactions/add", (req, res) => {
     // res.send("Transaction Added Successfully");
 });
 app.post("/transactions/add", (req, res) => {
-    const { date, customer_name } = req.body;
+    const { date } = req.body;
     fs.writeFile(
-        `./files/${date}` + ".txt",
+        `./files/${formatDate(date)}` + ".txt",
         JSON.stringify(req.body),
         (err) => {
             if (err) {

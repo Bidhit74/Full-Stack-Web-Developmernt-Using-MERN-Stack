@@ -1,0 +1,1 @@
+{"date":"2025-11-01","customer_name":"Bidhit","type":"expense","amount":"50","note":""}
