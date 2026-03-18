@@ -1,0 +1,35 @@
+h1 {
+    text-align: center;
+    color: #c72f2f;
+    margin-top: 20px;
+}
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input {
+    width: 40%;
+    padding: 10px;
+    margin-right: 20px;
+    border: 1px solid #c72f2f;
+    border-radius: 5px;
+}
+
+button {
+    width: 10%;
+    padding: 10px;
+    margin: 2px 2px 2px 2px;
+    background-color: #c72f2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-items: center;
+}
