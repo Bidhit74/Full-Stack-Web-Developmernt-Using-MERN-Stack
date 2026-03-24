@@ -66,14 +66,14 @@ nav div button:hover {
 .hero-text p {
     font-size: 1.3vw;
 }
-.hero-text button {
-    padding: 1vw 4vw;
+.btn {
+    padding: 0.8vw 2vw;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     font-size: 1.02vw;
 }
-.hero-text button:hover {
+.btn:hover {
     background-color: #214a7c;
     scale: 1.03;
     color: #ffff;
@@ -99,4 +99,39 @@ nav div button:hover {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+}
+
+.cards {
+    margin: 2vw 5vw;
+    display: flex;
+    border: 2px solid black;
+    padding: 2vw 4vw;
+    flex-wrap: wrap;
+    gap: 1vw;
+    justify-content: space-evenly;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #14253aec;
+    width: 380px;
+    align-items: center;
+    padding: 1vw 0;
+    gap: 0.2vw;
+    border-radius: 10px;
+    color: white;
+}
+.card p {
+    font-size: 0.95em;
+}
+.card-img {
+    width: 65%;
+    height: 65%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.card-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
