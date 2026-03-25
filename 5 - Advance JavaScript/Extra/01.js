@@ -62,7 +62,9 @@ for (let i = 0; i < teas.length; i++) {
 console.log(`Most Character Tea:- ${maxCharTea}`);
 
 // Use For loop and reverse the order of teas in the array.
-console.log(teas);
-for (let i = 0; i < teas.length; i++) {
-    teas.push("Hello");
+const reverseArr = [];
+for (let i = teas.length - 1; i >= 0; i--) {
+    reverseArr.push(teas[i]);
 }
+console.log(teas);
+console.log(reverseArr);
