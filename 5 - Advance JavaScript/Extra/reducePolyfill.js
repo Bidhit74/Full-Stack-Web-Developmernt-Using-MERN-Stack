@@ -6,6 +6,10 @@
 
 if (!Array.prototype.myReduce) {
     Array.prototype.myReduce = function (cb, initialValue) {
+        // Check cb is function
+        if (typeof cb !== "function") {
+            throw new TypeError(callback + " is not a function");
+        }
         let accumulator = initialValue;
         let startIndex = 0;
         // If no initial value
@@ -14,14 +18,16 @@ if (!Array.prototype.myReduce) {
             startIndex = 1;
         }
         for (let i = startIndex; i < this.length; i++) {
-            accumulator = cb(accumulator, this[i], i, this);
+            if (i in this) {
+                accumulator = cb(accumulator, this[i], i, this);
+            }
         }
         return accumulator;
     };
 }
 
-const arr = [1, 2, 3, 4];
+const arr = [1, , 3, 4];
 
-const sum = arr.myReduce((acc, curr) => acc + curr);
+const sum = arr.myReduce((acc, curr) => acc + curr, 5);
 
-console.log(sum); // 10
+console.log(sum); // 50
