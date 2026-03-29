@@ -10,6 +10,11 @@ const arr = [1, 2, 3, 4, 5];
 // PolyFill
 if (!Array.prototype.myForEach) {
     Array.prototype.myForEach = function (userFn, thisArg) {
+        // Check userFn is function
+        if (typeof userFn !== "function") {
+            throw new TypeError(callback + " is not a function");
+        }
+
         const originalArr = this; // Current Object
         for (let i = 0; i < originalArr.length; i++) {
             // "i in this" --> empty array indexes skip karne ke liye
