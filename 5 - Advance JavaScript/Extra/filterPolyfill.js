@@ -4,12 +4,17 @@
 
 // myFilter polyfill
 if (!Array.prototype.myFilter) {
-    Array.prototype.myFilter = function (cb) {
+    Array.prototype.myFilter = function (cb, thisArg) {
+        //Callback function check
+        if (typeof cb !== "function") {
+            throw new TypeError("Callback must be a function");
+        }
         const result = [];
         for (let i = 0; i < this.length; i++) {
-            const value = cb(this[i], i, this);
-            if (value === true) {
-                result.push(this[i]);
+            if (i in this) {
+                if (cb.call(thisArg, this[i], i, this)) {
+                    result.push(this[i]);
+                }
             }
         }
         return result;
@@ -18,7 +23,7 @@ if (!Array.prototype.myFilter) {
 
 const arr = [2, 6, 3, 8, 4, 5, 7];
 
-const filterArr = arr.myFilter((e) => {
+const filterArr = arr.filter((e) => {
     return e % 2 == 0;
 });
 console.log(arr);
