@@ -4,11 +4,19 @@
 // map Signture: Return New Array, Each element Iterate, callback function, original array ko nahi change karta hai
 
 if (!Array.prototype.myMap) {
-    Array.prototype.myMap = function (callback) {
-        const newArray = [];
+    Array.prototype.myMap = function (callback, thisArg) {
+        // Edge Case for callback function
+        if (typeof callback !== "function") {
+            throw new TypeError()(callback + " is not a function");
+        }
+
+        const newArray = new Array(this.length);
+
         for (let i = 0; i < this.length; i++) {
-            const value = callback(this[i], i, this);
-            newArray.push(value);
+            // "i in this" --> empty array indexes skip karne ke liye
+            if (i in this) {
+                newArray[i] = callback.call(thisArg, this[i], i, this);
+            }
         }
         return newArray;
     };
