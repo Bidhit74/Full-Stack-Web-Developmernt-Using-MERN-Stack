@@ -9,10 +9,15 @@ const arr = [1, 2, 3, 4, 5];
 
 // PolyFill
 if (!Array.prototype.myForEach) {
-    Array.prototype.myForEach = function (userFn) {
+    Array.prototype.myForEach = function (userFn, thisArg) {
         const originalArr = this; // Current Object
         for (let i = 0; i < originalArr.length; i++) {
-            userFn(originalArr[i], i);
+            // "i in this" --> empty array indexes skip karne ke liye
+            if (i in this) {
+                //thisArg --> callback function ke andar "this" set karne ke liye
+                // call() is used to invoke a function and explicitly set the value of "this".
+                userFn.call(thisArg, originalArr[i], i, originalArr);
+            }
         }
     };
 }
@@ -21,8 +26,21 @@ if (!Array.prototype.myForEach) {
 //     console.log(`Array Index - ${index} and Value - ${value}`);
 // })
 
-arr.myForEach(function (value, index) {
+arr.forEach(function (value, index) {
     console.log(`Array Index - ${index} and Value - ${value}`);
 });
 
+// Check i in this condition
+// const arr1 = [1, , 3];
+// arr1.myForEach((v) => console.log(v));
+
 // console.log(a); // That is not return
+
+const obj = {
+    multiplier: 5,
+};
+
+const arr3 = [1, 2, 3];
+arr3.myForEach(function (num) {
+    console.log(num * this.multiplier);
+}, obj);
