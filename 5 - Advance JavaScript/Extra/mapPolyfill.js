@@ -7,7 +7,7 @@ if (!Array.prototype.myMap) {
     Array.prototype.myMap = function (callback) {
         const newArray = [];
         for (let i = 0; i < this.length; i++) {
-            const value = callback(this[i], i);
+            const value = callback(this[i], i, this);
             newArray.push(value);
         }
         return newArray;

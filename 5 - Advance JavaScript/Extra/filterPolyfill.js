@@ -7,7 +7,7 @@ if (!Array.prototype.myFilter) {
     Array.prototype.myFilter = function (cb) {
         const result = [];
         for (let i = 0; i < this.length; i++) {
-            const value = cb(this[i], i);
+            const value = cb(this[i], i, this);
             if (value === true) {
                 result.push(this[i]);
             }
