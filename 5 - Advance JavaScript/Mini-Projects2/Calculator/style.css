@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 .main-container {
@@ -52,5 +53,5 @@
     font-weight: 600;
 }
 .func {
-    background-color: rgb(87, 112, 64);
+    background-color: rgb(53, 69, 38);
 }
