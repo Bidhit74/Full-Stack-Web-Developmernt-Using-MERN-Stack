@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import db from "./utils/dbConnect.js";
 
 dotenv.config();
 const app = express();
@@ -8,7 +9,7 @@ const app = express();
 // Use karo production me || kuyki kabhi kabhi localhost me work nahi karta hai
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: process.env.BASE_URL,
         credentials: true,
         methods: ["GET", "POST", "DELETE", "OPTIONS"],
         allowedHeaders: ["Content-Type", "Authorization"],
@@ -26,6 +27,8 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
+// Connect to mongodb
+db();
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
