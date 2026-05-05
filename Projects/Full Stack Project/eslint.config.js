@@ -1,21 +1,14 @@
 import js from "@eslint/js";
 import globals from "globals";
-import prettier from "eslint-plugin-prettier";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
     files: ["**/*.{js,mjs,cjs}"],
 
-    plugins: {
-      js,
-      prettier,
-    },
+    plugins: { js },
 
-    extends: [
-      "js/recommended",
-      "plugin:prettier/recommended", // 🔥 main line (conflict fix)
-    ],
+    extends: ["js/recommended"],
 
     languageOptions: {
       ecmaVersion: "latest",
@@ -27,17 +20,17 @@ export default defineConfig([
     },
 
     rules: {
-      // ❌ Errors
+      // ❌ Error (must fix)
       "no-undef": "error",
-      // "eqeqeq": "error", // === Must
+      // eqeqeq: "error", // baad use === only use
       "no-var": "error",
 
-      // ⚠ Warnings
+      // ⚠ Warning (good practice)
       "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-      "prefer-const": "warn",
 
-      // Prettier rules as ESLint errors
-      "prettier/prettier": "error",
+      // ✨ Code quality
+      "prefer-const": "warn",
+      // "no-console": "warn",
     },
   },
 ]);
