@@ -1,5 +1,5 @@
 const registerUser = async (req, res) => {
-    res.send("resitered");
+  res.send("registered");
 };
 
 export { registerUser };

@@ -4,7 +4,7 @@ import cors from "cors";
 import db from "./utils/dbConnect.js";
 
 // import all routes
-// import userRoutes from "./routes/user.routes.js";
+import userRoutes from "./routes/user.routes.js";
 
 dotenv.config();
 const app = express();
@@ -34,6 +34,7 @@ app.get("/", (req, res) => {
 db();
 
 // user routes
+app.use("/api/v1/users/", userRoutes);
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
