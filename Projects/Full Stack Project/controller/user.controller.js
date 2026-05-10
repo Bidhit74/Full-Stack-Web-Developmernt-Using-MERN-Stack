@@ -1,4 +1,6 @@
+import { log } from "console";
 import User from "../model/User.model.js";
+import crypto from "crypto";
 
 const registerUser = async (req, res) => {
   try {
@@ -26,6 +28,7 @@ const registerUser = async (req, res) => {
       email,
       password,
     });
+    console.log(user);
     if (!user) {
       return res.status(400).json({
         message: "User not registered",
@@ -33,9 +36,12 @@ const registerUser = async (req, res) => {
     }
 
     // create a verification token
+    const token = crypto.randomBytes(32).toString("hex");
+    console.log(token);
+    user.verificationToken = token;
 
     // save token in database
-
+    await user.save();
     // send token as email to user
 
     // send success status to user
