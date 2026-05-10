@@ -1,6 +1,9 @@
-import { log } from "console";
 import User from "../model/User.model.js";
 import crypto from "crypto";
+import dotenv from "dotenv";
+import sendEmail from "../utils/sendMails.js";
+
+dotenv.config();
 
 const registerUser = async (req, res) => {
   try {
@@ -42,7 +45,14 @@ const registerUser = async (req, res) => {
 
     // save token in database
     await user.save();
+
     // send token as email to user
+    await sendEmail(
+      user.email,
+      "Verify your email",
+      `Please click on the following link: 
+      ${process.env.BASE_URL}/api/v1/users/verify/${token}`,
+    );
 
     // send success status to user
     res.status(200).json({
