@@ -1,34 +1,48 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
 const UserSchema = new mongoose.Schema(
-    {
-        name: String,
-        email: String,
-        password: String,
-        role: {
-            type: String,
-            enum: ["user", "admin"],
-            default: "user",
-        },
-        isVerified: {
-            type: Boolean,
-            default: false,
-        },
-        verificationToken: {
-            type: String,
-        },
-        passwordResetToken: {
-            type: String,
-        },
-        passwordResetExpires: {
-            type: Date,
-        },
+  {
+    name: String,
+    email: String,
+    password: String,
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
     },
-    {
-        // createdAt + updatedAt auto
-        timestamps: true,
+    isVerified: {
+      type: Boolean,
+      default: false,
     },
+    verificationToken: {
+      type: String,
+    },
+    passwordResetToken: {
+      type: String,
+    },
+    passwordResetExpires: {
+      type: Date,
+    },
+  },
+  {
+    // createdAt + updatedAt auto
+    timestamps: true,
+  },
 );
+
+// Run before saving user document in database
+UserSchema.pre("save", async function (next) {
+  // Check if password field is modified or newly created
+  // Prevents hashing already hashed password again
+  if (this.isModified("password")) {
+    // Hash plain password using bcrypt with 10 salt rounds
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+
+  // Move to next middleware/save operation
+  next();
+});
 
 const User = mongoose.model("User", UserSchema);
 
