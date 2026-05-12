@@ -126,51 +126,64 @@ const verifyUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
+  // get data
+  const { email, password } = req.body;
+
+  // Validate
+  if (!email || !password) {
+    return res.status(400).json({
+      success: false,
+      message: "All fields are required",
+    });
+  }
+
   try {
-    // get data
-    const { email, password } = req.body;
-
-    // Validate
-    if (!email || !password) {
+    // find user
+    const user = await User.findOne({ email });
+    // validate
+    if (!user) {
       return res.status(400).json({
         success: false,
-        message: "All fields are required",
+        message: "Invalid email or password",
       });
     }
 
-    try {
-      // find user
-      const user = await User.findOne({ email });
-      // validate
-      if (!user) {
-        return res.status(400).json({
-          success: false,
-          message: "Invalid email or password",
-        });
-      }
-
-      // check password
-      const isMatch = await bcrypt.compare(password, user.password);
-      console.log(isMatch);
-      if (!isMatch) {
-        return res.status(400).json({
-          success: false,
-          message: "Invalid email or password",
-        });
-      }
-
-      // Usages JWT
-      const token = jwt.sign({ id: user._id }, "shhhhh", {
-        expiresIn: "24h",
-      });
-    } catch (error) {
+    // check password
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log(isMatch);
+    if (!isMatch) {
       return res.status(400).json({
         success: false,
-        message: error.message,
+        message: "Invalid email or password",
       });
     }
+
+    // Usages JWT
+    const token = jwt.sign({ id: user._id }, "shhhhh", {
+      expiresIn: "24h",
+    });
+
+    // save token in cookies
+    const cookieOption = {
+      httpOnly: true,
+      secure: true,
+      maxAge: 24 * 60 * 60 * 1000, // 24 hour
+    };
+    res.cookie("test", token, cookieOption);
+
+    // Login Successful
+    res.status(200).json({
+      success: true,
+      message: "Login Successful",
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        role: user.role,
+      },
+    });
   } catch (error) {
-    return res.status(500).json({
+    return res.status(400).json({
       success: false,
       message: error.message,
     });
