@@ -2,6 +2,8 @@ import User from "../model/User.model.js";
 import crypto from "crypto";
 import dotenv from "dotenv";
 import sendEmail from "../utils/sendMails.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 
@@ -123,4 +125,56 @@ const verifyUser = async (req, res) => {
   }
 };
 
-export { registerUser, verifyUser };
+const loginUser = async (req, res) => {
+  try {
+    // get data
+    const { email, password } = req.body;
+
+    // Validate
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
+
+    try {
+      // find user
+      const user = await User.findOne({ email });
+      // validate
+      if (!user) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid email or password",
+        });
+      }
+
+      // check password
+      const isMatch = await bcrypt.compare(password, user.password);
+      console.log(isMatch);
+      if (!isMatch) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid email or password",
+        });
+      }
+
+      // Usages JWT
+      const token = jwt.sign({ id: user._id }, "shhhhh", {
+        expiresIn: "24h",
+      });
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export { registerUser, verifyUser, loginUser };
