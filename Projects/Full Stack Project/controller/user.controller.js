@@ -72,7 +72,7 @@ const registerUser = async (req, res) => {
 const verifyUser = async (req, res) => {
   try {
     // get token from params
-    const { token } = req.params;
+    const { token } = req.params || {};
 
     // validate token
     if (!token) {
@@ -126,23 +126,23 @@ const verifyUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  // get data
-  const { email, password } = req.body;
-
-  // Validate
-  if (!email || !password) {
-    return res.status(400).json({
-      success: false,
-      message: "All fields are required",
-    });
-  }
-
   try {
+    // get data
+    const { email, password } = req.body || {};
+
+    // Validate
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
+
     // find user
     const user = await User.findOne({ email });
     // validate
     if (!user) {
-      return res.status(400).json({
+      return res.status(401).json({
         success: false,
         message: "Invalid email or password",
       });
@@ -152,14 +152,22 @@ const loginUser = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     console.log(isMatch);
     if (!isMatch) {
-      return res.status(400).json({
+      return res.status(401).json({
         success: false,
         message: "Invalid email or password",
       });
     }
 
-    // Usages JWT
-    const token = jwt.sign({ id: user._id }, "shhhhh", {
+    // User Verify or not
+    if (!user.isVerified) {
+      return res.status(403).json({
+        success: false,
+        message: "Please verify your email",
+      });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign({ id: user._id }, process.env.JWT_PRIVATE_KEY, {
       expiresIn: "24h",
     });
 
@@ -167,11 +175,12 @@ const loginUser = async (req, res) => {
     const cookieOption = {
       httpOnly: true,
       secure: true,
+      sameSite: "strict",
       maxAge: 24 * 60 * 60 * 1000, // 24 hour
     };
-    res.cookie("test", token, cookieOption);
+    res.cookie("token", token, cookieOption);
 
-    // Login Successful
+    // Final response : Login Successful
     res.status(200).json({
       success: true,
       message: "Login Successful",
@@ -183,7 +192,7 @@ const loginUser = async (req, res) => {
       },
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
