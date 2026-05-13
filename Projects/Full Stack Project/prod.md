@@ -24,3 +24,38 @@
 
 - verificationToken
 - CreatedAt
+
+## Controller
+
+### User Controller
+
+- Combining different controller
+
+### Register Controller
+
+- Requrement to register - Email, Name, Password
+- Use User Model to get data: req.body
+- Verification token ke liye use : Cropto
+- .env file use karne ke liye : dotenv npm package install
+- create utils file sendMail use : install Nodemailler and use mailtrap.io data for mail inbox
+
+### Verify User Controller
+
+- Use User model to get user token
+- Check and verify user
+
+### Login Controller
+
+- Use User model to get user data
+- Install npm package "bcryptjs" for password increapt/decreapt
+- Istall "JWT Token" for Generate JWT token
+- Install npm package "cookie-parser" for save token in cookies
+- "cookie-parser" ko index.js me add karo aur fir login controller cookies ko save kar sakte kuyki direct cookies ko save nahi kar sakte hai
+
+### Profile Controller
+
+### Logout Controller
+
+### Forgot Controller
+
+### Reset Controller
