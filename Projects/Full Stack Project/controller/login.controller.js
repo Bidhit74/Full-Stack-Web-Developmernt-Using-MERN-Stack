@@ -1,6 +1,9 @@
 import User from "../model/User.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const loginUser = async (req, res) => {
   try {
@@ -55,7 +58,7 @@ const loginUser = async (req, res) => {
     // save token in cookies
     const cookieOption = {
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       maxAge: 24 * 60 * 60 * 1000, // 24 hour
     };
