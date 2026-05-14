@@ -4,6 +4,7 @@ import {
   verifyUser,
   loginUser,
   profile,
+  logoutUser,
 } from "../controller/user.controller.js";
 import { isLoggedIn } from "../middleware/auth.middlewre.js";
 
@@ -14,5 +15,6 @@ router.get("/verify/:token", verifyUser);
 router.post("/login", loginUser);
 // use user define middleware
 router.get("/profile", isLoggedIn, profile);
+router.get("/logout", isLoggedIn, logoutUser);
 
 export default router;
