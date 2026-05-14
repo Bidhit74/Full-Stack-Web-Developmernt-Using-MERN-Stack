@@ -44,9 +44,13 @@ const loginUser = async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_PRIVATE_KEY, {
-      expiresIn: "24h",
-    });
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_PRIVATE_KEY,
+      {
+        expiresIn: "24h",
+      },
+    );
 
     // save token in cookies
     const cookieOption = {
