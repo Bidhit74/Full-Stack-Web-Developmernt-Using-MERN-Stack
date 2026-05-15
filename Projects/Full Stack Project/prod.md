@@ -54,7 +54,15 @@
 
 ### Profile Controller
 
+- Import User model to get user data
+- validata user
+- response send user data
+
 ### Logout Controller
+
+- Clear authentication cookie
+- Use = clearCookie("token", options)
+- res send successfully
 
 ### Forgot Controller
 
