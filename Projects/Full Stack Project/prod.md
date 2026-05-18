@@ -66,4 +66,24 @@
 
 ### Forgot Controller
 
+- Get Email
+- Validate input
+- Get user from User model
+- Safe message String
+- Validate user
+- Generate a secure random token with crypto
+- Hash the token before saving (never store raw tokens in DB)
+- Save hashed token + expiry to user (10 minutes)
+- Build the reset URL with RAW token (user clicks this link)
+- Send email from sendMail.js utils
+- Send Success
+
 ### Reset Controller
+
+- collect token from params than validate
+- password from req.body than validate
+- Hash the raw token to match what's stored in DB
+- find user based on token and expiry than validate
+- Set new password and clear reset fields
+- Save all the changes
+- Send success message
