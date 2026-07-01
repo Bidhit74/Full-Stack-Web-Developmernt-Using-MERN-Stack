@@ -35,3 +35,9 @@ function execute(exports, require, module, __filename, __dirname){
 ```
 
 - So exports is not a keyword, it is a parameter passed to your module by Node.js.
+
+```bash
+exports.add = add; // Named exports
+module.exports = { // Default exports in single file use only one time
+  add, sub };
+```

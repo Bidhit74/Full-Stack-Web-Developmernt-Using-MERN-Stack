@@ -10,5 +10,5 @@ function __require(id) {
   // agar id . se start nahi hai to Node khud ke module mei dhundega
 }
 
-console.log(math.add(88, 78), math.sub(56, 6));
+console.log(math.add(88, 78));
 console.log(math);
