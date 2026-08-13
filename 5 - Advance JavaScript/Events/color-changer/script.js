@@ -11,4 +11,10 @@ const handleColorChanger = () => {
   div.style.backgroundColor = `rgb(${coordinate1}, ${coordinate2}, ${coordinate3})`;
 };
 
-btn.addEventListener("click", handleColorChanger);
+// btn.addEventListener("click", handleColorChanger);
+
+// concept of this
+btn.addEventListener("click", function () {
+  console.log(this);
+  this.style.color = "red";
+});
