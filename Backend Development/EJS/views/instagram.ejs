@@ -7,5 +7,9 @@
   </head>
   <body>
     <h1>Hello <%= username %></h1>
+    <h2>Followers</h2>
+    <% for(let follow of followers){ %>
+        <h4>Follower: <%= follow %></h4>
+    <% } %>
   </body>
 </html>
