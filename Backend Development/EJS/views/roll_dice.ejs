@@ -7,5 +7,9 @@
   </head>
   <body>
     <h1>Dice gave No. : <%= rollD %></h1>
+    <!-- Using flow control / conditionals & loops tag in ejs : <% %> -->
+    <% if(rollD == 6){ %>
+        <h1>Roll Dice Again!!!</h1>
+    <% } %>
   </body>
 </html>

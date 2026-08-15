@@ -16,6 +16,12 @@ app.get("/roll", (req, res) => {
   let rollD = Math.floor(Math.random() * 6) + 1; // gave 1 to 6
   res.render("roll_dice.ejs", { rollD });
 });
+
+app.get("/ig/:username", (req, res) => {
+  let { username } = req.params;
+  res.render("instagram.ejs", { username });
+});
+
 app.listen(port, () => {
   console.log(`Listinig on port: ${port}`);
 });
