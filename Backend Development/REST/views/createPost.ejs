@@ -1,9 +1,9 @@
-<%- include("include/head.ejs", {title: "All Posts"})%>
+<%- include("include/head.ejs", {title: "Create New Post"})%>
 <body>
     <form method="post" action="/posts">
-        <input type="text" placeholder="Enter your username" name="username"> <br> <br>
-        <input type="text" placeholder="Enter your content type" name="content"> <br> <br> <br>
-        <textarea name="description" id="desc" placeholder="Please write your description"></textarea>
+        <input type="text" placeholder="Enter your username" name="username" required> <br> <br>
+        <input type="text" placeholder="Enter your content type" name="content" required> <br> <br> <br>
+        <textarea name="description" id="desc" placeholder="Please write your description" required></textarea>
         <br><br>
         <button type="submit"> Submit </button>
     </form>

@@ -9,3 +9,11 @@ h1 {
 .post_div {
   background-color: rgb(204, 211, 185);
 }
+
+button {
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: aqua;
+  color: black;
+  border: none;
+}

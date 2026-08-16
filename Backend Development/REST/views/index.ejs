@@ -1,6 +1,7 @@
 <%- include("include/head.ejs", {title: "All Posts"})%>
   <body>
     <h1>Quara Posts</h1>
+    <a href="/posts/new">Create post</a>
     <%for(let post of posts){%>
     <div class="post_div">
         <h3 class="user">Username: <%= post.username%></h3>
