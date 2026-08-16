@@ -1,0 +1,10 @@
+<%- include("include/head.ejs", {title: "All Posts"})%>
+<body>
+    <form method="post" action="/posts">
+        <input type="text" placeholder="Enter your username" name="username"> <br> <br>
+        <input type="text" placeholder="Enter your content type" name="content"> <br> <br> <br>
+        <textarea name="description" id="desc" placeholder="Please write your description"></textarea>
+        <br><br>
+        <button type="submit"> Submit </button>
+    </form>
+</body>

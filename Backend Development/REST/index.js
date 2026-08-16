@@ -21,7 +21,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/posts", (req, res) => {
+  console.log(posts);
   res.render("index.ejs", { posts });
+});
+app.get("/posts/new", (req, res) => {
+  res.render("createPost.ejs");
+});
+
+app.post("/posts", (req, res) => {
+  const { username, content, description } = req.body;
+  posts.push({ username, content, description });
+  res.send("form is submited.");
 });
 
 app.listen(port, () => {
