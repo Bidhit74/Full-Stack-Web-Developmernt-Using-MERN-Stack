@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { posts } from "./utils/postsData.js";
-
+import { v4 as uuidv4 } from "uuid";
 const app = express();
 const port = 8000;
 
@@ -21,7 +21,6 @@ app.get("/", (req, res) => {
 });
 
 app.get("/posts", (req, res) => {
-  console.log(posts);
   res.render("index.ejs", { posts });
 });
 app.get("/posts/new", (req, res) => {
@@ -30,8 +29,19 @@ app.get("/posts/new", (req, res) => {
 
 app.post("/posts", (req, res) => {
   const { username, content, description } = req.body;
-  posts.push({ username, content, description });
+  const id = uuidv4();
+  posts.push({ id, username, content, description });
   res.redirect("/posts");
+});
+
+app.get("/posts/:id", (req, res) => {
+  const { id } = req.params;
+  const post = posts.find((p) => id == p.id);
+  if (post) {
+    res.render("show.ejs", { post });
+  } else {
+    res.send("This id does not exist.");
+  }
 });
 
 app.listen(port, () => {
