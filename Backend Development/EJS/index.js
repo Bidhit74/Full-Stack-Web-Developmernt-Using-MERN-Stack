@@ -9,6 +9,9 @@ const port = 3030;
 app.set("view engine", "ejs");
 app.set("views", path.join(import.meta.dirname, "/views")); // letest way
 
+// Serving Static files / Pulic files use
+app.use(express.static(path.join(import.meta.dirname, "public")));
+
 app.get("/", (req, res) => {
   res.render("home.ejs");
 });
