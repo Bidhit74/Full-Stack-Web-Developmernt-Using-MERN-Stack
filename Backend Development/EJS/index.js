@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import instaData from "./utils/data.json" with { type: "json" };
 
 const app = express();
 const port = 3030;
@@ -19,8 +20,12 @@ app.get("/roll", (req, res) => {
 
 app.get("/ig/:username", (req, res) => {
   let { username } = req.params;
-  let followers = ["Binit", "Navnit", "Lakshmi", "Ritu", "Madhavi"];
-  res.render("instagram.ejs", { username, followers });
+  const data = instaData[username];
+  if (data) {
+    res.render("instagram.ejs", { data });
+  } else {
+    res.render("error.ejs", { username });
+  }
 });
 
 app.listen(port, () => {
