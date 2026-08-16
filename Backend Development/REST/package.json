@@ -1,0 +1,17 @@
+{
+  "name": "restApi",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Bidhit Chaudhary",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "Nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1"
+  }
+}
