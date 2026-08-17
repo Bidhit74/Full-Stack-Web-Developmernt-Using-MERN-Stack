@@ -67,6 +67,15 @@ app.patch("/posts/:id", (req, res) => {
   }
 });
 
+app.delete("/posts/:id", (req, res) => {
+  let { id } = req.params;
+  const index = posts.findIndex((p) => p.id == id);
+  if (index !== -1) {
+    posts.splice(index, 1);
+  }
+  res.redirect("/posts");
+});
+
 app.listen(port, () => {
   console.log(`App Loading on port: ${port}`);
 });

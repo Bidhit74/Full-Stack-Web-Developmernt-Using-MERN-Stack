@@ -10,6 +10,10 @@
         </ul>
         <a href="/posts/<%=post.id%>">See in details</a>
         <a href="/posts/<%=post.id%>/edit">Edit</a>
+        <form method="post" action="/posts/<%=post.id%>?_method=DELETE">
+          <br>
+          <button>Delete</button>
+        </form>
     </div>
     <%}%>
 
