@@ -12,8 +12,14 @@ const connection = await mysql.createConnection({
   password: process.env.MY_SQL_PASS,
 });
 
+// let query = "SHOW TABLES";
+// Using placeholders = "?"
+// Single data add
+let query = "INSERT INTO user(id,username,email,password) VALUES(?,?,?,?)";
+let user = [101, "bidhit1", "bkc321@gmail.com", "1234"];
+
 try {
-  const [results, fields] = await connection.query("SHOW DATABASES");
+  const [results, fields] = await connection.query(query, user);
   console.log(results); // results contains rows returned by server
   // console.log(fields); // fields contains extra meta data about results, if available
 } catch (err) {
