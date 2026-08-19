@@ -18,16 +18,26 @@ const connection = await mysql.createConnection({
 // let query = "INSERT INTO user(id,username,email,password) VALUES(?,?,?,?)";
 // let user = [101, "bidhit1", "bkc321@gmail.com", "1234"];
 
-// Multiple data add
+const getRandomUser = () => {
+  return [
+    faker.string.uuid(),
+    faker.internet.username(),
+    faker.internet.email(),
+    faker.internet.password(),
+  ];
+};
+
+// Bulk data add
 let query = "INSERT INTO user(id,username,email,password) VALUES ?";
-let user = [
-  [102, "bidhit2", "bkc3214@gmail.com", "12345"],
-  [103, "bidhit3", "bkc32414@gmail.com", "123445"],
-  [104, "bidhit4", "bkc32124@gmail.com", "512345"],
-];
+let users = [];
+
+// Add Random 50 users
+for (let i = 1; i <= 50; i++) {
+  users.push(getRandomUser());
+}
 
 try {
-  const [results, fields] = await connection.query(query, [user]);
+  const [results, fields] = await connection.query(query, [users]);
   console.log(results); // results contains rows returned by server
   // console.log(fields); // fields contains extra meta data about results, if available
 } catch (err) {
@@ -36,12 +46,3 @@ try {
 
 // Close the connection
 await connection.end();
-
-const getRandomUser = () => {
-  return {
-    userId: faker.string.uuid(),
-    username: faker.internet.username(),
-    email: faker.internet.email(),
-    password: faker.internet.password(),
-  };
-};
