@@ -19,7 +19,7 @@ const connection = await mysql.createConnection({
   password: process.env.MY_SQL_PASS,
 });
 
-let query = "SELECT * FROM user";
+// let query = "SELECT * FROM user";
 // Using placeholders = "?"
 // Single data add
 // let query = "INSERT INTO user(id,username,email,password) VALUES(?,?,?,?)";
@@ -42,19 +42,16 @@ let query = "SELECT * FROM user";
 // for (let i = 1; i <= 50; i++) {
 //   users.push(getRandomUser());
 // }
-let data = null;
-try {
-  const [results] = await connection.query(query);
-  data = results; // results contains rows returned by server
-} catch (err) {
-  console.log(err);
-}
-// Close the connection
-await connection.end();
 
-console.log(data);
-app.get("/", (req, res) => {
-  res.render("home.ejs", { data });
+app.get("/", async (req, res) => {
+  let query = "SELECT * FROM user";
+  try {
+    const [results] = await connection.query(query);
+    res.render("home.ejs", { data: results });
+  } catch (err) {
+    console.log(err);
+    res.send("Something is wrong");
+  }
 });
 
 app.listen(process.env.APP_PORT, () => {
