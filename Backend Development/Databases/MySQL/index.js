@@ -23,6 +23,18 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/users", async (req, res) => {
+  let query = "SELECT * FROM user";
+  const data = await dbData(query);
+  if (!data.code) {
+    res.render("users.ejs", { data });
+  } else {
+    log(`Error: ${data.sqlMessage}`);
+    let messages = "User not found!!!";
+    res.render("error.ejs", { messages });
+  }
+});
+
 app.listen(process.env.APP_PORT, () => {
   console.log(`App listen Port:${process.env.APP_PORT} `);
 });
