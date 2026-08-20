@@ -12,12 +12,12 @@ app.set("view engine", "ejs");
 app.set("views", path.join(import.meta.dirname, "/views"));
 
 app.get("/", async (req, res) => {
-  let query = "SELECT * FROM user";
-  const data = await dbData(query);
-  if (!data.code) {
-    res.render("home.ejs", { data });
+  let query = "SELECT count(*) FROM user";
+  const count = await dbData(query);
+  if (!count.code) {
+    res.render("home.ejs", { count: count[0]["count(*)"] });
   } else {
-    log(`Error: ${data.sqlMessage}`);
+    log(`Error: ${count.sqlMessage}`);
     let messages = "Something went wrong!!!";
     res.render("error.ejs", { messages });
   }
