@@ -63,11 +63,29 @@ app.patch("/users/:id", async (req, res) => {
   } = req.body;
   const user = await dbData(query);
   if (user[0].password === newPass) {
-    let query2 = `UPDATE user SET username='${newUserName}' email='${newEmail}' WHERE id='${id}'`;
+    let query2 = `UPDATE user SET username='${newUserName}', email='${newEmail}' WHERE id='${id}'`;
     dbData(query2);
     res.redirect("/users");
   } else {
     res.send("Worng Password");
+  }
+});
+
+app.get("/users/:id/delete", (req, res) => {
+  const { id } = req.params;
+  res.render("deleteUser.ejs", { id });
+});
+app.delete("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  const { password: givenPassward } = req.body;
+  let query = `SELECT password FROM user WHERE id="${id}"`;
+  const pass = await dbData(query);
+  if (givenPassward === pass[0]["password"]) {
+    let query1 = `DELETE FROM user WHERE id="${id}"`;
+    await dbData(query1);
+    res.redirect("/users");
+  } else {
+    res.send("Your given password doesn't match!!!");
   }
 });
 

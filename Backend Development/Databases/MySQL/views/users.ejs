@@ -6,13 +6,15 @@
         <tr>
             <th>Username</th>
             <th>Email</th>
-            <th>Update</th>
+            <th>Update User</th>
+            <th>Delete User</th>
         </tr>
         <%for(let user of data){%>
             <tr>
                 <td><%= user.username%></td>
                 <td><%= user.email%></td>
                 <td><a href="/users/<%=user.id%>/edit">Edit</a></td>
+                <td><a href="/users/<%=user.id%>/delete">Delete</a></td>
             </tr>
         <%}%>
     </table>

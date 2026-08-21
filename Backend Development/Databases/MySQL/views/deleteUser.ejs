@@ -1,0 +1,17 @@
+<%- include("includes/head.ejs", {title: "Delete user"})%>
+<body>
+  <form method="post" action="/users/<%=id%>?_method=DELETE">
+    <label for="user_pass">Password: </label>
+    <input
+      type="password"
+      id="user_pass"
+      name="password"
+      placeholder="Enter your password for user delete"
+      required
+      size="47"
+    />
+    <br />
+    <br />
+    <button type="submit">Delete</button>
+  </form>
+</body>
