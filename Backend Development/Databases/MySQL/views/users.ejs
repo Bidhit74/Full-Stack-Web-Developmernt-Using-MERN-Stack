@@ -2,17 +2,17 @@
 <body>
     <h1 style="color:cornflowerblue; margin: 0 40%;">User Database</h1>
     <hr>
-    <table style="margin: 0 20%;" border="1">
+    <table style="margin: 0 25%;" border="1">
         <tr>
-            <th>Id</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Update</th>
         </tr>
         <%for(let user of data){%>
             <tr>
-                <td><%= user.id%></td>
                 <td><%= user.username%></td>
                 <td><%= user.email%></td>
+                <td><a href="/users/<%=user.id%>/edit">Edit</a></td>
             </tr>
         <%}%>
     </table>

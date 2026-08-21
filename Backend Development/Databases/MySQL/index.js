@@ -3,9 +3,15 @@ import express from "express";
 import path from "path";
 import dbData from "./utils/db.js";
 import { log } from "console";
+import methodOverride from "method-override";
 
 const app = express();
 dotenv.config();
+
+app.use(methodOverride("_method"));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // json format data send
 
 // Using EJS
 app.set("view engine", "ejs");
@@ -32,6 +38,36 @@ app.get("/users", async (req, res) => {
     log(`Error: ${data.sqlMessage}`);
     let messages = "User not found!!!";
     res.render("error.ejs", { messages });
+  }
+});
+app.get("/users/:id/edit", async (req, res) => {
+  const { id } = req.params;
+  let query = `SELECT * FROM user WHERE id='${id}'`;
+  const data = await dbData(query);
+  if (!data.code) {
+    res.render("userEdit.ejs", { user: data[0] });
+  } else {
+    log(`Error: ${data.sqlMessage}`);
+    let messages = "User not found!!!";
+    res.render("error.ejs", { messages });
+  }
+});
+
+app.patch("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  let query = `SELECT * FROM user WHERE id='${id}'`;
+  const {
+    username: newUserName,
+    email: newEmail,
+    password: newPass,
+  } = req.body;
+  const user = await dbData(query);
+  if (user[0].password === newPass) {
+    let query2 = `UPDATE user SET username='${newUserName}' email='${newEmail}' WHERE id='${id}'`;
+    dbData(query2);
+    res.redirect("/users");
+  } else {
+    res.send("Worng Password");
   }
 });
 
