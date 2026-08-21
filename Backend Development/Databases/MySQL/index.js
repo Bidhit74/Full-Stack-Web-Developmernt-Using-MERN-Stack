@@ -4,6 +4,7 @@ import path from "path";
 import dbData from "./utils/db.js";
 import { log } from "console";
 import methodOverride from "method-override";
+import { v4 as uuidv4 } from "uuid";
 
 const app = express();
 dotenv.config();
@@ -86,6 +87,21 @@ app.delete("/users/:id", async (req, res) => {
     res.redirect("/users");
   } else {
     res.send("Your given password doesn't match!!!");
+  }
+});
+
+app.get("/users/add", (req, res) => {
+  res.render("addUser.ejs");
+});
+app.post("/users/add", async (req, res) => {
+  const { username, email, password } = req.body;
+  const id = uuidv4();
+  if (username && email && password) {
+    let query = `INSERT INTO user(id, username, email, password) VALUE('${id}','${username}','${email}','${password}') `;
+    await dbData(query);
+    res.redirect("/users");
+  } else {
+    res.send("Somthing wrong!!!");
   }
 });
 
