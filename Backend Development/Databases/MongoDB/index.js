@@ -24,15 +24,28 @@ const User = mongoose.model("User", userSchema);
 
 // InsertOne Data in collection
 // const user1 = new User({ name: "Bidhit", email: "bkc@342gmail.com", age: 24 });
-const user2 = new User({ name: "Navnit", email: "nkc@342gmail.com", age: 22 });
+// const user2 = new User({ name: "Navnit", email: "nkc@342gmail.com", age: 22 });
 
-// Save User
-// user1.save(); // save is async it is return promise(you cam use than and catch method)
-user2
-  .save()
+// InsertMany Data in collection
+User.insertMany([
+  { name: "Binit", email: "bk@342gmail.com", age: 26 },
+  { name: "Lakshmi", email: "lm@342gmail.com", age: 17 },
+  { name: "Rahul", email: "rk@342gmail.com", age: 25 },
+])
   .then((res) => {
     console.log(res);
   })
   .catch((err) => {
     console.log(err);
   });
+
+// Save User
+// user1.save(); // save is async it is return promise(you cam use than and catch method)
+// user2
+//   .save()
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
