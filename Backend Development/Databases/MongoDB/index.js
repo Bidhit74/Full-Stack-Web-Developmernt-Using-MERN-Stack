@@ -118,11 +118,23 @@ const User = mongoose.model("User", userSchema);
 
 // *** findOneAndReplace ***
 // A.findOneAndReplace(filter, replacement, options)  // return Query
-User.findOneAndReplace(
-  { name: "Rani" },
-  { name: "Lakshmi", age: 17 },
-  { returnDocument: "after" },
-)
+// User.findOneAndReplace(
+//   { name: "Rani" },
+//   { name: "Lakshmi", age: 17 },
+//   { returnDocument: "after" },
+// )
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// *** Delete ***
+// User.deleteOne({ name: "Lakshmi" })
+// User.deleteMany({ age: 25 })
+// User.findOneAndDelete({ name: "Bidhit" })
+User.findByIdAndDelete("6a8c3d1f36f8ee7e496ca0df")
   .then((res) => {
     console.log(res);
   })
