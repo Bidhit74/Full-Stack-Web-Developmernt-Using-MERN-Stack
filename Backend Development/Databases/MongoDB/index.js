@@ -27,17 +27,17 @@ const User = mongoose.model("User", userSchema);
 // const user2 = new User({ name: "Navnit", email: "nkc@342gmail.com", age: 22 });
 
 // InsertMany Data in collection
-User.insertMany([
-  { name: "Binit", email: "bk@342gmail.com", age: 26 },
-  { name: "Lakshmi", email: "lm@342gmail.com", age: 17 },
-  { name: "Rahul", email: "rk@342gmail.com", age: 25 },
-])
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// User.insertMany([
+//   { name: "Bidhit", email: "bkc@46gmail.com", age: 24 },
+//   { name: "Navnit", email: "k@342gmail.com", age: 22 },
+//   { name: "Kalu", email: "k@342gmail.com", age: 25 },
+// ])
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 // Save User
 // user1.save(); // save is async it is return promise(you cam use than and catch method)
@@ -49,3 +49,27 @@ User.insertMany([
 //   .catch((err) => {
 //     console.log(err);
 //   });
+
+// Find: Model.find() --> returns a Query Object
+// Mongoose Queries are not promise. But they have a ".then() and .catch()" Method
+// User.find().then((res) => {
+//   console.log(res);
+// });
+
+// use condition
+// User.find({ age: { $gt: 22 } })
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// Use findOne single user
+User.findOne({ age: { $gt: 22 } })
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
