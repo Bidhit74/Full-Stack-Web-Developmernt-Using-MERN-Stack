@@ -20,4 +20,19 @@ const userSchema = new mongoose.Schema({
 });
 
 // Create model
-// const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+
+// InsertOne Data in collection
+// const user1 = new User({ name: "Bidhit", email: "bkc@342gmail.com", age: 24 });
+const user2 = new User({ name: "Navnit", email: "nkc@342gmail.com", age: 22 });
+
+// Save User
+// user1.save(); // save is async it is return promise(you cam use than and catch method)
+user2
+  .save()
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
