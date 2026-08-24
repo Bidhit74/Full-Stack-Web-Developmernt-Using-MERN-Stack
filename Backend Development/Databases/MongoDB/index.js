@@ -115,3 +115,17 @@ const User = mongoose.model("User", userSchema);
 //   .catch((err) => {
 //     console.log(err);
 //   });
+
+// *** findOneAndReplace ***
+// A.findOneAndReplace(filter, replacement, options)  // return Query
+User.findOneAndReplace(
+  { name: "Rani" },
+  { name: "Lakshmi", age: 17 },
+  { returnDocument: "after" },
+)
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
