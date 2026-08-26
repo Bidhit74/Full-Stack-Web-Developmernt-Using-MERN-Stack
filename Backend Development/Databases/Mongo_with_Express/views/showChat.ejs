@@ -1,0 +1,15 @@
+<%- include('includes/head.ejs', {title: "Show Chats"}) %>
+<body>
+    <h1>Whatsapps: Users Chat</h1>
+    <hr>
+    <section>
+    <%for(let chat of chats){%>
+        <div>
+            <h3>From: <i><%=chat.from%></i></h3>
+            <p>Message: <%=chat.message%></p>
+            <h3>To: <i><%=chat.to%></i></h3>
+        </div>
+        <hr>
+    <%}%>
+    </section>
+</body>

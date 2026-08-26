@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import path from "path";
+import connectDB from "./utils/db.js";
+import { Chat } from "./models/chat.js";
 
 const app = express();
 dotenv.config();
@@ -11,8 +13,20 @@ const port = process.env.PORT || 4000;
 app.set("viwe engine", "ejs");
 app.set("viwes", path.join(import.meta.dirname, "/views"));
 
+// DB Calling
+await connectDB();
+
 app.get("/", (req, res) => {
   res.send("Hellow Bidhit Chaudhary");
+});
+
+app.get("/chats", async (req, res) => {
+  let chats = await Chat.find();
+  if (chats) {
+    res.render("showChat.ejs", { chats });
+  } else {
+    res.send("Somethings Wrong!!!");
+  }
 });
 
 app.listen(port, () => {
