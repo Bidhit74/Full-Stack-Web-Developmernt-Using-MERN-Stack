@@ -32,6 +32,11 @@ app.get("/chats", async (req, res) => {
   }
 });
 
+// *** Create chat ***
+app.get("/chats/new", (req, res) => {
+  res.render("create-chat.ejs");
+});
+
 app.listen(port, () => {
   console.log(`App Runing on Port:${port}`);
 });
