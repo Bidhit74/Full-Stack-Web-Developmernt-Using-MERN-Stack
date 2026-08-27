@@ -86,11 +86,9 @@ app.get("/chats/:id/edit", async (req, res) => {
 app.put("/chats/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { from: newSender, message: newMessage, to: newReceiver } = req.body;
-    await Chat.findByIdAndUpdate(`${id}`, {
-      from: newSender,
+    const { message: newMessage } = req.body;
+    await Chat.findByIdAndUpdate(id, {
       message: newMessage,
-      to: newReceiver,
       created_at: new Date(),
     });
     res.redirect("/chats");
@@ -101,6 +99,8 @@ app.put("/chats/:id", async (req, res) => {
     });
   }
 });
+
+// *** Delete Chat ***
 
 app.listen(port, () => {
   console.log(`App Runing on Port:${port}`);
