@@ -9,13 +9,22 @@
             <h3>From: <i><%=chat.from%></i></h3>
             <p><b>Message:</b> <%=chat.message%></p>
             <h3>To: <i><%=chat.to%></i></h3>
-            <p>
-                <span>Date: <i><%= chat.created_at.toLocaleDateString("en-IN") %></i> </span>
+            <p>Created_At:
+                <span><i><%= chat.created_at.toLocaleDateString("en-IN") %></i> </span>
                 &nbsp;&nbsp;
                 <span>
-                    Time: <i><%= chat.created_at.toLocaleTimeString("en-IN") %></i>
+                    <i><%= chat.created_at.toLocaleTimeString("en-IN") %></i>
                 </span>
             </p>
+            <%if(chat.updated_at !== undefined){%>
+                <p>Updated_At:
+                <span><i><%= chat.updated_at.toLocaleDateString("en-IN") %></i> </span>
+                &nbsp;&nbsp;
+                <span>
+                    <i><%= chat.updated_at.toLocaleTimeString("en-IN") %></i>
+                </span>
+            </p>
+            <%}%>
             <div class="a-div">
                 <a href="chats/<%=chat._id%>/edit" class="btn">Edit</a>
                 <form method="POST" action="chats/<%=chat._id%>?_method=DELETE">

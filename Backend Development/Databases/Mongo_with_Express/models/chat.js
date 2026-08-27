@@ -19,6 +19,9 @@ const chatSchema = new Schema({
     type: Date,
     required: true,
   },
+  updated_at: {
+    type: Date,
+  },
 });
 
 // Create model with export

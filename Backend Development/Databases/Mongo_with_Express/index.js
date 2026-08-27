@@ -73,6 +73,7 @@ app.get("/chats/:id/edit", async (req, res) => {
   try {
     const { id } = req.params;
     const chat = await Chat.findById(id);
+    console.log(chat.updated_at);
     res.render("edit.ejs", { chat });
   } catch (err) {
     console.log(err);
@@ -89,7 +90,7 @@ app.put("/chats/:id", async (req, res) => {
     const { message: newMessage } = req.body;
     await Chat.findByIdAndUpdate(id, {
       message: newMessage,
-      created_at: new Date(),
+      updated_at: new Date(),
     });
     res.redirect("/chats");
   } catch (err) {
