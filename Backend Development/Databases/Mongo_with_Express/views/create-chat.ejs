@@ -1,11 +1,11 @@
 <%- include('includes/head.ejs', {title: "New Chat"}) %>
 <body>
-    <form method="GET" action="/chats/new">
+    <form method="POST" action="/chats">
         <h1>Create Chat</h1>
         <label for="from">From:</label>
         <input type="text" name="from" id="from" required size="15">
-        <label for="massage">Massage:</label>
-        <input type="text" name="massage" id="massage" required size="45">
+        <label for="message">Massage:</label>
+        <input type="text" name="message" id="message" required size="45">
         <label for="to">To:</label>
         <input type="text" name="to" id="to" required size="15">
         <button type="submit" class="btn">Create</button>

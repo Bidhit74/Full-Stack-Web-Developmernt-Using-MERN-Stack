@@ -16,6 +16,10 @@ app.set("viwes", path.join(import.meta.dirname, "/views"));
 // use public folder
 app.use(express.static(path.join(import.meta.dirname, "public")));
 
+// Encoding from post request
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // json format data send
+
 // DB Calling
 await connectDB();
 
@@ -32,9 +36,34 @@ app.get("/chats", async (req, res) => {
   }
 });
 
-// *** Create chat ***
+// *** new chat ***
 app.get("/chats/new", (req, res) => {
   res.render("create-chat.ejs");
+});
+
+// *** Create Chat ***
+app.post("/chats", async (req, res) => {
+  const { from, message, to } = req.body;
+  if (!from || !message || !to) {
+    return res.status(400).render("error.ejs", {
+      message: "Something is wrong!",
+    });
+  }
+  try {
+    const chat = new Chat({
+      from,
+      message,
+      to,
+      created_at: new Date(),
+    });
+    await chat.save();
+    res.redirect("/chats");
+  } catch (err) {
+    console.error(err);
+    res.status(500).render("error.ejs", {
+      message: "Something went wrong!",
+    });
+  }
 });
 
 app.listen(port, () => {
