@@ -20,7 +20,7 @@ app.use(express.static(path.join(import.meta.dirname, "public")));
 await connectDB();
 
 app.get("/", (req, res) => {
-  res.send("Hellow Bidhit Chaudhary");
+  res.render("home.ejs");
 });
 
 app.get("/chats", async (req, res) => {
