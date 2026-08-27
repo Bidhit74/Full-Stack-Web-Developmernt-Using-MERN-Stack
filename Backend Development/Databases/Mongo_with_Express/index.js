@@ -3,9 +3,11 @@ import dotenv from "dotenv";
 import path from "path";
 import connectDB from "./utils/db.js";
 import { Chat } from "./models/chat.js";
+import methodOverride from "method-override";
 
 const app = express();
 dotenv.config();
+app.use(methodOverride("_method"));
 
 const port = process.env.PORT || 4000;
 
@@ -72,6 +74,26 @@ app.get("/chats/:id/edit", async (req, res) => {
     const { id } = req.params;
     const chat = await Chat.findById(id);
     res.render("edit.ejs", { chat });
+  } catch (err) {
+    console.log(err);
+    res.status(500).render("error.ejs", {
+      message: "Something went wrong!",
+    });
+  }
+});
+
+// *** Upadte Chat ***
+app.put("/chats/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { from: newSender, message: newMessage, to: newReceiver } = req.body;
+    await Chat.findByIdAndUpdate(`${id}`, {
+      from: newSender,
+      message: newMessage,
+      to: newReceiver,
+      created_at: new Date(),
+    });
+    res.redirect("/chats");
   } catch (err) {
     console.log(err);
     res.status(500).render("error.ejs", {
