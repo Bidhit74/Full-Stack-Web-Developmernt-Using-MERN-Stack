@@ -9,6 +9,13 @@
             <h3>From: <i><%=chat.from%></i></h3>
             <p>Message: <%=chat.message%></p>
             <h3>To: <i><%=chat.to%></i></h3>
+            <p>
+                <span>Date: <i><%= chat.created_at.toLocaleDateString("en-IN") %></i> </span>
+                &nbsp;&nbsp;
+                <span>
+                    Time: <i><%= chat.created_at.toLocaleTimeString("en-IN") %></i>
+                </span>
+            </p>
         </div>
     <%}%>
     </section>
