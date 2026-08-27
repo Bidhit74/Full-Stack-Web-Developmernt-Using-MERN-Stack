@@ -101,6 +101,19 @@ app.put("/chats/:id", async (req, res) => {
 });
 
 // *** Delete Chat ***
+app.delete("/chats/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedData = await Chat.findByIdAndDelete(id);
+    console.log(deletedData);
+    res.redirect("/chats");
+  } catch (err) {
+    console.log(err);
+    res.status(500).render("error.ejs", {
+      message: "Something went wrong!",
+    });
+  }
+});
 
 app.listen(port, () => {
   console.log(`App Runing on Port:${port}`);

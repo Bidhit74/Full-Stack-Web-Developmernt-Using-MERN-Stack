@@ -7,7 +7,7 @@
     <%for(let chat of chats){%>
         <div class="chat-card">
             <h3>From: <i><%=chat.from%></i></h3>
-            <p>Message: <%=chat.message%></p>
+            <p><b>Message:</b> <%=chat.message%></p>
             <h3>To: <i><%=chat.to%></i></h3>
             <p>
                 <span>Date: <i><%= chat.created_at.toLocaleDateString("en-IN") %></i> </span>
@@ -18,7 +18,9 @@
             </p>
             <div class="a-div">
                 <a href="chats/<%=chat._id%>/edit" class="btn">Edit</a>
-                <a href="" class="btn">Delete</a>
+                <form method="POST" action="chats/<%=chat._id%>?_method=DELETE">
+                    <button type="submit" class="btn">Delete</button>
+                </form>
         </div>
         </div>
     <%}%>
