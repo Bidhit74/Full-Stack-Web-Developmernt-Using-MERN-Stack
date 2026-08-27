@@ -66,6 +66,20 @@ app.post("/chats", async (req, res) => {
   }
 });
 
+// *** Edit Chat ***
+app.get("/chats/:id/edit", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const chat = await Chat.findById(id);
+    res.render("edit.ejs", { chat });
+  } catch (err) {
+    console.log(err);
+    res.status(500).render("error.ejs", {
+      message: "Something went wrong!",
+    });
+  }
+});
+
 app.listen(port, () => {
   console.log(`App Runing on Port:${port}`);
 });

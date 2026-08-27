@@ -1,0 +1,13 @@
+<%- include('includes/head.ejs', {title: "Edit"}) %>
+<body>
+    <form method="POST" action="/chats">
+        <h1>Update Chat</h1>
+        <label for="from">From:</label>
+        <input type="text" name="from" id="from" required size="15" value="<%=chat.from%>">
+        <label for="message">Massage:</label>
+        <input type="text" name="message" id="message" required size="45" value="<%=chat.message%>">
+        <label for="to">To:</label>
+        <input type="text" name="to" id="to" required size="15" value="<%=chat.to%>" >
+        <button type="submit" class="btn">Update</button>
+    </form>
+</body>

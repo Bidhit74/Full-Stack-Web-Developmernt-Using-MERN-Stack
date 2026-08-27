@@ -16,6 +16,10 @@
                     Time: <i><%= chat.created_at.toLocaleTimeString("en-IN") %></i>
                 </span>
             </p>
+            <div class="a-div">
+                <a href="chats/<%=chat._id%>/edit" class="btn">Edit</a>
+                <a href="" class="btn">Delete</a>
+        </div>
         </div>
     <%}%>
     </section>
