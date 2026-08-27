@@ -13,6 +13,9 @@ const port = process.env.PORT || 4000;
 app.set("viwe engine", "ejs");
 app.set("viwes", path.join(import.meta.dirname, "/views"));
 
+// use public folder
+app.use(express.static(path.join(import.meta.dirname, "public")));
+
 // DB Calling
 await connectDB();
 
