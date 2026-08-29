@@ -1,0 +1,13 @@
+<%- include("../includes/head.ejs", {title: "Listings"})%>
+<body>
+    <h1>All Listing Data </h1>
+    <ul>
+        <% for(let listing of listings){%>
+            <li>
+                <a href="listing/<%=listing._id%>">
+                    <%=listing.title%>
+                </a>
+            </li>
+        <%}%>
+    </ul>
+</body>

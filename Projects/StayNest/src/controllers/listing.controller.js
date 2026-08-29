@@ -2,12 +2,15 @@ import Listing from "../models/Listing.js";
 
 const listingController = async (req, res) => {
 	try {
-		console.log("Listing Succusefully");
-		res.send("Listing Succusefully");
+		const listings = await Listing.find();
+		console.log(listings);
+		res.render("listings/listing.ejs", { listings });
 	} catch {
 		(err) => {
-			console.log(err);
-			res.send("Something went Wrong!!!");
+			console.log("listing controller error: ", err);
+			res.status(500).render("error.ejs", {
+				message: "Something went wrong!!!",
+			});
 		};
 	}
 };
