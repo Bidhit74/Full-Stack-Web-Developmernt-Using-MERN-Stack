@@ -16,6 +16,8 @@ const App = () => {
 	// Routes
 	app.use("/", routes);
 
+	// Home Routes
+
 	return app;
 };
 

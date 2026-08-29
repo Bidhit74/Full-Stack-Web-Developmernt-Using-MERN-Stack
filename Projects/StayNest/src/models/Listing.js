@@ -11,6 +11,7 @@ const listingSchema = new Schema({
 	},
 	imageUrl: {
 		type: String,
+		default: "https://img.icons8.com/plasticine/1200/no-image.jpg",
 		set: (v) =>
 			v === ""
 				? "https://img.icons8.com/plasticine/1200/no-image.jpg"
