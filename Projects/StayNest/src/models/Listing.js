@@ -7,7 +7,7 @@ const listingSchema = new Schema({
 	},
 	description: {
 		type: String,
-		maxLength: 100,
+		maxLength: 500,
 	},
 	imageUrl: {
 		type: String,
