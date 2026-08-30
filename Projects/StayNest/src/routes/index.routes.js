@@ -6,6 +6,7 @@ import createListing from "../controllers/listings/create.controller.js";
 import addDBUserListingController from "../controllers/listings/add-db-user-listing.controller.js";
 import editController from "../controllers/listings/edit.controller.js";
 import updateController from "../controllers/listings/update.controller.js";
+import deleteController from "../controllers/listings/delete.controller.js";
 
 const router = express.Router();
 
@@ -15,6 +16,7 @@ router.post("/listings", addDBUserListingController);
 router.get("/listings/new", createListing);
 router.get("/listings/:id", showListing);
 router.put("/listings/:id", updateController);
+router.delete("/listings/:id", deleteController);
 router.get("/listings/:id/edit", editController);
 
 export default router;
