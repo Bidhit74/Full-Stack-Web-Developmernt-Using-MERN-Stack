@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import routes from "./routes/index.routes.js";
+import methodOverride from "method-override";
 
 const App = () => {
 	const app = express();
@@ -12,6 +13,9 @@ const App = () => {
 	// Middleware for json data read and send
 	app.use(express.urlencoded({ extended: true }));
 	app.use(express.json());
+
+	// override with POST having ?_method=DELETE
+	app.use(methodOverride("_method"));
 
 	// Routes
 	app.use("/", routes);
