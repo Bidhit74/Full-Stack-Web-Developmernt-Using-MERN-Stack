@@ -2,12 +2,12 @@
 <body>
     <h1>All Listing Data </h1>
     <hr>
-    <a href="listing/new">New Listing</a>
+    <a href="listings/new">New Listing</a>
     <hr>
     <ul>
         <% for(let listing of listings){%>
             <li>
-                <a href="/listing/<%=listing._id%>">
+                <a href="/listings/<%=listing._id%>">
                     <%=listing.title%>
                 </a>
             </li>

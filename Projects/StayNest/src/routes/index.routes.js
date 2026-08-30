@@ -8,9 +8,9 @@ import addDBUserListingController from "../controllers/listings/add-db-user-list
 const router = express.Router();
 
 router.get("/", homeController);
-router.get("/listing", listingController);
-router.get("/listing/new", createListing);
-router.get("/listing/:id", showListing);
-router.post("/listing", addDBUserListingController);
+router.get("/listings", listingController);
+router.post("/listings", addDBUserListingController);
+router.get("/listings/new", createListing);
+router.get("/listings/:id", showListing);
 
 export default router;
