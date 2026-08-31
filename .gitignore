@@ -23,3 +23,5 @@ build/
 *.pid
 *.seed
 *.pid.lock
+
+**/src/public/css/output.css
