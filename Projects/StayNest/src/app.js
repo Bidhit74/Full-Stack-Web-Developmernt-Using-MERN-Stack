@@ -2,10 +2,13 @@ import express from "express";
 import path from "path";
 import routes from "./routes/index.routes.js";
 import methodOverride from "method-override";
+import ejsMate from "ejs-mate";
 
 const App = () => {
 	const app = express();
 
+	// use ejs-locals for all ejs templates:
+	app.engine("ejs", ejsMate);
 	// EJS
 	app.set("view engine", "ejs");
 	app.set("views", path.join(import.meta.dirname, "views"));

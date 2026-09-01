@@ -1,18 +1,18 @@
-<%- include("../includes/head.ejs", {title: "Show Listing"})%>
+<<% layout("layouts/head")%> <% title = "Listing" %>
 <body>
-    <h1><%=listing.title%></h1>
-    <ul>
-        <li><b>Description:</b> <%=listing.description%></li>
-        <li><b>Price: </b>&#8377; <%=listing.price.toLocaleString('en-IN')%></li>
-        <li><b>Location:</b> <%=listing.location%></li>
-        <li><b>Country:</b> <%=listing.country%></li>
-    </ul>
-    <hr>
-    <a href="/listings/<%=listing._id%>/edit">Edit</a>
-    <hr>
-    <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-        <button type="submit">
-            Delete
-        </button>
-    </form>
+	<h1><%=listing.title%></h1>
+	<ul>
+		<li><b>Description:</b> <%=listing.description%></li>
+		<li>
+			<b>Price: </b>&#8377; <%=listing.price.toLocaleString('en-IN')%>
+		</li>
+		<li><b>Location:</b> <%=listing.location%></li>
+		<li><b>Country:</b> <%=listing.country%></li>
+	</ul>
+	<hr />
+	<a href="/listings/<%=listing._id%>/edit">Edit</a>
+	<hr />
+	<form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+		<button type="submit">Delete</button>
+	</form>
 </body>
