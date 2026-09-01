@@ -1,0 +1,79 @@
+<!-- ================= NAVBAR ================= -->
+<nav class="border-b border-slate-700 bg-slate-900 shadow-lg sticky top-0 z-50">
+	<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+		<!-- Logo -->
+		<a
+			href="/"
+			class="text-2xl font-bold tracking-wide text-white transition hover:text-cyan-400"
+		>
+			<img
+				class="h-10 w-auto"
+				src="/images/logo/StayNest_logo.png"
+				alt="logo"
+			/>
+		</a>
+
+		<!-- Desktop Menu -->
+		<div class="hidden items-center gap-8 md:flex">
+			<!-- Listings -->
+			<a
+				href="/listings"
+				class="font-medium text-slate-200 transition hover:text-cyan-400"
+			>
+				Listings
+			</a>
+
+			<!-- New Listing -->
+			<a
+				href="/listings/new"
+				class="rounded-lg bg-cyan-500 px-4 py-2 font-semibold text-slate-950 transition hover:bg-cyan-400"
+			>
+				New Listing
+			</a>
+		</div>
+
+		<!-- Mobile Menu Button -->
+		<button
+			id="menu-btn"
+			type="button"
+			class="rounded-lg p-2 text-slate-200 transition hover:bg-slate-800 hover:text-cyan-400 md:hidden"
+		>
+			<!-- Hamburger Icon -->
+			☰
+		</button>
+	</div>
+
+	<!-- Mobile Menu -->
+	<div
+		id="mobile-menu"
+		class="hidden border-t border-slate-700 bg-slate-800 md:hidden"
+	>
+		<div class="space-y-2 px-6 py-4">
+			<!-- Listings -->
+			<a
+				href="/listings"
+				class="block rounded-lg px-4 py-3 font-medium text-slate-200 transition hover:bg-slate-700 hover:text-cyan-400"
+			>
+				Listings
+			</a>
+
+			<!-- New Listing -->
+			<a
+				href="/listings/new"
+				class="block rounded-lg bg-cyan-500 px-4 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-400"
+			>
+				New Listing
+			</a>
+		</div>
+	</div>
+</nav>
+
+<!-- ================= MOBILE MENU SCRIPT ================= -->
+<script>
+	const menuBtn = document.getElementById("menu-btn");
+	const mobileMenu = document.getElementById("mobile-menu");
+
+	menuBtn.addEventListener("click", () => {
+		mobileMenu.classList.toggle("hidden");
+	});
+</script>

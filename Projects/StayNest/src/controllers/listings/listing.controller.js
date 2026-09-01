@@ -6,7 +6,7 @@ const listingController = async (req, res) => {
 	} catch (err) {
 		console.log("listing controller error: ", err);
 		res.status(500).render("error.ejs", {
-			message: "Something went wrong!!!",
+			message: "Internal Server Error!!!",
 		});
 	}
 };
