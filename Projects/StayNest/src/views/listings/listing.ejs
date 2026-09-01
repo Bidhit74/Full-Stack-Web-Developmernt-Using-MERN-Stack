@@ -1,14 +1,13 @@
 <% layout("layouts/head")%> <% title = "Listings" %>
 <body>
-    <h1>All Listing Data </h1>
-    <hr>
-    <a href="listings/new">New Listing</a>
-    <hr>
-    <ul>
+    <h1 class="my-4 font-extrabold text-2xl text-center">All Hotals </h1>
+    <ul class="flex flex-wrap gap-5 p-3">
         <% for(let listing of listings){%>
-            <li>
+            <li class="bg-white w-100">
                 <a href="/listings/<%=listing._id%>">
-                    <%=listing.title%>
+                    <img src="<%= listing.imageUrl || "https://img.icons8.com/plasticine/1200/no-image.jpg"%>" alt="image" class="w-full h-60 rounded-lg">
+            <h3 class="font-bold "><%= listing.title %></h3>
+            <p>&#8377; <%=listing.price.toLocaleString('en-IN')%>/night</p>
                 </a>
             </li>
         <%}%>
