@@ -1,13 +1,158 @@
-<% layout("layouts/head")%> <% title = "StayNest" %>
+<% layout("layouts/head") %> <% title = "StayNest" %>
 
-<div>
-	<h1 class="text-lg font-bold">Hellow Bidhit Chaudhary</h1>
-	<p>
-		Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis autem
-		animi repellendus similique inventore molestiae sit ipsum, vel eaque s
-		Aliquid nobis voluptates reprehenderit cumque ab reiciendis aliquam,
-		optio quiepturi debitis totam eveniet ea illum, omnis quidem qui impedit
-		optio quam saepe? Dicta, harum numquam libero quidem quia provident
-		laudantium eaque corrupti optio earum commodi, alias eveniet. Expedita!
-	</p>
-</div>
+<!-- Hero Section -->
+<section class="bg-slate-50">
+	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+		<div class="grid items-center gap-12 lg:grid-cols-2">
+			<!-- Hero Content -->
+			<div class="text-center lg:text-left">
+				<span
+					class="inline-flex rounded-full bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-600"
+				>
+					Find your perfect stay
+				</span>
+
+				<h1
+					class="mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
+				>
+					Stay somewhere
+					<span class="text-blue-600">you'll love.</span>
+				</h1>
+
+				<p
+					class="mx-auto mt-6 max-w-xl text-base leading-7 text-slate-600 sm:text-lg lg:mx-0"
+				>
+					Discover beautiful places to stay, explore new destinations,
+					and make every trip memorable with StayNest.
+				</p>
+
+				<!-- CTA Buttons -->
+				<div
+					class="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start"
+				>
+					<a
+						href="/listings"
+						class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-blue-700"
+					>
+						Explore Listings
+					</a>
+
+					<a
+						href="/listings/new"
+						class="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition hover:bg-slate-50"
+					>
+						Add Your Property
+					</a>
+				</div>
+			</div>
+
+			<!-- Hero Visual -->
+			<div class="relative">
+				<div class="overflow-hidden rounded-3xl shadow-xl">
+					<img
+						src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+						alt="Beautiful vacation home"
+						class="h-80 w-full object-cover sm:h-105"
+					/>
+				</div>
+
+				<!-- Floating Card -->
+				<div
+					class="absolute -bottom-5 left-4 rounded-2xl bg-white p-4 shadow-lg sm:left-8"
+				>
+					<p class="text-xs font-medium text-slate-500">
+						Popular destination
+					</p>
+
+					<p class="mt-1 font-bold text-slate-900">
+						Your next adventure
+					</p>
+
+					<div
+						class="mt-2 flex items-center gap-2 text-sm text-slate-600"
+					>
+						<span class="text-orange-500">★</span>
+						<span>4.9</span>
+						<span>·</span>
+						<span>Great stays</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Features Section -->
+<section class="bg-white py-16">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-2xl text-center">
+			<h2 class="text-3xl font-bold text-slate-900">
+				Why choose StayNest?
+			</h2>
+
+			<p class="mt-4 text-slate-600">
+				Everything you need for a comfortable and memorable stay.
+			</p>
+		</div>
+
+		<div class="mt-12 grid gap-6 md:grid-cols-3">
+			<!-- Feature 1 -->
+			<div
+				class="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:shadow-md"
+			>
+				<div
+					class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-2xl"
+				>
+					🏡
+				</div>
+
+				<h3 class="mt-5 text-lg font-bold text-slate-900">
+					Beautiful Stays
+				</h3>
+
+				<p class="mt-2 leading-6 text-slate-600">
+					Find comfortable and unique properties for your next trip.
+				</p>
+			</div>
+
+			<!-- Feature 2 -->
+			<div
+				class="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:shadow-md"
+			>
+				<div
+					class="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-2xl"
+				>
+					⭐
+				</div>
+
+				<h3 class="mt-5 text-lg font-bold text-slate-900">
+					Trusted Experience
+				</h3>
+
+				<p class="mt-2 leading-6 text-slate-600">
+					Explore stays with clear information and a simple booking
+					experience.
+				</p>
+			</div>
+
+			<!-- Feature 3 -->
+			<div
+				class="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:shadow-md"
+			>
+				<div
+					class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-2xl"
+				>
+					❤️
+				</div>
+
+				<h3 class="mt-5 text-lg font-bold text-slate-900">
+					Made for Travelers
+				</h3>
+
+				<p class="mt-2 leading-6 text-slate-600">
+					Simple search, beautiful listings, and a smooth experience.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
