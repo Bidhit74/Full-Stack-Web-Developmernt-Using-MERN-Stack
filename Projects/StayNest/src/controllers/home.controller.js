@@ -4,9 +4,8 @@ const homeController = (req, res) => {
 	} catch (err) {
 		console.log("Home Controller Error: ", err);
 		res.status(500).render("error.ejs", {
-			message: "Internal Server Error!!!",
+			message: "Internal Server Error. Please try again later.",
 		});
 	}
 };
-
 export default homeController;
