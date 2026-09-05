@@ -1,20 +1,37 @@
 import express from "express";
+import ExpressError from "./ExpressError.js";
 
 const app = express();
 const port = 8000;
 
-app.get("/error", (req, res) => {
-	abc = abc;
-});
+// app.get("/error", (req, res) => {
+// 	abc = abc;
+// });
 // *** Error Handling Middleware
-app.use((err, req, res, next) => {
-	console.log("----------ERROR1 Middleware----------");
-	// next(); // next middlewar ke pass bhejega jaha error na ho
-	next(err); // default error next middlewar ke pass bhejega
-});
-app.use((err, req, res, next) => {
-	console.log("----------ERROR2 Middleware----------");
-	next(err);
+// app.use((err, req, res, next) => {
+// 	console.log("----------ERROR1 Middleware----------");
+// 	// next(); // next middlewar ke pass bhejega jaha error na ho
+// 	next(err); // default error next middlewar ke pass bhejega
+// });
+// app.use((err, req, res, next) => {
+// 	console.log("----------ERROR2 Middleware----------");
+// 	next(err);
+// });
+
+//** use of Custom Error Class*/
+const checkApi =
+	("/api",
+	(req, res, next) => {
+		const { token } = req.query;
+		if (token === "giveaccess") {
+			console.log("Access");
+			return next();
+		}
+		throw new ExpressError(401, "Access Denied!!!");
+	});
+
+app.get("/api", checkApi, (req, res) => {
+	res.send("Data");
 });
 
 app.get("/", (req, res) => {
