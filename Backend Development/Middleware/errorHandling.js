@@ -34,6 +34,11 @@ app.get("/api", checkApi, (req, res) => {
 	res.send("Data");
 });
 
+// Avctivity - admin throw ExpressError
+app.get("/admin", (req, res) => {
+	throw new ExpressError(403, "Access to admin is Forbidden");
+});
+
 // ** Custom Error Handling - user status code handle but not handle different status code
 // app.use((err, req, res, next) => {
 // 	const { status, message } = err;
