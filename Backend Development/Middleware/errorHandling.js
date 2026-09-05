@@ -35,8 +35,13 @@ app.get("/api", checkApi, (req, res) => {
 });
 
 // ** Custom Error Handling - user status code handle but not handle different status code
+// app.use((err, req, res, next) => {
+// 	const { status, message } = err;
+// 	res.status(status).send(message);
+// });
+// ** Custom Error Handling - user status code handle with handle different status code - send default status code
 app.use((err, req, res, next) => {
-	const { status, message } = err;
+	const { status = 500, message } = err;
 	res.status(status).send(message);
 });
 
