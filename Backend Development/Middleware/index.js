@@ -32,12 +32,25 @@ const port = 8000;
 // 	return next();
 // });
 
+// *** Spacefic path middleware
+app.use("/random", (req, res, next) => {
+	console.log(
+		"This page only random page middleware - (es pe bhi kaam karega but base '/random'/abc) ",
+	);
+	next();
+});
+
 app.get("/", (req, res) => {
 	res.send("Hello Bidhit");
 });
 
 app.get("/random", (req, res) => {
 	res.send("This is a random page");
+});
+
+// *** This work end with not found url than work this middleware
+app.use((req, res) => {
+	res.status(404).send("Not Found - 404");
 });
 app.listen(port, () => {
 	console.log("Server listening to port: ", port);
