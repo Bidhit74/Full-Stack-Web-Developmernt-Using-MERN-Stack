@@ -4,9 +4,9 @@ import ExpressError from "./ExpressError.js";
 const app = express();
 const port = 8000;
 
-// app.get("/error", (req, res) => {
-// 	abc = abc;
-// });
+app.get("/error", (req, res) => {
+	abc = abc;
+});
 // *** Error Handling Middleware
 // app.use((err, req, res, next) => {
 // 	console.log("----------ERROR1 Middleware----------");
@@ -32,6 +32,12 @@ const checkApi =
 
 app.get("/api", checkApi, (req, res) => {
 	res.send("Data");
+});
+
+// ** Custom Error Handling - user status code handle but not handle different status code
+app.use((err, req, res, next) => {
+	const { status, message } = err;
+	res.status(status).send(message);
 });
 
 app.get("/", (req, res) => {
