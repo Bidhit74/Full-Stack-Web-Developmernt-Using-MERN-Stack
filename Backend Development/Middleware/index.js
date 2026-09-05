@@ -41,17 +41,30 @@ const port = 8000;
 // });
 
 // *** API Token as Query String
-app.use("/api", (req, res, next) => {
-	const { token } = req.query;
-	if (token === "giveaccess") {
-		console.log("Access");
-		return next();
-	}
-	console.log("Access Denied");
-	res.send("Access Denied!!!");
-});
+// app.use("/api", (req, res, next) => {
+// 	const { token } = req.query;
+// 	if (token === "giveaccess") {
+// 		console.log("Access");
+// 		return next();
+// 	}
+// 	console.log("Access Denied");
+// 	res.send("Access Denied!!!");
+// });
 
-app.get("/api", (req, res) => {
+// *** Multiple middleware pass
+const checkApi =
+	("/api",
+	(req, res, next) => {
+		const { token } = req.query;
+		if (token === "giveaccess") {
+			console.log("Access");
+			return next();
+		}
+		console.log("Access Denied");
+		res.send("Access Denied!!!");
+	});
+
+app.get("/api", checkApi, (req, res) => {
 	res.send("Data");
 });
 
