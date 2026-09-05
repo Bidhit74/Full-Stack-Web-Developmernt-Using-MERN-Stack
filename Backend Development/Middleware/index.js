@@ -1,0 +1,44 @@
+import express from "express";
+
+const app = express();
+const port = 8000;
+
+// *** This working every path response and not allow any path show your data
+// app.use((req, res) => {
+// 	console.log("Hi, I'm a Middleware");
+// 	res.send("Middleware Finished");
+// });
+
+// *** Get the data your path or next middleware you can use - next()
+// Midlleware working every path(if path is wrong uske baad bhi work karega) and every request middleware working
+// app.use((req, res, next) => {
+// 	console.log("Hi, I'm a first Middleware");
+// 	// next();
+// 	// next() is not a end but a good developer not write the code after next() -- esiliye good practice use -- "return next()"
+// 	// console.log("After the next"); // this is working after all midlleware calls
+// 	return next();
+// });
+// app.use((req, res, next) => {
+// 	console.log("Hi, I'm a second Middleware");
+// 	return next();
+// });
+
+// *** Create a utility middleware - Logger
+// middleware write always top or top your request --- kuyki agar end me likhenge to path/get request send() your path than not working middleware -- always top your code base
+// app.use((req, res, next) => {
+// 	console.log(
+// 		`Method - ${req.method} || Hostname: ${req.hostname} || Path - ${req.path}`,
+// 	);
+// 	return next();
+// });
+
+app.get("/", (req, res) => {
+	res.send("Hello Bidhit");
+});
+
+app.get("/random", (req, res) => {
+	res.send("This is a random page");
+});
+app.listen(port, () => {
+	console.log("Server listening to port: ", port);
+});
