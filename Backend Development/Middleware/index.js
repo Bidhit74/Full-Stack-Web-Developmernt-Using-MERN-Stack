@@ -33,11 +33,26 @@ const port = 8000;
 // });
 
 // *** Spacefic path middleware
-app.use("/random", (req, res, next) => {
-	console.log(
-		"This page only random page middleware - (es pe bhi kaam karega but base '/random'/abc) ",
-	);
-	next();
+// app.use("/random", (req, res, next) => {
+// 	console.log(
+// 		"This page only random page middleware - (es pe bhi kaam karega but base '/random'/abc) ",
+// 	);
+// 	next();
+// });
+
+// *** API Token as Query String
+app.use("/api", (req, res, next) => {
+	const { token } = req.query;
+	if (token === "giveaccess") {
+		console.log("Access");
+		return next();
+	}
+	console.log("Access Denied");
+	res.send("Access Denied!!!");
+});
+
+app.get("/api", (req, res) => {
+	res.send("Data");
 });
 
 app.get("/", (req, res) => {
