@@ -14,7 +14,7 @@ const App = () => {
 	app.set("views", path.join(import.meta.dirname, "views"));
 
 	//Use public folder
-	app.use(express.static(path.join(import.meta.dirname, "/public")));
+	app.use(express.static(path.join(import.meta.dirname, "public")));
 
 	// Middleware for json data read and send
 	app.use(express.urlencoded({ extended: true }));
