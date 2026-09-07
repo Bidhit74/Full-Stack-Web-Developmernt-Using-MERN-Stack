@@ -3,6 +3,7 @@ import path from "path";
 import routes from "./routes/index.routes.js";
 import methodOverride from "method-override";
 import ejsMate from "ejs-mate";
+import handerError from "./middlewares/error-handler.middleware.js";
 
 const App = () => {
 	const app = express();
@@ -26,7 +27,8 @@ const App = () => {
 	// Routes
 	app.use("/", routes);
 
-	// Home Routes
+	// middleware
+	app.use(handerError);
 
 	return app;
 };
