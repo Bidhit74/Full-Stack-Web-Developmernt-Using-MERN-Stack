@@ -45,7 +45,7 @@
 						value="<%= listing.title %>"
 						placeholder="Enter listing title"
 						required
-						class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+						class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 user-invalid:border-red-500 user-valid:border-green-500"
 					/>
 				</div>
 
@@ -64,7 +64,7 @@
 						rows="5"
 						required
 						placeholder="Describe your property..."
-						class="w-full resize-y rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+						class="w-full resize-y rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 user-invalid:border-red-500 user-valid:border-green-500"
 					>
 <%= listing.description %></textarea
 					>
@@ -85,7 +85,8 @@
 						name="listing[imageUrl]"
 						value="<%= listing.imageUrl %>"
 						placeholder="https://example.com/image.jpg"
-						class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+						class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 user-invalid:border-red-500 user-valid:border-green-500"
+						required
 					/>
 
 					<p class="mt-2 text-xs text-slate-500">
@@ -116,7 +117,7 @@
 							value="<%= listing.price %>"
 							min="0"
 							required
-							class="w-full rounded-lg border border-slate-300 py-3 pl-9 pr-4 text-slate-900 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+							class="w-full rounded-lg border border-slate-300 py-3 pl-9 pr-4 text-slate-900 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100 user-invalid:border-red-500 user-valid:border-green-500"
 						/>
 					</div>
 				</div>
@@ -139,7 +140,7 @@
 							value="<%= listing.location %>"
 							placeholder="e.g. Patna"
 							required
-							class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+							class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 user-invalid:border-red-500 user-valid:border-green-500"
 						/>
 					</div>
 
@@ -159,7 +160,7 @@
 							value="<%= listing.country %>"
 							placeholder="e.g. India"
 							required
-							class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+							class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 user-invalid:border-red-500 user-valid:border-green-500"
 						/>
 					</div>
 				</div>
