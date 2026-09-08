@@ -1,5 +1,5 @@
 const handerError = (err, req, res, next) => {
-	console.error("Message:", err.message);
+	console.error("Message:", err.stack);
 	res.status(500).render("error.ejs", {
 		message: "Internal Server Error. Please try again later.",
 	});
