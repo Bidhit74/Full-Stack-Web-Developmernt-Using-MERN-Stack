@@ -4,6 +4,7 @@ import routes from "./routes/index.routes.js";
 import methodOverride from "method-override";
 import ejsMate from "ejs-mate";
 import handerError from "./middlewares/error-handler.middleware.js";
+import ExpressError from "./utils/ExpressError.js";
 
 const App = () => {
 	const app = express();
@@ -26,6 +27,12 @@ const App = () => {
 
 	// Routes
 	app.use("/", routes);
+
+	// agar kis routes se nahi match kare tab;
+	// 404 handler
+	app.all("/{*splat}", (req, res, next) => {
+		next(new ExpressError(404, "Page not found"));
+	});
 
 	// middleware
 	app.use(handerError);

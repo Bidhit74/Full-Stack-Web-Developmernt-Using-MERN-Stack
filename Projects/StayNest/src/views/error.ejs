@@ -7,7 +7,7 @@
 
 		<meta name="description" content="StayNest - Something went wrong" />
 
-		<title>Error | StayNest</title>
+		<title><%= statusCode %> | StayNest</title>
 		<!-- Tailwind CSS -->
 		<link rel="stylesheet" href="/css/output.css" />
 	</head>
@@ -47,8 +47,11 @@
 				<p
 					class="mx-auto mt-4 max-w-md text-base leading-7 text-slate-600"
 				>
-					<%= message || "We couldn't complete your request. Please"
-					%>
+				<% if (statusCode === 404) { %>
+                    <%= message %>
+                <% } else { %>
+					Internal Server Error. Please try again later.
+                <% } %>
 				</p>
 
 				<!-- Divider -->
@@ -63,6 +66,7 @@
 					>
 						Go to Home
 					</a>
+					<button type="button" onclick="history.back()" class="inline-flex items-center cursor-pointer justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition hover:bg-slate-50" > Go Back </button>
 				</div>
 
 				<!-- Support Text -->
