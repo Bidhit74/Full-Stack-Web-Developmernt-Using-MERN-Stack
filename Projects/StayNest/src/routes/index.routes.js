@@ -7,12 +7,14 @@ import addDBUserListingController from "../controllers/listings/add-db-user-list
 import editController from "../controllers/listings/edit.controller.js";
 import updateController from "../controllers/listings/update.controller.js";
 import deleteController from "../controllers/listings/delete.controller.js";
+import validateListing from "../middlewares/validateListing.js";
 
 const router = express.Router();
 
 router.get("/", homeController);
 router.get("/listings", listingController);
-router.post("/listings", addDBUserListingController);
+// add middleware validate schema
+router.post("/listings", validateListing, addDBUserListingController);
 router.get("/listings/new", createListing);
 router.get("/listings/:id", showListing);
 router.put("/listings/:id", updateController);

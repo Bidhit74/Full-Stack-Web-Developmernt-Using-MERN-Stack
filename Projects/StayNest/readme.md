@@ -61,7 +61,7 @@ Central errorHandler
 | `try...catch`          | ✅ Only when needed    |
 | Central `errorHandler` | ✅ Recommended         |
 
-## Schema Validation
+## Schema Validation - server side
 
 - Joi का काम: request data validate करना। -- npm install joi
 - ExpressError का काम: validation error को proper HTTP error बनाना।
