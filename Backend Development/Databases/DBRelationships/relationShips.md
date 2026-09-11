@@ -68,3 +68,48 @@ Enrollments
    ↓
 Courses
 ```
+
+## MongoDB Relationships
+
+### One-to-Many / One-to-Few — Approach 1
+
+#### Store the Child Document Inside the Parent
+
+- In this approach, the **child documents are embedded inside the parent document**.
+
+##### Example
+
+- A user has a few addresses:
+
+```json
+{
+	"_id": 1,
+	"name": "Rahul",
+	"addresses": [
+		{
+			"city": "Patna",
+			"country": "India"
+		},
+		{
+			"city": "Delhi",
+			"country": "India"
+		}
+	]
+}
+```
+
+Here:
+
+```text
+User (Parent)
+   ↓
+addresses (Children)
+   ├── Address 1
+   └── Address 2
+```
+
+```text
+User → Few Addresses
+Post → Few Comments
+Product → Few Specifications
+```
