@@ -17,6 +17,23 @@ const customerSchema = new Schema({
         },
     ],
 });
+
+// ** Middleware - Pre
+// Pre - run before the query is executed
+// customerSchema.pre("findOneAndDelete", async () => {
+//     console.log("Pre - Middleware");
+// });
+
+// ** Middleware - Post
+// Post - run after the query is executed
+customerSchema.post("findOneAndDelete", async (customer) => {
+    if (customer.orders.length) {
+        let res = await Order.deleteMany({ _id: { $in: customer.orders } });
+        console.log(res);
+    }
+    console.log("Post - Middleware");
+});
+
 const Order = model("Order", orderSchema);
 const Customer = model("Customer", customerSchema);
 
@@ -59,11 +76,15 @@ const findCustomer = async () => {
 
 // findCustomer();
 
-// Delete Customer - only Delete customer - not delete link order
+// ** Delete Customer - only Delete customer - not delete link order
 const delCust = async () => {
-    let data = await Customer.findByIdAndDelete("6aa58c48ab440df7079eab61");
+    let data = await Customer.findByIdAndDelete("6aa592166e084a34d17f6804");
     console.log(data);
 };
-delCust();
+// delCust();
 
+// ** After Define Pre Schema
+// Pre - middleware functions are executed one after another.
+// findByIdAndDelete() - This function triggers the following middleware - findOneAndDelete()
+delCust();
 // export default Customer;
