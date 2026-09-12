@@ -73,28 +73,26 @@ Courses
 
 ### One-to-Many / One-to-Few — Approach 1
 
-#### Store the Child Document Inside the Parent
+- Store the Child Document Inside the Parent: In this approach, the **child documents are embedded inside the parent document**.
 
-- In this approach, the **child documents are embedded inside the parent document**.
-
-##### Example
+#### Example
 
 - A user has a few addresses:
 
 ```json
 {
-	"_id": 1,
-	"name": "Rahul",
-	"addresses": [
-		{
-			"city": "Patna",
-			"country": "India"
-		},
-		{
-			"city": "Delhi",
-			"country": "India"
-		}
-	]
+    "_id": 1,
+    "name": "Rahul",
+    "addresses": [
+        {
+            "city": "Patna",
+            "country": "India"
+        },
+        {
+            "city": "Delhi",
+            "country": "India"
+        }
+    ]
 }
 ```
 
@@ -113,3 +111,5 @@ User → Few Addresses
 Post → Few Comments
 Product → Few Specifications
 ```
+
+### One to Many - Approach - 02
