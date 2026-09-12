@@ -33,13 +33,10 @@ const addOrder = async () => {
 
 const customerAdd = async () => {
     const customer1 = new Customer({
-        name: "Bidhit",
+        name: "Rahul",
     });
-    const order1 = await Order.findOne({ item: "chips" });
-    const order2 = await Order.findOne({ item: "milk" });
+    const order1 = await Order.findOne({ item: "mango" });
     customer1.orders.push(order1);
-    customer1.orders.push(order2);
-
     const res = await customer1.save();
     console.log(res);
 };
@@ -60,6 +57,13 @@ const findCustomer = async () => {
     console.log(customersWithOrders[0]);
 };
 
-findCustomer();
+// findCustomer();
+
+// Delete Customer - only Delete customer - not delete link order
+const delCust = async () => {
+    let data = await Customer.findByIdAndDelete("6aa58c48ab440df7079eab61");
+    console.log(data);
+};
+delCust();
 
 // export default Customer;
