@@ -177,6 +177,18 @@ const userSchema = new Schema({
 });
 ```
 
+```js
+ {
+    _id: ObjectId('6aa51b6f0b8b2e74b47ece94'),
+    name: 'Bidhit',
+    orders: [
+      ObjectId('6aa5191b8935839565aabec2'),
+      ObjectId('6aa5191b8935839565aabec3')
+    ],
+    __v: 0
+  }
+```
+
 - **One-to-Many** relationships
 - Large number of child documents
 - Child documents need to be accessed independently
