@@ -112,4 +112,78 @@ Post → Few Comments
 Product → Few Specifications
 ```
 
-### One to Many - Approach - 02
+### One-to-Many — Approach 2
+
+- Store References to Child Documents Inside Parent
+
+- In this approach, the parent document stores the **IDs (references)** of its child documents instead of embedding the complete child documents.
+
+#### Example of One-to-Many
+
+User
+
+```json
+{
+    "_id": "U1",
+    "name": "Rahul",
+    "posts": ["P1", "P2", "P3"]
+}
+```
+
+Posts
+
+```json
+{
+    "_id": "P1",
+    "title": "My First Post"
+}
+```
+
+```json
+{
+    "_id": "P2",
+    "title": "My Second Post"
+}
+```
+
+```json
+{
+    "_id": "P3",
+    "title": "My Third Post"
+}
+```
+
+#### Relationship
+
+```text
+User
+ ├── P1 → Post 1
+ ├── P2 → Post 2
+ └── P3 → Post 3
+```
+
+Schema
+
+```js
+const userSchema = new Schema({
+    name: String,
+
+    posts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Post",
+        },
+    ],
+});
+```
+
+- **One-to-Many** relationships
+- Large number of child documents
+- Child documents need to be accessed independently
+- Parent document should remain small
+
+```text
+User → Many Posts
+Author → Many Books
+Customer → Many Orders
+```
