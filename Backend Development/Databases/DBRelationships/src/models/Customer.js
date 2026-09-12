@@ -44,6 +44,22 @@ const customerAdd = async () => {
     console.log(res);
 };
 
-customerAdd();
+// customerAdd();
+
+const findCustomer = async () => {
+    // Fetch all customers from the Customer collection
+    const customers = await Customer.find();
+    // Fetch customers along with their related orders
+    // populate("orders") replaces order IDs with complete Order documents
+    const customersWithOrders = await Customer.find().populate("orders");
+    // Print all customers
+    console.log(customers);
+    // Print customers with populated order details /
+    console.log(customersWithOrders);
+    // Print the first customer with their complete order details
+    console.log(customersWithOrders[0]);
+};
+
+findCustomer();
 
 // export default Customer;
