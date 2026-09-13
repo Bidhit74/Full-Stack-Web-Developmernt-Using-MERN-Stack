@@ -1,0 +1,102 @@
+<% layout("layouts/head") %> <% title = "Add Review | StayNest" %>
+
+<div class="min-h-screen bg-slate-50 py-10">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+        <!-- Back Link -->
+        <a
+            href="/listings"
+            class="mb-6 inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-700"
+        >
+            ← Back to Listings
+        </a>
+
+        <!-- Review Card -->
+        <div class="overflow-hidden rounded-2xl bg-white shadow-lg">
+            <!-- Header -->
+            <div class="border-b border-slate-200 px-6 py-6 sm:px-8">
+                <h1 class="text-2xl font-bold text-slate-900 sm:text-3xl">
+                    Leave a Review
+                </h1>
+
+                <p class="mt-2 text-sm text-slate-500">
+                    Share your experience with this listing.
+                </p>
+            </div>
+
+            <!-- Form -->
+            <form
+                action="/reviews"
+                method="POST"
+                class="space-y-6 px-6 py-6 sm:px-8"
+            >
+                <!-- Comment -->
+                <div>
+                    <label
+                        for="comment"
+                        class="mb-2 block text-sm font-semibold text-slate-700"
+                    >
+                        Your Review
+                    </label>
+
+                    <textarea
+                        id="comment"
+                        name="review[comment]"
+                        rows="5"
+                        required
+                        minlength="5"
+                        maxlength="500"
+                        placeholder="Tell us about your experience..."
+                        class="w-full resize-y rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+                    ></textarea>
+
+                    <p class="mt-2 text-xs text-slate-500">
+                        Maximum 500 characters.
+                    </p>
+                </div>
+
+                <!-- Rating -->
+                <div>
+                    <label
+                        for="rating"
+                        class="mb-2 block text-sm font-semibold text-slate-700"
+                    >
+                        Rating
+                    </label>
+
+                    <select
+                        id="rating"
+                        name="review[rating]"
+                        required
+                        class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+                    >
+                        <option value="">Select a rating</option>
+                        <option value="5">★★★★★ - Excellent</option>
+                        <option value="4">★★★★☆ - Very Good</option>
+                        <option value="3">★★★☆☆ - Good</option>
+                        <option value="2">★★☆☆☆ - Fair</option>
+                        <option value="1">★☆☆☆☆ - Poor</option>
+                    </select>
+                </div>
+
+                <!-- Buttons -->
+                <div
+                    class="flex flex-col gap-3 border-t border-slate-200 pt-6 sm:flex-row sm:justify-end"
+                >
+                    <a
+                        href="/listings"
+                        class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-6 py-3 font-semibold text-slate-700 transition hover:bg-slate-50"
+                    >
+                        Cancel
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="cursor-pointer inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
+                        Submit Review
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
