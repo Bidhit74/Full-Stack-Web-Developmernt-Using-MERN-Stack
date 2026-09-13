@@ -1,5 +1,6 @@
 const reviewController = async (req, res) => {
-    res.render("listings/review.ejs");
+    const { id } = req.params;
+    res.render("listings/review.ejs", { id });
 };
 
 export default reviewController;

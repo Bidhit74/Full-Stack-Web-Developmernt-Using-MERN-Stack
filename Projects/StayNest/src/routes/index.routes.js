@@ -9,6 +9,7 @@ import updateController from "../controllers/listings/update.controller.js";
 import deleteController from "../controllers/listings/delete.controller.js";
 import validateListing from "../middlewares/validateListing.js";
 import reviewController from "../controllers/listings/review.controller.js";
+import reviewAddDb from "../controllers/listings/review-add-db.controller.js";
 
 const router = express.Router();
 
@@ -22,5 +23,6 @@ router.put("/listings/:id", updateController);
 router.delete("/listings/:id", deleteController);
 router.get("/listings/:id/edit", editController);
 router.get("/listings/:id/review", reviewController);
+router.post("/listings/:id/review", reviewAddDb);
 
 export default router;
