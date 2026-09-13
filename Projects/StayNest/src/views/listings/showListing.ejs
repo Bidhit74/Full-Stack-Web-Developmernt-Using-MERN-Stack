@@ -20,7 +20,31 @@
                     class="h-full w-full object-cover transition duration-300 hover:scale-102"
                 />
             </div>
+            <!-- Reviews Page -->
+            <% if (reviews.length > 0) { %>
+            <div class="mt-4 ml-5 flex items-center gap-3 border-b border-slate-200 pb-4">
+                    <h3 class="text-xl font-bold text-slate-900">
+                        Reviews
+                        <span class="ml-1 text-sm font-medium text-slate-500">
+                        (<%= reviews.length %>) </span>
+                    </h3>
 
+                <div class="flex items-center gap-1 rounded-full bg-orange-50 px-3 py-1">
+                    <span class="text-orange-500">★</span>
+
+                    <span class="font-semibold text-slate-800">
+                        <% let rating = 0; %>
+
+                        <% for (let review of reviews) { %>
+                            <% rating += review.rating; %>
+                        <% } %>
+
+                        <%= (rating / reviews.length).toFixed(1) %>
+                    </span>
+                </div>
+            </div>
+            <% } %>
+        </div>
             <!-- Listing Content -->
             <div class="p-6 sm:p-8">
                 <!-- Title -->
@@ -115,6 +139,5 @@
                     </a>
                 </div>
             </div>
-        </div>
     </div>
 </div>
