@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import Review from "./Review.js";
 
 const listingSchema = new Schema({
     title: {
@@ -33,6 +34,16 @@ const listingSchema = new Schema({
             ref: "Review",
         },
     ],
+});
+
+// Post middleware: Runs after a listing is deleted.
+// Deletes all reviews that belong to the deleted listing.
+listingSchema.post("findOneAndDelete", async (listing) => {
+    if (listing) {
+        await Review.deleteMany({
+            _id: { $in: listing.reviews },
+        });
+    }
 });
 
 const Listing = model("Listing", listingSchema);
