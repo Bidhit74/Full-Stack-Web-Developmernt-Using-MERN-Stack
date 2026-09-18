@@ -8,10 +8,10 @@ import editController from "../controllers/listings/edit.controller.js";
 import updateController from "../controllers/listings/update.controller.js";
 import deleteController from "../controllers/listings/delete.controller.js";
 import validateListing from "../middlewares/validateListing.js";
-import reviewController from "../controllers/listings/review.controller.js";
-import reviewAddDb from "../controllers/listings/review-add-db.controller.js";
+import reviewController from "../controllers/reviews/review.controller.js";
+import reviewAddDb from "../controllers/reviews/review-add-db.controller.js";
 import validateReviews from "../middlewares/validateReviews.js";
-import reviewDel from "../controllers/listings/review-del.controller.js";
+import reviewDel from "../controllers/reviews/review-del.controller.js";
 
 const router = express.Router();
 
