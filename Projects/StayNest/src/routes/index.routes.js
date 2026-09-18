@@ -11,6 +11,7 @@ import validateListing from "../middlewares/validateListing.js";
 import reviewController from "../controllers/listings/review.controller.js";
 import reviewAddDb from "../controllers/listings/review-add-db.controller.js";
 import validateReviews from "../middlewares/validateReviews.js";
+import reviewDel from "../controllers/listings/review-del.controller.js";
 
 const router = express.Router();
 
@@ -25,5 +26,6 @@ router.delete("/listings/:id", deleteController);
 router.get("/listings/:id/edit", editController);
 router.get("/listings/:id/review", reviewController);
 router.post("/listings/:id/review", validateReviews, reviewAddDb);
+router.delete("/listings/:id/reviews/:reviewId", reviewDel);
 
 export default router;
