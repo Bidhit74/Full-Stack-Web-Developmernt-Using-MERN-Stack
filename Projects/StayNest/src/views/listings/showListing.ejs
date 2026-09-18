@@ -138,6 +138,22 @@
                         Add Review
                     </a>
                 </div>
+
+                <!-- All Reviews -->
+                <%if(reviews.length!==0){%>
+                <br><hr>
+                <h2 class="text-3xl font-bold">All Reviews</h2>
+                <br>
+                <div class="flex flex-wrap gap-2">
+                    <%for(let review of reviews){%>
+                    <div class="w-48 h-28 bg-amber-100 flex rounded flex-col justify-center items-center">
+                        <h3 class="text-lg font-semibold">Bidhit Chaudhary</h3>
+                        <p><%= review.comment %></p>
+                        <span class="font-semibold"><%= review.rating %> Star</span>
+                    </div>
+                    <%}%>
+                </div>
+                <%}%>
             </div>
     </div>
 </div>
