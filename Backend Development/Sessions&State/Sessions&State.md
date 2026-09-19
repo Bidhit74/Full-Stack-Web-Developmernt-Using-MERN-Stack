@@ -69,7 +69,11 @@ Sessions are commonly used for:
 
 ---
 
-## Express Example
+### Express Sessions
+
+- An attempt to make out session **stateful**.
+
+#### Express Example
 
 ```js
 import session from "express-session";
