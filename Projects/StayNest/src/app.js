@@ -5,39 +5,49 @@ import methodOverride from "method-override";
 import ejsMate from "ejs-mate";
 import handerError from "./middlewares/error-handler.middleware.js";
 import ExpressError from "./utils/ExpressError.js";
+import dotenv from "dotenv";
+import session from "express-session";
 
 const App = () => {
-	const app = express();
+    const app = express();
+    dotenv.config();
 
-	// use ejs-locals for all ejs templates:
-	app.engine("ejs", ejsMate);
-	// EJS
-	app.set("view engine", "ejs");
-	app.set("views", path.join(import.meta.dirname, "views"));
+    const sessionOptions = {
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+    };
+    // use session
+    app.use(session(sessionOptions));
 
-	//Use public folder
-	app.use(express.static(path.join(import.meta.dirname, "public")));
+    // use ejs-locals for all ejs templates:
+    app.engine("ejs", ejsMate);
+    // EJS
+    app.set("view engine", "ejs");
+    app.set("views", path.join(import.meta.dirname, "views"));
 
-	// Middleware for json data read and send
-	app.use(express.urlencoded({ extended: true }));
-	app.use(express.json());
+    //Use public folder
+    app.use(express.static(path.join(import.meta.dirname, "public")));
 
-	// override with POST having ?_method=DELETE
-	app.use(methodOverride("_method"));
+    // Middleware for json data read and send
+    app.use(express.urlencoded({ extended: true }));
+    app.use(express.json());
 
-	// Routes
-	app.use("/", routes);
+    // override with POST having ?_method=DELETE
+    app.use(methodOverride("_method"));
+    // Routes
+    app.use("/", routes);
 
-	// agar kis routes se nahi match kare tab;
-	// 404 handler
-	app.all("/{*splat}", (req, res, next) => {
-		next(new ExpressError(404, "Page not found"));
-	});
+    // agar kis routes se nahi match kare tab;
+    // 404 handler
+    app.all("/{*splat}", (req, res, next) => {
+        next(new ExpressError(404, "Page not found"));
+    });
 
-	// middleware
-	app.use(handerError);
+    // middleware
+    app.use(handerError);
 
-	return app;
+    return app;
 };
 
 export default App;
