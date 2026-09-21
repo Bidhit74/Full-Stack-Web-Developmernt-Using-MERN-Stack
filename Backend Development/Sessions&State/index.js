@@ -2,15 +2,12 @@ import express from "express";
 import session from "express-session";
 
 const app = express();
-
-app.use(
-    session({
-        secret: "mySecret",
-        resave: false,
-        saveUninitialized: false, // Recommended default // empty session ko save mat karo
-        // saveUninitialized: true, // Use 'true' only when you specifically need a session to be created/saved before you add any data.
-    }),
-);
+const sessionOptions = {
+    secret: "mySecret",
+    resave: false,
+    saveUninitialized: false,
+};
+app.use(session(sessionOptions));
 
 app.get("/", (req, res) => {
     res.send("Hellow Bidhit Chaudhary");
@@ -23,6 +20,18 @@ app.get("/request", (req, res) => {
         req.session.count = 1;
     }
     res.send(`Request Count = ${req.session.count}`);
+});
+
+app.get("/register", (req, res) => {
+    const { name = "Annonymous" } = req.query;
+    req.session.username = name;
+    res.send(`Register username = ${name}`);
+});
+
+app.get("/user", (req, res) => {
+    const username = req.session.username;
+    // console.log(req.session);
+    res.send(`Hello Mr - ${username}`);
 });
 
 app.listen(3000, () => {
