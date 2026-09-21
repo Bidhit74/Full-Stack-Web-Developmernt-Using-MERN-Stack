@@ -41,6 +41,10 @@ const App = () => {
     // agar kis routes se nahi match kare tab;
     // 404 handler
     app.all("/{*splat}", (req, res, next) => {
+        // Devtools request handle
+        if (req.path === "/.well-known/appspecific/com.chrome.devtools.json") {
+            return res.status(204).end();
+        }
         next(new ExpressError(404, "Page not found"));
     });
 
