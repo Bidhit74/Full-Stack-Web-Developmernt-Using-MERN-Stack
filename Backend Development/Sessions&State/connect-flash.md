@@ -84,3 +84,31 @@ Message is removed
 ```
 
 > **Key Point:** `connect-flash` is mainly used for **one-time success/error notifications**, especially after redirects.
+
+## res.locals
+
+`res.locals` is used to store **data accessible in EJS views for the current request**.
+
+```js
+app.use((req, res, next) => {
+    res.locals.username = "Bidhit";
+    next();
+});
+```
+
+In EJS:
+
+```ejs
+<%= username %>
+```
+
+### Common Uses
+
+```text
+Flash messages
+User info
+Login status
+Common template data
+```
+
+**Key Point:** `res.locals` → data available to views during the current request.

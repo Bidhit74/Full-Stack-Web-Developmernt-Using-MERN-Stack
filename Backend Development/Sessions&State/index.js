@@ -19,7 +19,12 @@ app.use(flash());
 app.get("/", (req, res) => {
     res.send("Hellow Bidhit Chaudhary");
 });
-
+// best use of connect flash with middleware
+app.use((req, res, next) => {
+    res.locals.successMessage = req.flash("success");
+    res.locals.errorMessage = req.flash("error");
+    next();
+});
 app.get("/request", (req, res) => {
     if (req.session.count) {
         req.session.count += 1;
@@ -33,14 +38,18 @@ app.get("/register", (req, res) => {
     const { name = "Annonymous" } = req.query;
     req.session.username = name;
     // req.flash(key, message)
-    req.flash("success", "Username register successfully.");
-    res.send(`Register username = ${name}`);
+    if (name === "Annonymous") {
+        req.flash("error", "Username not register.");
+    } else {
+        req.flash("success", "Username register successfully.");
+    }
+    res.redirect(`/user`);
 });
 
 app.get("/user", (req, res) => {
     const username = req.session.username || "Bidhit Chaudhary";
     // console.log(req.session);
-    res.render("index.ejs", { username, message: req.flash("success") });
+    res.render("index.ejs", { username });
 });
 
 app.listen(3000, () => {
