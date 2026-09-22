@@ -11,6 +11,7 @@ const reviewAddDb = async (req, res) => {
     // Save in Database
     await newReview.save();
     await listing.save();
+    req.flash("success", "Review added successfully");
 
     res.redirect(`/listings/${id}`);
 };

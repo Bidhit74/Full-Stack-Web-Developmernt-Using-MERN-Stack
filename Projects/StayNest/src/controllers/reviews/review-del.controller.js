@@ -11,6 +11,7 @@ const reviewDel = async (req, res) => {
         $pull: { reviews: reviewId },
     });
     console.log(reviewDel);
+    req.flash("success", "Review deleted successfully");
     res.redirect(`/listings/${id}`);
 };
 
