@@ -7,6 +7,7 @@ import handerError from "./middlewares/error-handler.middleware.js";
 import ExpressError from "./utils/ExpressError.js";
 import dotenv from "dotenv";
 import session from "express-session";
+import flash from "connect-flash";
 
 const App = () => {
     const app = express();
@@ -16,9 +17,22 @@ const App = () => {
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
+        cookie: {
+            path: "/", // By default
+            expires: Date.now() + 3 * 24 * 60 * 60 * 1000, // (3 * 24 * 60 * 60 * 1000 || day * hours * minuts * seconds * miliseconds)
+            maxAge: 3 * 24 * 60 * 60 * 1000, // 3 Days
+            httpOnly: true, // By default
+        },
     };
-    // use session
+    // use session middleware
     app.use(session(sessionOptions));
+    // connect-flash middleware
+    app.use(flash());
+    // local temp storage middleware
+    app.use((req, res, next) => {
+        res.locals.success = req.flash("success");
+        next();
+    });
 
     // use ejs-locals for all ejs templates:
     app.engine("ejs", ejsMate);
