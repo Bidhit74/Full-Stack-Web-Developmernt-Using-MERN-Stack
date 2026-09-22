@@ -15,7 +15,7 @@ router.get("/", listingController);
 router.post("/", validateListing, addDBUserListingController);
 router.get("/new", createListing);
 router.get("/:id", showListing);
-router.put("/:id", updateController);
+router.put("/:id", validateListing, updateController);
 router.delete("/:id", deleteController);
 router.get("/:id/edit", editController);
 
