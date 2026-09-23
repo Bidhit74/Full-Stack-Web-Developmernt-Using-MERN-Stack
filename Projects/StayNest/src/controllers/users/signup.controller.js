@@ -1,5 +1,5 @@
 const SignUp = async (req, res) => {
-    res.send("Signup");
+    res.render("users/signup.ejs");
 };
 
 export default SignUp;
