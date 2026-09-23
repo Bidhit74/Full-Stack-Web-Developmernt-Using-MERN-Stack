@@ -1,5 +1,5 @@
 const Login = async (req, res) => {
-    res.send("Login");
+    res.render("users/login.ejs");
 };
 
 export default Login;
