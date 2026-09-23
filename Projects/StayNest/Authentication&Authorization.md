@@ -161,3 +161,20 @@ const user = await User.register({ username: "Bidhit" }, "mypassword");
   The plugin also uses PBKDF2 with SHA-256 by default.
 
 **Key Point:** passport-local-mongoose simplifies user registration, password hashing, authentication, and Passport session support.
+
+### Authenticate Requests
+
+- Passport provides an authenticate() function, which is used as route middleware to authenticate requests.
+
+```js
+app.post(
+    "/login",
+    passport.authenticate("local", {
+        failureRedirect: "/login",
+        failureFlash: true,
+    }),
+    function (req, res) {
+        res.redirect("/");
+    },
+);
+```
