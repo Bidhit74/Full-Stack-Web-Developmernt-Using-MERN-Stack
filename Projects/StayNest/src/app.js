@@ -64,16 +64,16 @@ const App = () => {
     app.use("/", routes);
 
     // Check Passport working
-    app.get("/demouser", async (req, res) => {
-        const fakeUser = await User({
-            email: "bidhit@321.com",
-            username: "Bidhit74",
-        });
-        // Registers a new user with a password and checks whether the username already exists. It automatically saves the user to MongoDB.
-        const registerUser = await User.register(fakeUser, "Password12345");
-        console.log(registerUser);
-        res.send(registerUser);
-    });
+    // app.get("/demouser", async (req, res) => {
+    //     const fakeUser = await User({
+    //         email: "bidhit@321.com",
+    //         username: "Bidhit74",
+    //     });
+    //     // Registers a new user with a password and checks whether the username already exists. It automatically saves the user to MongoDB.
+    //     const registerUser = await User.register(fakeUser, "Password12345");
+    //     console.log(registerUser);
+    //     res.send(registerUser);
+    // });
 
     // agar kis routes se nahi match kare tab;
     // 404 handler
