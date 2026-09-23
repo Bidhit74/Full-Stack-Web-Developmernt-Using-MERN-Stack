@@ -64,3 +64,79 @@ Password + Random Salt
 ```
 
 **Salt = Random value + Password → Stronger password protection.**
+
+## Passport
+
+- It is an authentication middleware/framework for handling login strategies
+- Passport.js is an authentication middleware for Node.js/Express.
+
+### Why use it?
+
+It helps handle:
+
+- User login/authentication
+- Different login strategies
+- Sessions
+- OAuth/social login like Google, GitHub, etc.
+
+### Use
+
+1. npm install passport
+2. than use strategie - like i am use - passport-local - npm install passport-local
+3. use MONGODB - than use - passport-local-mongoose - npm install passport-local-mongoose
+
+- Passport-Local-Mongoose is a Mongoose plugin that simplifies building username and password login with Passport.
+- You're free to define your User how you like. Passport-Local Mongoose will add a username, hash and salt field to store the username, the hashed password and the salt value.
+- Additionally, Passport-Local Mongoose adds some methods to your Schema.
+
+#### Example - Passport-Local-Mongoose
+
+```js
+import { Schema, model } from "mongoose";
+import passportLocalMongoose from "passport-local-mongoose";
+
+const userSchema = new Schema({});
+
+userSchema.plugin(passportLocalMongoose);
+
+const User = model("User", userSchema);
+
+export default User;
+```
+
+### Configuring Strategy - Passport
+
+- **Passport Strategy** → Defines **how Passport authenticates a user**.
+
+- **`passport.initialize()`** → Initializes Passport and adds authentication-related functionality to the request. **app.use(passport.initialize());**
+
+- **`passport.session()`** → Enables Passport to use **sessions** to remember the authenticated user across requests. **app.use(passport.session());**
+
+- **`passport.use(new LocalStrategy(User.authenticate()))`** → Configures the **Local Strategy** using the user's username/password authentication method.
+
+- **`passport.serializeUser(User.serializeUser())`** → Stores the user's identifying information in the session.
+
+- **`passport.deserializeUser(User.deserializeUser())`** → Retrieves the user from the session and makes the user available as `req.user`.
+
+### Flow
+
+```text
+Login
+  ↓
+LocalStrategy
+  ↓
+User.authenticate()
+  ↓
+serializeUser()
+  ↓
+Session
+  ↓
+Next Request
+  ↓
+deserializeUser()
+  ↓
+req.user
+```
+
+**Key Point:**
+**Passport authenticates → Session remembers → `req.user` identifies the logged-in user.**

@@ -8,6 +8,9 @@ import ExpressError from "./utils/ExpressError.js";
 import dotenv from "dotenv";
 import session from "express-session";
 import flash from "connect-flash";
+import passport from "passport";
+import LocalStrategy from "passport-local";
+import User from "./models/User.js";
 
 const App = () => {
     const app = express();
@@ -34,6 +37,13 @@ const App = () => {
         res.locals.error = req.flash("error");
         next();
     });
+
+    // passport use after session
+    app.use(passport.initialize());
+    app.use(passport.session());
+    passport.use(new LocalStrategy(User.authenticate()));
+    passport.serializeUser(User.serializeUser());
+    passport.deserializeUser(User.deserializeUser());
 
     // use ejs-locals for all ejs templates:
     app.engine("ejs", ejsMate);
