@@ -140,3 +140,24 @@ req.user
 
 **Key Point:**
 **Passport authenticates → Session remembers → `req.user` identifies the logged-in user.**
+
+### register() — Passport-Local-Mongoose
+
+- User.register(user, password, cb) → Registers a new user with a password and checks whether the username already exists. Checks if username is unique.
+- It automatically saves the user to MongoDB.
+- passport-local-mongoose adds password hashing and salt handling to the User schema.
+
+#### Example of register
+
+```js
+const user = await User.register({ username: "Bidhit" }, "mypassword");
+```
+
+- Plugin
+  UserSchema.plugin(passportLocalMongoose, options);
+  Default Options
+  saltlen → Salt length in bytes. Default: 32
+  iterations → PBKDF2 hashing iterations. Default: 25000
+  The plugin also uses PBKDF2 with SHA-256 by default.
+
+**Key Point:** passport-local-mongoose simplifies user registration, password hashing, authentication, and Passport session support.
