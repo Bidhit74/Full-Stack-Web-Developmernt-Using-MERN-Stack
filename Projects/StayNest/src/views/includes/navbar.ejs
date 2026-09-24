@@ -30,6 +30,7 @@
             >
                 New Listing
             </a>
+            <% if (!isLoggedIn) { %>
             <!-- SinUp -->
             <a
                 href="/signup"
@@ -44,6 +45,16 @@
             >
                 Login
             </a>
+        <%}%>
+        <% if (isLoggedIn) { %>
+            <form action="/logout" method="POST">
+                <button
+                    type="submit"
+                    class="rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-600 cursor-pointer">
+                    Logout
+                </button>
+            </form>
+        <%}%>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -78,6 +89,7 @@
             >
                 New Listing
             </a>
+            <% if (!isLoggedIn) { %>
             <!-- SinUp -->
             <a
                 href="/sinup"
@@ -92,6 +104,16 @@
             >
                 Login
             </a>
+        <%}%>
+        <% if (isLoggedIn) { %>
+            <form action="/logout" method="POST">
+                <button
+                    type="submit"
+                    class="rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white     hover:bg-red-600 cursor-pointer">
+                    Logout
+                </button>
+            </form>
+        <%}%>
         </div>
     </div>
 </nav>

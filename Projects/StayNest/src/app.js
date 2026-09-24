@@ -31,12 +31,6 @@ const App = () => {
     app.use(session(sessionOptions));
     // connect-flash middleware
     app.use(flash());
-    // local temp storage middleware
-    app.use((req, res, next) => {
-        res.locals.success = req.flash("success");
-        res.locals.error = req.flash("error");
-        next();
-    });
 
     // passport use after session
     app.use(passport.initialize());
@@ -44,6 +38,15 @@ const App = () => {
     passport.use(new LocalStrategy(User.authenticate()));
     passport.serializeUser(User.serializeUser());
     passport.deserializeUser(User.deserializeUser());
+
+    // local temp storage middleware - passport end - for use isAuthenticated()
+    app.use((req, res, next) => {
+        res.locals.success = req.flash("success");
+        res.locals.error = req.flash("error");
+        res.locals.isLoggedIn = req.isAuthenticated();
+        req.lo;
+        next();
+    });
 
     // use ejs-locals for all ejs templates:
     app.engine("ejs", ejsMate);
