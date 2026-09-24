@@ -1,6 +1,6 @@
 import User from "../../models/User.js";
 
-const addUserDB = async (req, res) => {
+const addUserDB = async (req, res, next) => {
     try {
         const { username, email, password } = req.body;
         const normalizedEmail = email.trim().toLowerCase();
@@ -18,11 +18,17 @@ const addUserDB = async (req, res) => {
             password,
         );
         console.log(user);
-        req.flash(
-            "success",
-            "Account created successfully. Welcome to StayNest!",
-        );
-        res.redirect("/listings");
+        // passport automatic login
+        req.login(user, (err) => {
+            if (err) {
+                return next(err);
+            }
+            req.flash(
+                "success",
+                "Account created successfully. Welcome to StayNest!",
+            );
+            res.redirect("/");
+        });
     } catch (error) {
         req.flash("error", error.message);
         res.redirect("/signup");
