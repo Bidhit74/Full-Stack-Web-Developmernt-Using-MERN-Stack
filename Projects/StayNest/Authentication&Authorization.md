@@ -1,20 +1,22 @@
 # Authentication and Authorization
 
-## Authentication vs Authorization
-
 1. Authentication - **Who are you?**
    Verifies the **identity** of a user.
 
 2. Authorization - **What can you do?**
    Checks what an **authenticated user is allowed to access or perform**.
 
-## Storing Passwords
+## Authentication
+
+- **Who are you?** -- Verifies the **identity** of a user.
+
+### Storing Passwords
 
 - We **never store passwords in plain text**.
 
 - We store a **securely hashed password** using a password-hashing algorithm such as **bcrypt** or **Argon2**.
 
-### Sign Up
+#### Sign Up
 
 ```text
 User enters password
@@ -24,7 +26,7 @@ Password is hashed
 Hash is stored in database
 ```
 
-### Login
+#### Login
 
 ```text
 User enters password
@@ -36,7 +38,7 @@ Entered password ↔ Stored password hash
 Match ✅ → Authentication successful
 ```
 
-### Why Hashing Use?
+#### Why Hashing Use?
 
 - Passwords are not stored in plain text.
 - A hash is designed to be one-way; you don't normally reverse it to get the original password.
@@ -44,12 +46,12 @@ Match ✅ → Authentication successful
 - Password hashing is used to protect passwords in the database.
 - If the database is leaked, the attacker doesn't directly get the original passwords.
 
-### Salting
+#### Salting
 
 - Password salting is a technique to protect passwords stored in DB by adding a string of 32 or more characters and then hashing them.
 - **Salt** is a **unique random value added to a password before hashing**.
 
-#### Why?
+##### Why?
 
 It makes identical passwords produce **different hashes** and helps protect against precomputed/rainbow-table attacks.
 
@@ -65,12 +67,12 @@ Password + Random Salt
 
 **Salt = Random value + Password → Stronger password protection.**
 
-## Passport
+### Passport
 
 - It is an authentication middleware/framework for handling login strategies
 - Passport.js is an authentication middleware for Node.js/Express.
 
-### Why use it?
+#### Why use it?
 
 It helps handle:
 
@@ -79,7 +81,7 @@ It helps handle:
 - Sessions
 - OAuth/social login like Google, GitHub, etc.
 
-### Use
+#### Use
 
 1. npm install passport
 2. than use strategie - like i am use - passport-local - npm install passport-local
@@ -104,7 +106,7 @@ const User = model("User", userSchema);
 export default User;
 ```
 
-### Configuring Strategy - Passport
+#### Configuring Strategy - Passport
 
 - **Passport Strategy** → Defines **how Passport authenticates a user**.
 
@@ -118,7 +120,7 @@ export default User;
 
 - **`passport.deserializeUser(User.deserializeUser())`** → Retrieves the user from the session and makes the user available as `req.user`.
 
-### Flow
+#### Flow
 
 ```text
 Login
@@ -141,13 +143,13 @@ req.user
 **Key Point:**
 **Passport authenticates → Session remembers → `req.user` identifies the logged-in user.**
 
-### register() — Passport-Local-Mongoose
+#### register() — Passport-Local-Mongoose
 
 - User.register(user, password, cb) → Registers a new user with a password and checks whether the username already exists. Checks if username is unique.
 - It automatically saves the user to MongoDB.
 - passport-local-mongoose adds password hashing and salt handling to the User schema.
 
-#### Example of register
+##### Example of register
 
 ```js
 const user = await User.register({ username: "Bidhit" }, "mypassword");
@@ -162,7 +164,7 @@ const user = await User.register({ username: "Bidhit" }, "mypassword");
 
 **Key Point:** passport-local-mongoose simplifies user registration, password hashing, authentication, and Passport session support.
 
-### Authenticate Requests
+#### Authenticate Requests
 
 - Passport provides an authenticate() function, which is used as route middleware to authenticate requests.
 
@@ -178,3 +180,23 @@ app.post(
     },
 );
 ```
+
+## Authorization
+
+- **What can you do?** -- Checks what an **authenticated user is allowed to access or perform**.
+
+### Connecting Login Route
+
+- Using Passport
+- How to check if User is logged in?
+- **req.isAuthenticated()** -- Passport method
+
+#### isLoggedIn - middleware use
+
+- View listing → Public
+- Create listing → Login required
+- Edit listing → Login required
+- Update listing → Login required
+- Delete listing → Login required
+- Add review → Login required
+- Delete review → Login required
