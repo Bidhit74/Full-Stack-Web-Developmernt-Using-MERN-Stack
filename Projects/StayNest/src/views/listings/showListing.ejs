@@ -118,18 +118,20 @@
                     </a>
 
                     <!-- Delete Button -->
+                    <% if(isLoggedIn){ %>
                     <form
                         method="POST"
                         action="/listings/<%= listing._id %>?_method=DELETE"
                         class="flex-1"
-                    >
-                        <button
+                        >
+                            <button
                             type="submit"
                             class="w-full rounded-lg border border-red-200 bg-red-50 px-5 py-3 font-semibold text-red-600 cursor-pointer transition hover:bg-red-100"
-                        >
+                            >
                             Delete Listing
-                        </button>
+                            </button>
                     </form>
+                    <%}%>
                     <!-- Review Button -->
                     <a
                         href="/listings/<%= listing._id %>/reviews"
@@ -150,13 +152,15 @@
                         <h3 class="text-lg font-semibold">Bidhit Chaudhary</h3>
                         <p><%= review.comment %></p>
                         <span class="font-semibold"><%= review.rating %> Star</span>
-                        <form method="POST"
-                        action="/listings/<%=listing.id%>/reviews/<%= review._id %>?_method=DELETE"
-                        class="p-1 mt-2 rounded font-semibold bg-red-500"  >
-                            <button type="submit" class="cursor-pointer">
+                        <% if(isLoggedIn){ %>
+                            <form method="POST"
+                                action="/listings/<%=listing.id%>/reviews/<%= review._id %>?_method=DELETE"
+                                class="p-1 mt-2 rounded font-semibold bg-red-500"  >
+                                <button type="submit" class="cursor-pointer">
                                 Delete
-                            </button>
+                                </button>
                         </form>
+                        <%}%>
                     </div>
                     <%}%>
                 </div>
