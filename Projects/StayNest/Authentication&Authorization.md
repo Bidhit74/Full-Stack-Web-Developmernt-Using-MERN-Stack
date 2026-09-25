@@ -181,10 +181,6 @@ app.post(
 );
 ```
 
-## Authorization
-
-- **What can you do?** -- Checks what an **authenticated user is allowed to access or perform**.
-
 ### Connecting Login Route
 
 - Using Passport
