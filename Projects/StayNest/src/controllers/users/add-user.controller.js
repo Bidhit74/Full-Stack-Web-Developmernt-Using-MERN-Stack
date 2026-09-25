@@ -27,7 +27,9 @@ const addUserDB = async (req, res, next) => {
                 "success",
                 "Account created successfully. Welcome to StayNest!",
             );
-            res.redirect("/");
+            const redirectUrl = res.locals.redirectUrl || "/";
+            console.log(redirectUrl);
+            res.redirect(redirectUrl);
         });
     } catch (error) {
         req.flash("error", error.message);

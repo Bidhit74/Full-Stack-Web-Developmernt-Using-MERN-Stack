@@ -5,15 +5,17 @@ import addUserDB from "../controllers/users/add-user.controller.js";
 import checkUser from "../controllers/users/checkUser.controller.js";
 import passport from "passport";
 import logout from "../controllers/users/logout.controller.js";
+import { saveRedirectUrl } from "../middlewares/isLoggedIn.middleware.js";
 
 const router = express.Router();
 
 router.get("/signup", SignUp);
-router.post("/signup", addUserDB);
+router.post("/signup", saveRedirectUrl, addUserDB);
 router.get("/login", Login);
 // use passport middleware
 router.post(
     "/login",
+    saveRedirectUrl,
     passport.authenticate("local", {
         failureRedirect: "/login",
         failureFlash: true,

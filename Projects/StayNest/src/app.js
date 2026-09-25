@@ -44,7 +44,6 @@ const App = () => {
         res.locals.success = req.flash("success");
         res.locals.error = req.flash("error");
         res.locals.isLoggedIn = req.isAuthenticated();
-        req.lo;
         next();
     });
 
