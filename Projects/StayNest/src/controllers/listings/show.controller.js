@@ -6,8 +6,11 @@ const showListing = async (req, res) => {
         .populate("reviews")
         .populate("owner");
     const { reviews, owner } = listing;
-    // console.log(reviews);
-    res.render("listings/showListing.ejs", { listing, reviews, owner });
+    let isUser = false;
+    if (owner?._id.equals(req.user?._id)) {
+        isUser = true;
+    }
+    res.render("listings/showListing.ejs", { listing, reviews, owner, isUser });
 };
 
 export default showListing;

@@ -60,7 +60,6 @@
                         📍 <%= listing.location %>, <%= listing.country %>
                     </p>
                 </div>
-
                 <!-- Description -->
                 <div class="border-t border-slate-200 py-6">
                     <h2 class="mb-2 text-lg font-semibold text-slate-900">
@@ -106,6 +105,7 @@
                 </div>
 
                 <!-- Actions -->
+                <% if(isLoggedIn && isUser){ %>
                 <div
                     class="flex flex-col gap-3 border-t border-slate-200 pt-6 sm:flex-row"
                 >
@@ -118,7 +118,7 @@
                     </a>
 
                     <!-- Delete Button -->
-                    <% if(isLoggedIn){ %>
+
                     <form
                         method="POST"
                         action="/listings/<%= listing._id %>?_method=DELETE"
@@ -131,7 +131,6 @@
                             Delete Listing
                             </button>
                     </form>
-                    <%}%>
                     <!-- Review Button -->
                     <a
                         href="/listings/<%= listing._id %>/reviews"
@@ -140,6 +139,7 @@
                         Add Review
                     </a>
                 </div>
+                <%}%>
 
                 <!-- All Reviews -->
                 <%if(reviews.length!==0){%>
@@ -149,10 +149,10 @@
                 <div class="flex flex-wrap gap-2">
                     <%for(let review of reviews){%>
                     <div class="w-52 h-32 bg-amber-100 flex rounded flex-col justify-center items-center">
-                        <h3 class="text-lg font-semibold">Bidhit Chaudhary</h3>
+                        <h3 class="text-lg font-semibold"><%=owner.username%></h3>
                         <p><%= review.comment %></p>
                         <span class="font-semibold"><%= review.rating %> Star</span>
-                        <% if(isLoggedIn){ %>
+                        <% if(isLoggedIn && isUser){ %>
                             <form method="POST"
                                 action="/listings/<%=listing.id%>/reviews/<%= review._id %>?_method=DELETE"
                                 class="p-1 mt-2 rounded font-semibold bg-red-500"  >
