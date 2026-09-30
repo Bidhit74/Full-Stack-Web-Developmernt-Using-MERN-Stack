@@ -14,3 +14,10 @@
 
 - Show Listing **Delete, Edit, Review\*** button - (ser Login with Owned by Listing)
   check user - (use - **isLogged && isUser** with owner of listing(**req.user**))
+
+## Authorization for listings
+
+### Authorization listings
+
+- Use middleware - isOwner
+- Edit, Update, Delete
