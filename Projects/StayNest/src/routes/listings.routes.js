@@ -12,13 +12,20 @@ import isOwner from "../middlewares/isOwner.middleware.js";
 
 const router = express.Router();
 
-router.get("/", listingController);
 // add middleware validate schema
-router.post("/", isLoggedIn, validateListing, addDBUserListingController);
+router
+    .route("/")
+    .get(listingController)
+    .post(isLoggedIn, validateListing, addDBUserListingController);
+
 router.get("/new", isLoggedIn, createListing);
-router.get("/:id", showListing);
-router.put("/:id", isLoggedIn, isOwner, validateListing, updateController);
-router.delete("/:id", isLoggedIn, isOwner, deleteController);
+
+router
+    .route("/:id")
+    .get(showListing)
+    .put(isLoggedIn, isOwner, validateListing, updateController)
+    .delete(isLoggedIn, isOwner, deleteController);
+
 router.get("/:id/edit", isLoggedIn, isOwner, editController);
 
 export default router;

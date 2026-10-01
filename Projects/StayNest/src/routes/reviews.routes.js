@@ -8,8 +8,11 @@ import isReviewAuthor from "../middlewares/isReviewAuthor.middleware.js";
 
 const router = express.Router({ mergeParams: true });
 
-router.get("/", isLoggedIn, reviewController);
-router.post("/", isLoggedIn, validateReviews, reviewAddDb);
+router
+    .route("/")
+    .get(isLoggedIn, reviewController)
+    .post(isLoggedIn, validateReviews, reviewAddDb);
+
 router.delete("/:reviewId", isLoggedIn, isReviewAuthor, reviewDel);
 
 export default router;

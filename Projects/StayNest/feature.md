@@ -51,3 +51,7 @@
 - **Front-end** → Hide unauthorized buttons for better UX.
 - **Back-end** → Always verify ownership/author before performing the action.
 - **Authentication ≠ Authorization:** Login confirms identity; authorization confirms permission.
+
+## Router in compect way
+
+- Use **route.route("/same_path")."different_method(Like - Get, Post, Put, Delete)"**

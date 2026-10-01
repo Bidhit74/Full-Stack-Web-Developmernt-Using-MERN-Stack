@@ -9,19 +9,21 @@ import { saveRedirectUrl } from "../middlewares/isLoggedIn.middleware.js";
 
 const router = express.Router();
 
-router.get("/signup", SignUp);
-router.post("/signup", saveRedirectUrl, addUserDB);
-router.get("/login", Login);
+router.route("/signup").get(SignUp).post(saveRedirectUrl, addUserDB);
+
 // use passport middleware
-router.post(
-    "/login",
-    saveRedirectUrl,
-    passport.authenticate("local", {
-        failureRedirect: "/login",
-        failureFlash: true,
-    }),
-    checkUser,
-);
+router
+    .route("/login")
+    .get(Login)
+    .post(
+        saveRedirectUrl,
+        passport.authenticate("local", {
+            failureRedirect: "/login",
+            failureFlash: true,
+        }),
+        checkUser,
+    );
+
 router.post("/logout", logout);
 
 export default router;
