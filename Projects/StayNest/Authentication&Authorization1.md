@@ -26,3 +26,5 @@
 - author hai to good nahi to add karenge schema me
 - than get review add auther add in Database
 - Delete Reviev only Author - front-end protect
+- Delete Reviev only Author - back-end protect
+- with middleware use - "isReviewAuthor"
