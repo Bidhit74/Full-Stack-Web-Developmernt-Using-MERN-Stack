@@ -40,3 +40,14 @@
 12. **passport-local-mongoose** simplifies username/password authentication, hashing, salting, registration, and Passport integration.
 13. `User.register({ username }, password)` checks username uniqueness, hashes the password, and saves the user.
 14. **Flow:** Login → LocalStrategy → `authenticate()` → `serializeUser()` → Session → `deserializeUser()` → `req.user`.
+
+### Authorization
+
+- **Authorization** → Checks **what an authenticated user is allowed to do**.
+- **Listing:** `owner` field references `User`; use **`isOwner` middleware**.
+- **Listing Owner** → Can **Edit, Update, Delete** their listing.
+- **Review:** `author` field references `User`.
+- **Review Author** → Can **Delete their own review** using **`isReviewAuthor` middleware**.
+- **Front-end** → Hide unauthorized buttons for better UX.
+- **Back-end** → Always verify ownership/author before performing the action.
+- **Authentication ≠ Authorization:** Login confirms identity; authorization confirms permission.

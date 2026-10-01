@@ -1,30 +1,62 @@
 # Authorization
 
-- **What can you do?** Checks what an **authenticated user is allowed to access or perform**.
-- **Note:** Authorization start first check schema **owner** properties.
+**Authorization** answers: **“What can you do?”**
+It checks whether an **authenticated user is allowed to access or perform an action**.
 
-- Hide review **Delete** button - (User not Login || First time user)
-  Check login - (use - **isLoggedIn && isUser**)
+## Important
 
-- Show review **Delete** button - (User Login with Owned by Listing)
-  check user - (use - **isLogged && isUser** with owner of listing(**req.user**))
+- Authentication checks **who the user is**.
+- Authorization checks **what that user is allowed to do**.
+- Store ownership information in the schema using references such as `owner` and `author`.
 
-- Hide Listing **Delete, Edit, Review** button - (User not Login || First time user)
-  Check login - (use - **isLoggedIn && isUser**)
+## Authorization for Listings
 
-- Show Listing **Delete, Edit, Review\*** button - (ser Login with Owned by Listing)
-  check user - (use - **isLogged && isUser** with owner of listing(**req.user**))
+- A Listing should have an **`owner`** field referencing the `User`.
+- Use an **`isOwner` middleware** to verify ownership.
+- **Edit, Update, and Delete Listing** → allowed only for the listing owner.
+- Front-end → Hide Edit/Delete buttons from users who are not the owner.
+- Back-end → Always verify ownership before performing the action.
 
-## Authorization for listings
+```text
+req.user._id === listing.owner
+        ↓
+Owner ✅ → Allow
+Not Owner ❌ → Deny
+```
 
-- Use middleware - isOwner
-- Edit, Update, Delete
+## Authorization for Reviews
 
-## Authorization for Review
+- A Review should have an **`author`** field referencing the `User`.
+- When creating a review, save the logged-in user as the **author**.
+- **Delete Review** → allowed only for the review author.
+- Front-end → Show the Delete button only to the review author.
+- Back-end → Verify the author again using **`isReviewAuthor` middleware**.
 
-- first check author in schema
-- author hai to good nahi to add karenge schema me
-- than get review add auther add in Database
-- Delete Reviev only Author - front-end protect
-- Delete Reviev only Author - back-end protect
-- with middleware use - "isReviewAuthor"
+```text
+req.user._id === review.author
+        ↓
+Author ✅ → Allow
+Not Author ❌ → Deny
+```
+
+### Access Control Summary
+
+```text
+Not logged in
+    ↓
+Login required
+
+Logged in + Owner
+    ↓
+Edit / Update / Delete Listing ✅
+
+Logged in + Review Author
+    ↓
+Delete Own Review ✅
+
+Logged in + Not Owner/Author
+    ↓
+Access denied ❌
+```
+
+> **Key Point:** Front-end hiding is only for UI. **Back-end authorization is mandatory** because users can directly send requests without using the UI.
