@@ -17,7 +17,11 @@
 
 ## Authorization for listings
 
-### Authorization listings
-
 - Use middleware - isOwner
 - Edit, Update, Delete
+
+## Authorization for Review
+
+- first check author in schema
+- author hai to good nahi to add karenge schema me
+- than get revi

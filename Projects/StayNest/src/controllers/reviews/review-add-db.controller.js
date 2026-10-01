@@ -7,6 +7,8 @@ const reviewAddDb = async (req, res) => {
     const listing = await Listing.findById(id);
     let newReview = new Review(review);
 
+    newReview.author = req.user._id;
+
     listing.reviews.push(newReview);
     // Save in Database
     await newReview.save();
