@@ -105,10 +105,11 @@
                 </div>
 
                 <!-- Actions -->
-                <% if(isLoggedIn && isUser){ %>
+                <% if(isLoggedIn){ %>
                 <div
                     class="flex flex-col gap-3 border-t border-slate-200 pt-6 sm:flex-row"
                 >
+                <% if(isLoggedIn && isUser){ %>
                     <!-- Edit Button -->
                     <a
                         href="/listings/<%= listing._id %>/edit"
@@ -131,6 +132,7 @@
                             Delete Listing
                             </button>
                     </form>
+                    <%}%>
                     <!-- Review Button -->
                     <a
                         href="/listings/<%= listing._id %>/reviews"
@@ -140,7 +142,6 @@
                     </a>
                 </div>
                 <%}%>
-
                 <!-- All Reviews -->
                 <%if(reviews.length!==0){%>
                 <br><hr>
@@ -149,10 +150,10 @@
                 <div class="flex flex-wrap gap-2">
                     <%for(let review of reviews){%>
                     <div class="w-52 h-32 bg-amber-100 flex rounded flex-col justify-center items-center">
-                        <h3 class="text-lg font-semibold"><%=owner.username%></h3>
+                        <h3 class="text-lg font-semibold"><%=review.author.username%></h3>
                         <p><%= review.comment %></p>
                         <span class="font-semibold"><%= review.rating %> Star</span>
-                        <% if(isLoggedIn && isUser){ %>
+                        <% if(isLoggedIn && review.author._id.equals(owner._id)){ %>
                             <form method="POST"
                                 action="/listings/<%=listing.id%>/reviews/<%= review._id %>?_method=DELETE"
                                 class="p-1 mt-2 rounded font-semibold bg-red-500"  >

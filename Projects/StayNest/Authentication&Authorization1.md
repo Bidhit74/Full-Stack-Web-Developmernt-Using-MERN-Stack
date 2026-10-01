@@ -24,4 +24,5 @@
 
 - first check author in schema
 - author hai to good nahi to add karenge schema me
-- than get revi
+- than get review add auther add in Database
+- Delete Reviev only Author - front-end protect
