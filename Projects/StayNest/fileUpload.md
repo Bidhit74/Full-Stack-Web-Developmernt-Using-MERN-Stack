@@ -61,3 +61,34 @@ Store URL in MongoDB
 ### Key Point
 
 > **Multer handles the upload → Cloud storage stores the image → MongoDB stores the image URL.**
+
+### Cloud Setup - Cloudinary
+
+- API environment variable difene in **.env** file.
+- Note share anyone **environment credentials**
+- **.ENV** store - Cloud - Name, API Key, API Secret
+
+### Store Files
+
+- **Multer** receives the uploaded file from `multipart/form-data`.
+- **Cloudinary** stores the actual image/file.
+- Cloudinary returns a **URL** for the uploaded file.
+- Store the **Cloudinary URL** in MongoDB, not the actual image.
+- Use Multer **memoryStorage()** and then upload the buffer to Cloudinary.
+- Cloudinary officially supports **upload_stream()** for Node.js uploads, and Multer's memory storage provides the uploaded file as **req.file.buffer**.
+
+#### Flow
+
+```text
+User uploads file
+      ↓
+Multer receives file
+      ↓
+Cloudinary stores file
+      ↓
+Cloudinary returns URL
+      ↓
+MongoDB stores URL
+```
+
+> **Key Point:** File → Cloudinary, URL → MongoDB.
