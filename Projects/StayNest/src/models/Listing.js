@@ -10,13 +10,15 @@ const listingSchema = new Schema({
         type: String,
         maxLength: 500,
     },
-    imageUrl: {
-        type: String,
-        default: "https://img.icons8.com/plasticine/1200/no-image.jpg",
-        set: (v) =>
-            v === ""
-                ? "https://img.icons8.com/plasticine/1200/no-image.jpg"
-                : v,
+    image: {
+        url: {
+            type: String,
+            required: true,
+        },
+        public_id: {
+            type: String,
+            required: true,
+        },
     },
     price: {
         type: Number,

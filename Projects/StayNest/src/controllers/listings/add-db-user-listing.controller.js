@@ -1,23 +1,37 @@
-// import Listing from "../../models/Listing.js";
+import Listing from "../../models/Listing.js";
+
 import uploadToCloudinary from "../../middlewares/uploadToCloudinary.middleware.js";
 
 const addDBUserListingController = async (req, res) => {
+    // Upload image to Cloudinary
     const result = await uploadToCloudinary(req.file.buffer, {
         folder: "staynest/listings",
-        format: "webp",
+        // public_id: "listing-123", // Optional: Cloudinary generates a unique ID
+        format: "jpg",
     });
 
-    console.log(result.secure_url);
-    console.log(result.public_id);
+    // Get listing data from form
+    const listing = req.body.listing;
 
-    res.send("Upload Success full");
+    // Create new listing
+    const newListing = new Listing(listing);
 
-    // const listing = req.body.listing;
-    // const newListing = new Listing(listing); // Add New data in DB
-    // newListing.owner = req.user._id;
-    // await newListing.save(); // Save data in DB
-    // req.flash("success", "New listing created");
-    // res.redirect("/listings");
+    // Set logged-in user as owner
+    newListing.owner = req.user._id;
+
+    // Save Cloudinary image details
+    newListing.image = {
+        url: result.secure_url,
+        public_id: result.public_id,
+    };
+
+    // Save listing in MongoDB
+    await newListing.save();
+
+    // Success message
+    req.flash("success", "New listing created successfully!");
+
+    res.redirect("/listings");
 };
 
 export default addDBUserListingController;

@@ -31,9 +31,14 @@ const listingSchema = Joi.object({
             "string.empty": "Country is required.",
         }),
 
-        imageUrl: Joi.string().trim().uri().allow("").messages({
-            "string.uri": "Please enter a valid image URL.",
-        }),
+        imageUrl: Joi.string()
+            .trim()
+            .uri()
+            .allow("")
+            .messages({
+                "string.uri": "Please enter a valid image URL.",
+            })
+            .required(),
     }).required(),
 });
 

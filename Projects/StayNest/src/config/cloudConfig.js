@@ -1,6 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
 import multer from "multer";
+import ExpressError from "../utils/ExpressError.js";
 
 dotenv.config();
 
@@ -15,8 +16,18 @@ const storage = multer.memoryStorage();
 
 const upload = multer({
     storage,
+    // Bottom line: ✅ Good basic validation, ❌ not complete file-security validation by itself
     limits: {
         fileSize: 5 * 1024 * 1024, // 5 MB
+    },
+    fileFilter: (req, file, cb) => {
+        const allowedType = "image/jpeg";
+        // includes() is mainly useful when you have multiple allowed types:
+        if (allowedType === file.mimetype) {
+            cb(null, true);
+        } else {
+            cb(new ExpressError(405, "Only JPG/JPEG images are allowed."));
+        }
     },
 });
 
