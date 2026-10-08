@@ -184,3 +184,9 @@ const result = await uploadToCloudinary(req.file.buffer, {
 
 - accept is only a client-side hint. It does not securely validate the file.
 - For actual validation, also check the file type on the server.
+
+- Delete image from Cloudinary
+
+```js
+await cloudinary.uploader.destroy(deleteListing.image.public_id);
+```
