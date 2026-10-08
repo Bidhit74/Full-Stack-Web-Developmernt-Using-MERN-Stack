@@ -19,6 +19,10 @@ const listingSchema = new Schema({
             type: String,
             required: true,
         },
+        fileName: {
+            type: String,
+            required: true,
+        },
     },
     price: {
         type: Number,
