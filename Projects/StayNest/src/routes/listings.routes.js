@@ -25,13 +25,17 @@ router
     );
 
 router.get("/new", isLoggedIn, createListing);
-
+router.get("/:id/edit", isLoggedIn, isOwner, editController);
 router
     .route("/:id")
     .get(showListing)
-    .put(isLoggedIn, isOwner, validateListing, updateController)
+    .put(
+        isLoggedIn,
+        isOwner,
+        upload.single("image"),
+        validateListing,
+        updateController,
+    )
     .delete(isLoggedIn, isOwner, deleteController);
-
-router.get("/:id/edit", isLoggedIn, isOwner, editController);
 
 export default router;

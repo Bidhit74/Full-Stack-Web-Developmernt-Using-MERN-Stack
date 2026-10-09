@@ -28,6 +28,7 @@
                 method="POST"
                 action="/listings/<%= listing._id %>?_method=PUT"
                 class="space-y-6 px-6 py-6 sm:px-8"
+                enctype="multipart/form-data"
             >
                 <!-- Title -->
                 <div>
@@ -63,35 +64,31 @@
                         name="listing[description]"
                         rows="5"
                         required
-                        placeholder="Describe your property..."
                         class="w-full resize-y rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 user-invalid:border-red-500 user-valid:border-green-500"
                     >
-					<%= listing.description %>
-					</textarea
+<%= listing.description %></textarea
                     >
                 </div>
 
                 <!-- Image URL -->
                 <div>
                     <label
-                        for="imageUrl"
+                        for="image"
                         class="mb-2 block text-sm font-semibold text-slate-700"
                     >
-                        Image URL
+                        Image
                     </label>
 
                     <input
-                        type="url"
-                        id="imageUrl"
-                        name="listing[imageUrl]"
-                        value="<%= listing.imageUrl %>"
-                        placeholder="https://example.com/image.jpg"
-                        class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 user-invalid:border-red-500 user-valid:border-green-500"
-                        required
+                        type="file"
+                        id="image"
+                        name="image"
+                        class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 user-invalid:border-red-500 user-valid:border-green-500 cursor-pointer"
+                        accept="image/jpeg"
                     />
 
-                    <p class="mt-2 text-xs text-slate-500">
-                        Enter a valid URL for the listing image.
+                    <p class="mt-2 text-sm text-slate-500">
+                        File: <%= listing.image.fileName %>
                     </p>
                 </div>
 
