@@ -30,16 +30,24 @@ const listingSchema = Joi.object({
             "string.max": "Country must be at most 20 characters long.",
             "string.empty": "Country is required.",
         }),
-
-        imageUrl: Joi.string()
-            .trim()
-            .uri()
-            .allow("")
-            .messages({
-                "string.uri": "Please enter a valid image URL.",
-            })
-            .required(),
     }).required(),
+    // Optional image for the edit page
+    image: Joi.object({
+        fieldname: Joi.string().valid("image").required(),
+
+        mimetype: Joi.string().valid("image/jpeg").required().messages({
+            "any.only": "Only JPG/JPEG images are allowed.",
+        }),
+
+        size: Joi.number()
+            .max(5 * 1024 * 1024)
+            .required()
+            .messages({
+                "number.max": "Image size must not exceed 5 MB.",
+            }),
+    })
+        .unknown(true)
+        .optional(),
 });
 
 export default listingSchema;
