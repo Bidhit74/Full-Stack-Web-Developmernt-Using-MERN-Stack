@@ -190,3 +190,9 @@ const result = await uploadToCloudinary(req.file.buffer, {
 ```js
 await cloudinary.uploader.destroy(deleteListing.image.public_id);
 ```
+
+- Now Manual upload file
+- Title, Descriptions, Image, Place
+- 25 listings
+- with cloudinary for image
+- Upload url in MongoDb (url, public_id, fileName)
