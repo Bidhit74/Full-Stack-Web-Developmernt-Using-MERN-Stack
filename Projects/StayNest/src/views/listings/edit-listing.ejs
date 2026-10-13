@@ -72,11 +72,23 @@
 
                 <!-- Image URL -->
                 <div>
+                    <div class="w-56">
+                        <p class="mt-2 text-sm text-slate-500">
+                            Your previous image
+                        </p>
+                        <img
+                            src="<%= listing.image.url.replace('/upload/','/upload/c_fill,w_350/')%>"
+                            alt="<%= listing.image.fileName %>"
+                            class="h-full w-full object-cover rounded-xl"
+                            loading="lazy"
+                        />
+                    </div>
+
                     <label
                         for="image"
                         class="mb-2 block text-sm font-semibold text-slate-700"
                     >
-                        Image
+                        Add new image
                     </label>
 
                     <input
@@ -88,7 +100,7 @@
                     />
 
                     <p class="mt-2 text-sm text-slate-500">
-                        File: <%= listing.image.fileName %>
+                        Upload new image !!!
                     </p>
                 </div>
 
