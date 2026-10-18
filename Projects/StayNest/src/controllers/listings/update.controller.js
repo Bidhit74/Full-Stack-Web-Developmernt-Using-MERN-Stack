@@ -1,6 +1,7 @@
 import { cloudinary } from "../../config/cloudConfig.js";
 import uploadToCloudinary from "../../middlewares/uploadToCloudinary.middleware.js";
 import Listing from "../../models/Listing.js";
+import mapGeoCoding from "../../utils/mapGeocoding.js";
 const updateController = async (req, res) => {
     const { id } = req.params;
     const listing = await Listing.findById(id);
@@ -9,6 +10,10 @@ const updateController = async (req, res) => {
     }
     // Update text fields
     listing.set(req.body.listing);
+    console.log("Bidhit");
+    // Map Coordinates add
+    const geometry = await mapGeoCoding(listing.location);
+    listing.geometry = geometry;
 
     let oldPublicId;
     // Replace image only if a new file is uploaded
