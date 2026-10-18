@@ -59,3 +59,5 @@
 ## Map features (Location with Mapbox)
 
 - mapbox give public token
+- Add Map using mapbox
+- Now add feature according to listings address
