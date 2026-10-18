@@ -142,9 +142,14 @@
                     </a>
                 </div>
                 <%}%>
+                <!-- Maps -->
+                <section class="mt-10 border-t border-slate-200 pt-8"></section>
+                    <h1 class="mb-6 text-2xl font-bold text-slate-900">Where you'll be</h1>
+                    <div id="map" data-mapbox-token="<%= MAPBOX_TOKEN %>"></div>
+                </section>
                 <!-- All Reviews -->
                 <div class="mt-10 border-t border-slate-200 pt-8">
-                    <h2 class="mb-6 text-3xl font-bold text-slate-900"> All Reviews </h2>
+                    <h2 class="mb-6 text-2xl font-bold text-slate-900"> All Reviews </h2>
                     <% if (reviews.length === 0) { %>
                         <div class="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-6 text-center">
                             <p class="text-slate-500"> No reviews yet. </p>
@@ -170,3 +175,6 @@
             </div>
     </div>
 </div>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.33.0/mapbox-gl.js"></script>
+<script src="/javaScript/listingMap.js"></script>

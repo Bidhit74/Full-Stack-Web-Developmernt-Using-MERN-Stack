@@ -7,6 +7,9 @@
         <link rel="stylesheet" href="/css/output.css" />
         <link rel="stylesheet" href="/css/style.css" />
         <link rel="icon" href="/images/SNFavicon-512.png" type="image/png" />
+        <% if (typeof useMapbox !== "undefined" && useMapbox) { %>
+            <link href="https://api.mapbox.com/mapbox-gl-js/v3.33.0/mapbox-gl.css" rel="stylesheet">
+        <%}%>
     </head>
     <body>
         <%- include("../includes/navbar.ejs")%>

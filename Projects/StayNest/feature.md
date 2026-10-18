@@ -55,3 +55,7 @@
 ## Router in compect way
 
 - Use **route.route("/same_path")."different_method(Like - Get, Post, Put, Delete)"**
+
+## Map features (Location with Mapbox)
+
+- mapbox give public token
