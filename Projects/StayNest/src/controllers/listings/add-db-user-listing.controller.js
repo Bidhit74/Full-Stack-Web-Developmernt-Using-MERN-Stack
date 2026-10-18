@@ -1,5 +1,6 @@
 import Listing from "../../models/Listing.js";
 import uploadToCloudinary from "../../middlewares/uploadToCloudinary.middleware.js";
+import mapGeoCoding from "../../utils/mapGeocoding.js";
 
 const addDBUserListingController = async (req, res) => {
     // Upload image to Cloudinary
@@ -20,6 +21,7 @@ const addDBUserListingController = async (req, res) => {
         public_id: result.public_id,
         fileName: req.file.originalname,
     };
+    newListing.geometry = await mapGeoCoding(newListing.location);
     // Save listing in MongoDB
     await newListing.save();
     // Success message
