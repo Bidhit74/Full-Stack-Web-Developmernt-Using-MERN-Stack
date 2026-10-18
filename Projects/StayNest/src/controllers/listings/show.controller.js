@@ -15,7 +15,7 @@ const showListing = async (req, res) => {
     const geocodingClient = mapGeocoding({ accessToken: MAPBOX_TOKEN });
     const response = await geocodingClient
         .forwardGeocode({
-            query: "Patna, Bihar, India",
+            query: `${listing.location}`,
             limit: 1,
             countries: ["IN"],
         })
