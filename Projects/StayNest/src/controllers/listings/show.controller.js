@@ -1,6 +1,5 @@
 import Listing from "../../models/Listing.js";
 import dotenv from "dotenv";
-import mapGeocoding from "@mapbox/mapbox-sdk/services/geocoding-v6.js";
 dotenv.config();
 
 const showListing = async (req, res) => {
@@ -12,15 +11,7 @@ const showListing = async (req, res) => {
     const MAPBOX_TOKEN = process.env.MAPBOX_PUBLIC_TOKEN;
 
     // Mapbox Api for coordinates
-    const geocodingClient = mapGeocoding({ accessToken: MAPBOX_TOKEN });
-    const response = await geocodingClient
-        .forwardGeocode({
-            query: `${listing.location}`,
-            limit: 1,
-            countries: ["IN"],
-        })
-        .send();
-    const { coordinates } = response.body.features[0].geometry;
+    const { coordinates } = listing.geometry;
 
     res.render("listings/showListing.ejs", {
         listing,

@@ -10,7 +10,6 @@ const updateController = async (req, res) => {
     }
     // Update text fields
     listing.set(req.body.listing);
-    console.log("Bidhit");
     // Map Coordinates add
     const geometry = await mapGeoCoding(listing.location);
     listing.geometry = geometry;
