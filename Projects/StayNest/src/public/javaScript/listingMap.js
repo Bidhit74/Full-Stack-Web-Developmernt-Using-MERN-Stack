@@ -16,7 +16,11 @@ if (mapContainer && !mapContainer.dataset.initialized) {
             accessToken: MAPBOX_TOKEN,
             container: "map", // container ID
             center: [longitude, latitude], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-            zoom: 11, // starting zoom
+            zoom: 7, // starting zoom
         });
+        // Create a default Marker and add it to the map.
+        const marker = new mapboxgl.Marker({ color: "#F97316" })
+            .setLngLat([longitude, latitude])
+            .addTo(map);
     }
 }
