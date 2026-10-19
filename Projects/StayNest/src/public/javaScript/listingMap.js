@@ -19,8 +19,41 @@ if (mapContainer && !mapContainer.dataset.initialized) {
             zoom: 7, // starting zoom
         });
         // Create a default Marker and add it to the map.
-        const marker = new mapboxgl.Marker({ color: "#F97316" })
-            .setLngLat([longitude, latitude])
+
+        const coordinates = [longitude, latitude];
+
+        const popup = new mapboxgl.Popup({
+            offset: 25,
+            closeButton: false,
+            closeOnClick: false,
+        }).setHTML(`
+    <div class="rounded-xl bg-white p-4 shadow-xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-orange-500">
+            StayNest
+        </p>
+        <h3 class="mt-2 text-lg font-bold text-slate-900">
+            Property Location
+        </h3>
+        <p class="mt-1 text-sm text-slate-600">
+            Exact Location provided after booking
+        </p>
+    </div>
+`);
+
+        const marker = new mapboxgl.Marker({
+            color: "#F97316",
+        })
+            .setLngLat(coordinates)
             .addTo(map);
+
+        // Show popup on hover
+        marker.getElement().addEventListener("mouseenter", () => {
+            popup.setLngLat(coordinates).addTo(map);
+        });
+
+        // Hide popup when the pointer leaves the marker
+        marker.getElement().addEventListener("mouseleave", () => {
+            popup.remove();
+        });
     }
 }
