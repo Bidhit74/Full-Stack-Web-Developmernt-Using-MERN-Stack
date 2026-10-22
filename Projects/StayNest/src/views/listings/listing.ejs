@@ -1,15 +1,88 @@
-<% layout("layouts/head")%> <% title = "Listings" %>
-<body>
-    <h1 class="my-4 font-extrabold text-2xl text-center">All Hotals </h1>
-    <ul class="flex flex-wrap gap-5 p-3">
-        <% for(let listing of listings){%>
-            <li class="bg-white w-100">
-                <a href="/listings/<%=listing._id%>">
-                    <img src="<%= listing.image.url || "https://img.icons8.com/plasticine/1200/no-image.jpg"%>" alt="image" class="w-full h-60 rounded-lg">
-            <h3 class="font-bold "><%= listing.title %></h3>
-            <p>&#8377; <%=listing.price.toLocaleString('en-IN')%>/night</p>
-                </a>
-            </li>
-        <%}%>
-    </ul>
-</body>
+<% layout("layouts/head")%>
+    <% title="Listings" %>
+        <body>
+            <section class="flex gap-16 overflow-x-auto px-5 pt-8">
+
+                <button type="button" data-category="Trending"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 border-slate-900 pb-3 text-slate-900">
+                    <i class="fa-solid fa-fire text-xl"></i>
+                    <span class="text-sm font-medium">Trending</span>
+                </button>
+                <button type="button" data-category="Cabins"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 text-slate-500 hover:text-slate-900">
+                    <i class="fa-solid fa-house-chimney-user text-xl"></i>
+
+                    <span class="text-sm">Cabins</span>
+                </button>
+
+                <button type="button" data-category="Cottages"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 text-slate-500 hover:text-slate-900">
+                    <i class="fa-solid fa-house text-xl"></i>
+                    <span class="text-sm">Cottages</span>
+                </button>
+
+                <button type="button" data-category="Mountain"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 text-slate-500 hover:text-slate-900">
+                    <i class="fa-solid fa-mountain-city text-xl"></i>
+                    <span class="text-sm">Mountain</span>
+                </button>
+
+                <button type="button" data-category="Lakefront"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 text-slate-500 hover:text-slate-900">
+                    <i class="fa-solid fa-water text-xl"></i>
+                    <span class="text-sm">Lakefront</span>
+                </button>
+
+                <button type="button" data-category="Lakeside"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 text-slate-500 hover:text-slate-900">
+                    <i class="fa-solid fa-house-flood-water text-xl"></i>
+                    <span class="text-sm">Lakeside</span>
+                </button>
+
+                <button type="button" data-category="Valley"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 text-slate-500 hover:text-slate-900">
+                    <i class="fa-solid fa-mountain text-xl"></i>
+                    <span class="text-sm">Valley</span>
+                </button>
+
+                <button type="button" data-category="Himalayan"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 text-slate-500 hover:text-slate-900">
+                    <i class="fa-solid fa-igloo text-xl"></i>
+                    <span class="text-sm">Himalayan</span>
+                </button>
+
+                <button type="button" data-category="Houseboat"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 text-slate-500 hover:text-slate-900">
+                    <i class="fa-solid fa-ship text-xl"></i>
+
+                    <span class="text-sm">Houseboat</span>
+                </button>
+
+                <button type="button" data-category="Luxury"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 text-slate-500 hover:text-slate-900">
+                    <i class="fa-solid fa-gem text-xl"></i>
+                    <span class="text-sm">Luxury</span>
+                </button>
+
+                <button type="button" data-category="Nature"
+                    class="flex min-w-fit cursor-pointer flex-col items-center gap-1 text-slate-500 hover:text-slate-900">
+                    <i class="fa-solid fa-tree text-xl"></i>
+                    <span class="text-sm">Nature</span>
+                </button>
+
+            </section>
+            <ul class="flex flex-wrap gap-5 p-3">
+                <% for(let listing of listings){%>
+                    <li class="bg-white w-100">
+                        <a href="/listings/<%=listing._id%>">
+                            <img src="<%= listing.image.url || " https://img.icons8.com/plasticine/1200/no-image.jpg"%>"
+                            alt="image" class="w-full h-60 rounded-lg">
+                            <h3 class="font-bold ">
+                                <%= listing.title %>
+                            </h3>
+                            <p>&#8377; <%=listing.price.toLocaleString('en-IN')%>/night</p>
+                        </a>
+                    </li>
+                    <%}%>
+            </ul>
+        </body>
