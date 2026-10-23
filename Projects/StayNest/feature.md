@@ -61,3 +61,8 @@
 - mapbox give public token
 - Add Map using mapbox
 - Now add feature according to listings address
+
+## Now add Category Features
+
+- first add Listing modal category
+- than New Listing insert category through options
