@@ -18,6 +18,27 @@ const listingSchema = Joi.object({
             "string.max": "Description must be at most 500 characters long.",
             "string.empty": "Description is required.",
         }),
+        category: Joi.string()
+            .trim()
+            .valid(
+                "Nature",
+                "Cabins",
+                "Cottages",
+                "Mountain",
+                "Lakefront",
+                "Lakeside",
+                "Valley",
+                "Himalayan",
+                "Houseboat",
+                "Luxury",
+                "Others",
+            )
+            .required()
+            .messages({
+                "any.only": "Please select a valid category.",
+                "string.empty": "Category is required.",
+                "any.required": "Category is required.",
+            }),
 
         location: Joi.string().min(2).max(50).trim().required().messages({
             "string.min": "Location must be at least 2 characters long.",
