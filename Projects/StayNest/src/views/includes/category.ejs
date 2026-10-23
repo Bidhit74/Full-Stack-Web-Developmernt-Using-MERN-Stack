@@ -13,16 +13,16 @@
         class="w-full cursor-pointer rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
     >
         <option value="">Select a category</option>
-        <option value="Nature">Nature</option>
-        <option value="Cabins">Cabins</option>
-        <option value="Cottages">Cottages</option>
-        <option value="Mountain">Mountain</option>
-        <option value="Lakefront">Lakefront</option>
-        <option value="Lakeside">Lakeside</option>
-        <option value="Valley">Valley</option>
-        <option value="Himalayan">Himalayan</option>
-        <option value="Houseboat">Houseboat</option>
-        <option value="Luxury">Luxury</option>
-        <option value="Others">Others</option>
+        <option value="Nature" <%= listing.category === "Nature" ? "selected" : "" %>>Nature</option>
+    <option value="Cabins" <%= listing.category === "Cabins" ? "selected" : "" %>>Cabins</option>
+    <option value="Cottages" <%= listing.category === "Cottages" ? "selected" : "" %>>Cottages</option>
+    <option value="Mountain" <%= listing.category === "Mountain" ? "selected" : "" %>>Mountain</option>
+    <option value="Lakefront" <%= listing.category === "Lakefront" ? "selected" : "" %>>Lakefront</option>
+    <option value="Lakeside" <%= listing.category === "Lakeside" ? "selected" : "" %>>Lakeside</option>
+    <option value="Valley" <%= listing.category === "Valley" ? "selected" : "" %>>Valley</option>
+    <option value="Himalayan" <%= listing.category === "Himalayan" ? "selected" : "" %>>Himalayan</option>
+    <option value="Houseboat" <%= listing.category === "Houseboat" ? "selected" : "" %>>Houseboat</option>
+    <option value="Luxury" <%= listing.category === "Luxury" ? "selected" : "" %>>Luxury</option>
+    <option value="Others" <%= listing.category === "Others" ? "selected" : "" %>>Others</option>
     </select>
 </section>

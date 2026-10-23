@@ -66,3 +66,4 @@
 
 - first add Listing modal category
 - than New Listing insert category through options
+- now category feture in edit page
