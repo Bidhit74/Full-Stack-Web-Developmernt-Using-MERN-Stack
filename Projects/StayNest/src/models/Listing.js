@@ -30,9 +30,11 @@ const listingSchema = new Schema({
     },
     location: {
         type: String,
+        required: true,
     },
     country: {
         type: String,
+        required: true,
     },
     reviews: [
         {
@@ -54,6 +56,23 @@ const listingSchema = new Schema({
             type: [Number],
             required: true,
         },
+    },
+    category: {
+        type: String,
+        enum: [
+            Nature,
+            Cabins,
+            Cottages,
+            Mountain,
+            Lakefront,
+            Lakeside,
+            Valley,
+            Himalayan,
+            Houseboat,
+            Luxury,
+            Others,
+        ],
+        required: true,
     },
 });
 
